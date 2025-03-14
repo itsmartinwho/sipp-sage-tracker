@@ -28,7 +28,7 @@ const SippCard: React.FC<SippCardProps> = ({ sipp, index }) => {
       transition={{ duration: 0.4, delay: index * 0.05 }}
     >
       <Link to={`/sipp/${sipp.id}`} className="block h-full">
-        <Card className="overflow-hidden h-full transition-all duration-300 hover:shadow-lg glass">
+        <Card className="overflow-hidden h-full transition-all duration-300 hover:shadow-lg">
           <CardContent className="p-0 relative">
             <div className="relative aspect-square overflow-hidden">
               <img 
@@ -47,7 +47,7 @@ const SippCard: React.FC<SippCardProps> = ({ sipp, index }) => {
                 <div className="flex items-center gap-2">
                   <span className="text-sm text-muted-foreground">Accuracy</span>
                   <Badge 
-                    className={`bg-${getAccuracyColor(sipp.averageAccuracy)} text-white`}
+                    className={`bg-${getAccuracyColor(sipp.averageAccuracy)}`}
                     variant="secondary"
                   >
                     {formatNumber(sipp.averageAccuracy)}
@@ -64,7 +64,7 @@ const SippCard: React.FC<SippCardProps> = ({ sipp, index }) => {
                   {topCategories.map(category => (
                     <Badge 
                       key={category.name}
-                      className={`bg-${getCategoryColor(category.name)} text-white`}
+                      className={`bg-${getCategoryColor(category.name)}`}
                       variant="outline"
                     >
                       {category.name.replace('-', ' ')} ({formatNumber(category.accuracy)})
