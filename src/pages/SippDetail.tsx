@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import PredictionItem from '@/components/PredictionItem';
 
 const SippDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -32,6 +33,11 @@ const SippDetail: React.FC = () => {
     { category: 'Foreign Policy', value: sipp.categoryAccuracy.foreign_policy },
     { category: 'Social Trends', value: sipp.categoryAccuracy.social_trends }
   ];
+  
+  // Sort predictions by date (newest first)
+  const sortedPredictions = [...sipp.predictions].sort(
+    (a, b) => new Date(b.dateStated).getTime() - new Date(a.dateStated).getTime()
+  );
   
   return (
     <div className="min-h-screen bg-background">
@@ -113,11 +119,24 @@ const SippDetail: React.FC = () => {
             
             <TabsContent value="predictions" className="pt-4">
               <Card>
-                <CardContent className="pt-6">
-                  <h3 className="text-xl font-medium mb-4">Recent Predictions</h3>
-                  <div className="text-center py-10">
-                    <p className="text-muted-foreground">Prediction data coming soon.</p>
-                  </div>
+                <CardContent className="pt-6 pb-6">
+                  <h3 className="text-xl font-medium mb-4">Predictions</h3>
+                  
+                  {sortedPredictions.length > 0 ? (
+                    <div className="space-y-4">
+                      {sortedPredictions.map((prediction, index) => (
+                        <PredictionItem 
+                          key={prediction.id} 
+                          prediction={prediction} 
+                          index={index} 
+                        />
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="text-center py-10">
+                      <p className="text-muted-foreground">No predictions available for this SIPP.</p>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             </TabsContent>

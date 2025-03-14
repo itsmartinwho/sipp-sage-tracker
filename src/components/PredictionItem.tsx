@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Prediction, formatDate, getAccuracyColor, getCategoryColor } from '@/data/sippData';
+import { Prediction, formatNumber, getAccuracyColor, getCategoryColor, formatDate } from '@/data/sippData';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
@@ -33,7 +33,7 @@ const PredictionItem: React.FC<PredictionItemProps> = ({ prediction, index }) =>
               
               {prediction.accuracyRating ? (
                 <Badge className={`bg-${getAccuracyColor(prediction.accuracyRating)}`}>
-                  {prediction.accuracyRating}/3
+                  {formatNumber(prediction.accuracyRating)}/3
                 </Badge>
               ) : (
                 <Badge variant="outline" className="bg-muted/50">

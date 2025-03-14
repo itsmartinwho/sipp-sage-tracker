@@ -1,4 +1,6 @@
 
+import { formatDate } from "@/lib/utils";
+
 export type PredictionCategory = 'economy' | 'politics' | 'technology' | 'foreign-policy' | 'social-trends';
 
 export interface SIPP {
@@ -35,6 +37,8 @@ export const formatNumber = (num: number): string => {
   return num.toFixed(1);
 };
 
+export { formatDate };
+
 export const getAccuracyColor = (accuracy: number): string => {
   if (accuracy < 1.7) return 'accuracy-low';
   if (accuracy < 2.3) return 'accuracy-medium';
@@ -52,12 +56,165 @@ export const getCategoryColor = (category: PredictionCategory): string => {
   }
 };
 
-// Sample SIPP data
+// Sample predictions for each SIPP
+const createPredictions = (): Prediction[] => {
+  const predictions: Prediction[] = [
+    // Economy predictions
+    {
+      id: "pred-1",
+      dateStated: "2022-01-15",
+      predictedOutcome: "Inflation will peak at over 8% by mid-2022",
+      category: "economy",
+      timeframe: "mid-2022",
+      verificationStatus: "verified",
+      actualOutcome: "Inflation peaked at 9.1% in June 2022",
+      accuracyRating: 2.8,
+      normalizedScore: 0.85
+    },
+    {
+      id: "pred-2",
+      dateStated: "2022-03-10",
+      predictedOutcome: "The Federal Reserve will raise interest rates at least 5 times in 2022",
+      category: "economy",
+      timeframe: "end of 2022",
+      verificationStatus: "verified",
+      actualOutcome: "The Federal Reserve raised interest rates 7 times in 2022",
+      accuracyRating: 2.5,
+      normalizedScore: 0.78
+    },
+    {
+      id: "pred-3",
+      dateStated: "2021-12-05",
+      predictedOutcome: "Stock market will enter a bear market by mid-2022",
+      category: "economy",
+      timeframe: "mid-2022",
+      verificationStatus: "verified",
+      actualOutcome: "S&P 500 entered bear market in June 2022",
+      accuracyRating: 2.9,
+      normalizedScore: 0.90
+    },
+    
+    // Politics predictions
+    {
+      id: "pred-4",
+      dateStated: "2022-02-20",
+      predictedOutcome: "Democrats will lose control of the House in 2022 midterms",
+      category: "politics",
+      timeframe: "November 2022",
+      verificationStatus: "verified",
+      actualOutcome: "Republicans gained control of the House in 2022 midterms",
+      accuracyRating: 2.7,
+      normalizedScore: 0.82
+    },
+    {
+      id: "pred-5",
+      dateStated: "2022-05-15",
+      predictedOutcome: "Senate will remain split 50-50 after midterms",
+      category: "politics",
+      timeframe: "November 2022",
+      verificationStatus: "verified",
+      actualOutcome: "Democrats gained a seat in the Senate (51-49)",
+      accuracyRating: 1.5,
+      normalizedScore: 0.45
+    },
+    
+    // Technology predictions
+    {
+      id: "pred-6",
+      dateStated: "2021-11-10",
+      predictedOutcome: "Metaverse will fail to gain mainstream adoption in 2022",
+      category: "technology",
+      timeframe: "end of 2022",
+      verificationStatus: "verified",
+      actualOutcome: "Metaverse initiatives failed to gain significant user traction",
+      accuracyRating: 2.8,
+      normalizedScore: 0.87
+    },
+    {
+      id: "pred-7",
+      dateStated: "2022-01-25",
+      predictedOutcome: "Twitter will face major management changes within a year",
+      category: "technology",
+      timeframe: "January 2023",
+      verificationStatus: "verified",
+      actualOutcome: "Elon Musk acquired Twitter in October 2022",
+      accuracyRating: 3.0,
+      normalizedScore: 0.95
+    },
+    
+    // Foreign policy predictions
+    {
+      id: "pred-8",
+      dateStated: "2022-01-05",
+      predictedOutcome: "Russia will initiate military action against Ukraine before April",
+      category: "foreign-policy",
+      timeframe: "Q1 2022",
+      verificationStatus: "verified",
+      actualOutcome: "Russia invaded Ukraine in February 2022",
+      accuracyRating: 2.9,
+      normalizedScore: 0.91
+    },
+    {
+      id: "pred-9",
+      dateStated: "2022-06-18",
+      predictedOutcome: "China will increase military presence around Taiwan",
+      category: "foreign-policy",
+      timeframe: "end of 2022",
+      verificationStatus: "verified",
+      actualOutcome: "China conducted unprecedented military exercises around Taiwan in August 2022",
+      accuracyRating: 2.7,
+      normalizedScore: 0.83
+    },
+    
+    // Social trends predictions
+    {
+      id: "pred-10",
+      dateStated: "2021-12-15",
+      predictedOutcome: "Remote work will become a permanent option for at least 30% of the workforce",
+      category: "social-trends",
+      timeframe: "end of 2022",
+      verificationStatus: "verified",
+      actualOutcome: "About 35% of workers had remote or hybrid arrangements by end of 2022",
+      accuracyRating: 2.6,
+      normalizedScore: 0.80
+    },
+    
+    // Recent predictions not yet verified
+    {
+      id: "pred-11",
+      dateStated: "2023-02-10",
+      predictedOutcome: "AI will disrupt content creation industries significantly by end of 2023",
+      category: "technology",
+      timeframe: "end of 2023",
+      verificationStatus: "pending"
+    },
+    {
+      id: "pred-12",
+      dateStated: "2023-03-25",
+      predictedOutcome: "Housing market will see a 10% price correction in major urban areas",
+      category: "economy",
+      timeframe: "Q4 2023",
+      verificationStatus: "pending"
+    },
+    {
+      id: "pred-13",
+      dateStated: "2023-04-15",
+      predictedOutcome: "A new significant social media platform will emerge to rival Twitter",
+      category: "technology",
+      timeframe: "end of 2023",
+      verificationStatus: "pending"
+    }
+  ];
+  
+  return predictions;
+};
+
+// Updated SIPP data with realistic photo URLs and predictions
 export const SIPP_DATA: SIPP[] = [
   {
     id: "tucker-carlson",
     name: "Tucker Carlson",
-    photoUrl: "https://randomuser.me/api/portraits/men/32.jpg",
+    photoUrl: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&q=80&w=387&ixlib=rb-4.0.3",
     shortBio: "Conservative political commentator, former Fox News host",
     averageAccuracy: 1.8,
     categoryAccuracy: {
@@ -68,12 +225,12 @@ export const SIPP_DATA: SIPP[] = [
       social_trends: 1.7
     },
     patternAnalysis: "Tends to accurately predict conservative policy positions but often misses economic trends and technological developments.",
-    predictions: []
+    predictions: createPredictions()
   },
   {
     id: "rachel-maddow",
     name: "Rachel Maddow",
-    photoUrl: "https://randomuser.me/api/portraits/women/44.jpg",
+    photoUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=461&ixlib=rb-4.0.3",
     shortBio: "Progressive political commentator, MSNBC host",
     averageAccuracy: 2.1,
     categoryAccuracy: {
@@ -84,12 +241,12 @@ export const SIPP_DATA: SIPP[] = [
       social_trends: 2.0
     },
     patternAnalysis: "Strong on political analysis, especially regarding institutional processes. Less reliable on technology predictions.",
-    predictions: []
+    predictions: createPredictions()
   },
   {
     id: "elon-musk",
     name: "Elon Musk",
-    photoUrl: "https://randomuser.me/api/portraits/men/22.jpg",
+    photoUrl: "https://images.unsplash.com/photo-1566753323558-f4e0952af115?auto=format&fit=crop&q=80&w=1021&ixlib=rb-4.0.3",
     shortBio: "Tech entrepreneur, owner of X/Twitter",
     averageAccuracy: 2.3,
     categoryAccuracy: {
@@ -100,12 +257,12 @@ export const SIPP_DATA: SIPP[] = [
       social_trends: 2.4
     },
     patternAnalysis: "Highly accurate on technology trends, particularly in his areas of expertise. Less reliable on political and social predictions.",
-    predictions: []
+    predictions: createPredictions()
   },
   {
     id: "nate-silver",
     name: "Nate Silver",
-    photoUrl: "https://randomuser.me/api/portraits/men/78.jpg",
+    photoUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3",
     shortBio: "Data journalist, founder of FiveThirtyEight",
     averageAccuracy: 2.7,
     categoryAccuracy: {
@@ -116,12 +273,12 @@ export const SIPP_DATA: SIPP[] = [
       social_trends: 2.6
     },
     patternAnalysis: "Statistically rigorous approach leads to high accuracy, especially in politics and data-rich fields.",
-    predictions: []
+    predictions: createPredictions()
   },
   {
     id: "sean-hannity",
     name: "Sean Hannity",
-    photoUrl: "https://randomuser.me/api/portraits/men/55.jpg",
+    photoUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3",
     shortBio: "Conservative political commentator, Fox News host",
     averageAccuracy: 1.6,
     categoryAccuracy: {
@@ -132,12 +289,12 @@ export const SIPP_DATA: SIPP[] = [
       social_trends: 1.4
     },
     patternAnalysis: "Often makes predictions aligned with partisan positions rather than objective likelihood.",
-    predictions: []
+    predictions: createPredictions()
   },
   {
     id: "anderson-cooper",
     name: "Anderson Cooper",
-    photoUrl: "https://randomuser.me/api/portraits/men/65.jpg",
+    photoUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=987&ixlib=rb-4.0.3",
     shortBio: "CNN anchor and correspondent",
     averageAccuracy: 2.2,
     categoryAccuracy: {
@@ -148,12 +305,12 @@ export const SIPP_DATA: SIPP[] = [
       social_trends: 2.1
     },
     patternAnalysis: "Cautious in making predictions, which improves overall accuracy. Strongest in foreign policy analysis.",
-    predictions: []
+    predictions: createPredictions()
   },
   {
     id: "ben-shapiro",
     name: "Ben Shapiro",
-    photoUrl: "https://randomuser.me/api/portraits/men/12.jpg",
+    photoUrl: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=987&ixlib=rb-4.0.3",
     shortBio: "Conservative political commentator, founder of The Daily Wire",
     averageAccuracy: 1.9,
     categoryAccuracy: {
@@ -164,12 +321,12 @@ export const SIPP_DATA: SIPP[] = [
       social_trends: 1.6
     },
     patternAnalysis: "More accurate on economic predictions than social trends. Tendency toward binary predictions reduces accuracy.",
-    predictions: []
+    predictions: createPredictions()
   },
   {
     id: "ezra-klein",
     name: "Ezra Klein",
-    photoUrl: "https://randomuser.me/api/portraits/men/37.jpg",
+    photoUrl: "https://images.unsplash.com/photo-1548372290-8d01b6c8e78c?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3",
     shortBio: "Liberal political analyst, co-founder of Vox",
     averageAccuracy: 2.4,
     categoryAccuracy: {
@@ -180,12 +337,12 @@ export const SIPP_DATA: SIPP[] = [
       social_trends: 2.5
     },
     patternAnalysis: "Systematic approach to analysis leads to above-average accuracy across categories.",
-    predictions: []
+    predictions: createPredictions()
   },
   {
     id: "joe-rogan",
     name: "Joe Rogan",
-    photoUrl: "https://randomuser.me/api/portraits/men/91.jpg",
+    photoUrl: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3",
     shortBio: "Podcast host with wide-ranging political discussions",
     averageAccuracy: 1.7,
     categoryAccuracy: {
@@ -196,12 +353,12 @@ export const SIPP_DATA: SIPP[] = [
       social_trends: 2.1
     },
     patternAnalysis: "Varying accuracy heavily dependent on the expertise of guests. More accurate when discussing topics he has personal experience with.",
-    predictions: []
+    predictions: createPredictions()
   },
   {
     id: "krystal-ball",
     name: "Krystal Ball",
-    photoUrl: "https://randomuser.me/api/portraits/women/86.jpg",
+    photoUrl: "https://images.unsplash.com/photo-1521252659862-eec69941b071?auto=format&fit=crop&q=80&w=1025&ixlib=rb-4.0.3",
     shortBio: "Progressive political commentator, co-host of Breaking Points",
     averageAccuracy: 2.0,
     categoryAccuracy: {
@@ -212,6 +369,7 @@ export const SIPP_DATA: SIPP[] = [
       social_trends: 2.0
     },
     patternAnalysis: "More accurate on economic populist topics than establishment politics. Stronger predictive power for grassroots movements.",
-    predictions: []
+    predictions: createPredictions()
   }
 ];
+
