@@ -533,7 +533,11 @@ export const calculateSippAccuracy = (predictions: Prediction[]): {
     p.verificationStatus === 'verified' && typeof p.accuracyRating === 'number'
   );
   
+  console.log(`[DEBUG] calculateSippAccuracy: Processing ${verifiedPredictions.length} verified predictions`);
+  
+  // If we have no verified predictions at all, return defaults but log this situation
   if (verifiedPredictions.length === 0) {
+    console.log('[DEBUG] calculateSippAccuracy: No verified predictions, returning default scores');
     return {
       averageAccuracy: 2.0,
       categoryAccuracy: {
@@ -549,11 +553,16 @@ export const calculateSippAccuracy = (predictions: Prediction[]): {
     };
   }
   
-  // Calculate overall average
-  const totalAccuracy = verifiedPredictions.reduce((sum, p) => sum + (p.accuracyRating || 0), 0);
-  const averageAccuracy = parseFloat((totalAccuracy / verifiedPredictions.length).toFixed(2));
+  // Calculate overall average with better logging
+  const totalAccuracy = verifiedPredictions.reduce((sum, p) => {
+    console.log(`[DEBUG] Prediction score: ${p.accuracyRating}`);
+    return sum + (p.accuracyRating || 0);
+  }, 0);
   
-  // Calculate by category
+  const averageAccuracy = parseFloat((totalAccuracy / verifiedPredictions.length).toFixed(2));
+  console.log(`[DEBUG] Overall average accuracy: ${averageAccuracy} (Total: ${totalAccuracy} / Count: ${verifiedPredictions.length})`);
+  
+  // Initialize category arrays
   const categories = {
     economy: [] as number[],
     politics: [] as number[],
@@ -562,10 +571,13 @@ export const calculateSippAccuracy = (predictions: Prediction[]): {
     social_trends: [] as number[]
   };
   
+  // Group predictions by category
   verifiedPredictions.forEach(p => {
-    const category = p.category.replace('-', '_') as keyof typeof categories;
-    if (categories[category] && p.accuracyRating !== undefined) {
-      categories[category].push(p.accuracyRating);
+    if (p.accuracyRating !== undefined) {
+      const categoryKey = p.category.replace('-', '_') as keyof typeof categories;
+      if (categories[categoryKey]) {
+        categories[categoryKey].push(p.accuracyRating);
+      }
     }
   });
   
@@ -575,13 +587,17 @@ export const calculateSippAccuracy = (predictions: Prediction[]): {
   let highestAccuracy = 0;
   let lowestAccuracy = 3;
   
+  // Calculate category averages and find strongest/weakest
   Object.keys(categories).forEach(cat => {
-    if (categories[cat as keyof typeof categories].length > 0) {
-      const scores = categories[cat as keyof typeof categories];
+    const scores = categories[cat as keyof typeof categories];
+    console.log(`[DEBUG] Category ${cat} has ${scores.length} predictions with scores: ${JSON.stringify(scores)}`);
+    
+    if (scores.length > 0) {
       const sum = scores.reduce((a, b) => a + b, 0);
       const average = parseFloat((sum / scores.length).toFixed(2));
-      
       categoryAccuracy[cat] = average;
+      
+      console.log(`[DEBUG] Category ${cat} average: ${average} (Sum: ${sum} / Count: ${scores.length})`);
       
       // Track strongest and weakest categories
       if (average > highestAccuracy) {
@@ -594,7 +610,9 @@ export const calculateSippAccuracy = (predictions: Prediction[]): {
         weakestCategory = cat.replace('_', '-') as PredictionCategory;
       }
     } else {
-      categoryAccuracy[cat] = 2.0; // Default value for categories with no predictions
+      // No predictions in this category - use overall average instead of defaulting to 2.0
+      categoryAccuracy[cat] = averageAccuracy;
+      console.log(`[DEBUG] Category ${cat} has no predictions, using overall average: ${averageAccuracy}`);
     }
   });
   

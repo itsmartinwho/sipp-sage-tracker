@@ -11,18 +11,41 @@ interface SippCardProps {
   index: number;
 }
 
+// Helper to get top categories with better error handling
+const getTopCategories = (sipp: SIPP) => {
+  try {
+    return Object.entries(sipp.categoryAccuracy)
+      // Make sure we have valid numeric scores
+      .filter(([_category, score]) => typeof score === 'number' && !isNaN(score))
+      // Sort by accuracy (highest first)
+      .sort(([_cat1, a], [_cat2, b]) => (b as number) - (a as number))
+      // Take the top 2
+      .slice(0, 2)
+      .map(([category, accuracy]) => ({
+        name: category.replace('_', '-') as PredictionCategory,
+        accuracy: accuracy as number
+      }));
+  } catch (error) {
+    console.error("Error getting top categories:", error);
+    // Return fallback data
+    return [
+      { name: 'economy' as PredictionCategory, accuracy: 2.0 },
+      { name: 'politics' as PredictionCategory, accuracy: 2.0 }
+    ];
+  }
+};
+
 const SippCard: React.FC<SippCardProps> = ({ sipp, index }) => {
   // Add console log for debugging
   console.log(`[DEBUG] Rendering SippCard for ${sipp.name} with score: ${sipp.averageAccuracy.toFixed(1)}`);
   
-  // Get top categories by accuracy
-  const topCategories = Object.entries(sipp.categoryAccuracy)
-    .sort(([, a], [, b]) => b - a)
-    .slice(0, 2)
-    .map(([category, accuracy]) => ({
-      name: category.replace('_', '-') as PredictionCategory,
-      accuracy
-    }));
+  // Ensure we have a valid accuracy value
+  const displayedAccuracy = typeof sipp.averageAccuracy === 'number' && !isNaN(sipp.averageAccuracy) 
+    ? sipp.averageAccuracy 
+    : 2.0;
+  
+  // Get top categories by accuracy with error handling
+  const topCategories = getTopCategories(sipp);
 
   return (
     <motion.div
@@ -57,13 +80,13 @@ const SippCard: React.FC<SippCardProps> = ({ sipp, index }) => {
                 <div className="flex items-center gap-2">
                   <span className="text-sm text-muted-foreground">Accuracy</span>
                   <Badge 
-                    style={{ backgroundColor: `hsl(var(--${getAccuracyColor(sipp.averageAccuracy)}))` }}
+                    style={{ backgroundColor: `hsl(var(--${getAccuracyColor(displayedAccuracy)}))` }}
                     variant="secondary"
                     className="relative"
                     // Add a data attribute for debugging
-                    data-accuracy={sipp.averageAccuracy.toFixed(1)}
+                    data-accuracy={displayedAccuracy.toFixed(1)}
                   >
-                    {formatNumber(sipp.averageAccuracy)}
+                    {formatNumber(displayedAccuracy)}
                   </Badge>
                 </div>
                 <span className="text-xs text-muted-foreground">(scale: 1-3)</span>
