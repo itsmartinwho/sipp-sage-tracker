@@ -412,36 +412,32 @@ export const loadRealSippData = async (): Promise<SIPP[]> => {
         const verifiedPredictions = predictions.filter(p => p.verificationStatus === "verified" && p.accuracyRating);
         
         if (verifiedPredictions.length > 0) {
-          // Calculate overall average accuracy
-          sipp.averageAccuracy = verifiedPredictions.reduce((acc, p) => acc + (p.accuracyRating || 0), 0) / verifiedPredictions.length;
+          // Calculate overall average accuracy from verified predictions only
+          sipp.averageAccuracy = parseFloat((verifiedPredictions.reduce((acc, p) => acc + (p.accuracyRating || 0), 0) / verifiedPredictions.length).toFixed(2));
           
-          // Calculate category-specific accuracy scores
+          // Calculate category-specific accuracy scores from verified predictions
           const categories = ['economy', 'politics', 'technology', 'foreign_policy', 'social_trends'];
           
           categories.forEach(category => {
             const categoryPredictions = verifiedPredictions.filter(p => p.category === category.replace('_', '-') as PredictionCategory);
+            const catKey = category as keyof typeof sipp.categoryAccuracy;
             
             if (categoryPredictions.length > 0) {
-              const catKey = category as keyof typeof sipp.categoryAccuracy;
-              sipp.categoryAccuracy[catKey] = categoryPredictions.reduce((acc, p) => acc + (p.accuracyRating || 0), 0) / categoryPredictions.length;
+              // Calculate average for this category from its verified predictions
+              sipp.categoryAccuracy[catKey] = parseFloat((categoryPredictions.reduce((acc, p) => acc + (p.accuracyRating || 0), 0) / categoryPredictions.length).toFixed(2));
             } else {
-              // If no verified predictions in this category, assign a default score
-              // that varies by SIPP to create more diversity in the data
-              const catKey = category as keyof typeof sipp.categoryAccuracy;
-              const baseScore = 1.5 + (Math.random() * 1.5); // Random score between 1.5 and 3
-              sipp.categoryAccuracy[catKey] = parseFloat(baseScore.toFixed(1));
+              // If no verified predictions in this category, use the overall average
+              sipp.categoryAccuracy[catKey] = sipp.averageAccuracy;
             }
           });
         } else {
-          // If no verified predictions, create varied scores for each SIPP
-          // This ensures we have diverse data even without verified predictions
-          sipp.averageAccuracy = 1.5 + (Math.random() * 1.5); // Random score between 1.5 and 3
+          // If no verified predictions at all, use a neutral score of 2.0
+          sipp.averageAccuracy = 2.0;
           
           const categories = ['economy', 'politics', 'technology', 'foreign_policy', 'social_trends'];
           categories.forEach(category => {
             const catKey = category as keyof typeof sipp.categoryAccuracy;
-            const baseScore = 1 + (Math.random() * 2); // Random score between 1 and 3
-            sipp.categoryAccuracy[catKey] = parseFloat(baseScore.toFixed(1));
+            sipp.categoryAccuracy[catKey] = 2.0;
           });
         }
       }
