@@ -9,11 +9,43 @@ import { getFallbackImageUrl } from '@/lib/utils';
 interface SippCardProps {
   sipp: SIPP;
   index: number;
+  selectedCategory?: PredictionCategory | 'all';
 }
 
 // Helper to get top categories with better error handling
-const getTopCategories = (sipp: SIPP) => {
+const getTopCategories = (sipp: SIPP, selectedCategory: PredictionCategory | 'all' = 'all') => {
   try {
+    // If a specific category is selected, prioritize it in the display
+    if (selectedCategory !== 'all') {
+      const categoryKey = selectedCategory.replace('-', '_') as keyof typeof sipp.categoryAccuracy;
+      const categoryScore = sipp.categoryAccuracy[categoryKey];
+      
+      if (categoryScore !== undefined) {
+        // Get the selected category as the first one
+        const priorityCategory = {
+          name: selectedCategory,
+          accuracy: categoryScore as number
+        };
+        
+        // Get the next best category that's not the selected one
+        const otherTopCategory = Object.entries(sipp.categoryAccuracy)
+          .filter(([category, score]) => 
+            typeof score === 'number' && 
+            !isNaN(score) && 
+            category !== selectedCategory.replace('-', '_')
+          )
+          .sort(([_cat1, a], [_cat2, b]) => (b as number) - (a as number))
+          .slice(0, 1)
+          .map(([category, accuracy]) => ({
+            name: category.replace('_', '-') as PredictionCategory,
+            accuracy: accuracy as number
+          }))[0];
+        
+        return otherTopCategory ? [priorityCategory, otherTopCategory] : [priorityCategory];
+      }
+    }
+    
+    // Default behavior - get top 2 categories
     return Object.entries(sipp.categoryAccuracy)
       // Make sure we have valid numeric scores
       .filter(([_category, score]) => typeof score === 'number' && !isNaN(score))
@@ -35,17 +67,31 @@ const getTopCategories = (sipp: SIPP) => {
   }
 };
 
-const SippCard: React.FC<SippCardProps> = ({ sipp, index }) => {
+const SippCard: React.FC<SippCardProps> = ({ sipp, index, selectedCategory = 'all' }) => {
   // Add console log for debugging
   console.log(`[DEBUG] Rendering SippCard for ${sipp.name} with score: ${sipp.averageAccuracy.toFixed(1)}`);
   
+  // Determine which accuracy to display based on category selection
+  let displayedAccuracy = sipp.averageAccuracy;
+  
+  if (selectedCategory !== 'all') {
+    // Use the category-specific accuracy if a category is selected
+    const categoryKey = selectedCategory.replace('-', '_') as keyof typeof sipp.categoryAccuracy;
+    const categoryScore = sipp.categoryAccuracy[categoryKey];
+    
+    if (typeof categoryScore === 'number' && !isNaN(categoryScore)) {
+      displayedAccuracy = categoryScore;
+      console.log(`[DEBUG] Using category score for ${sipp.name}: ${selectedCategory} = ${displayedAccuracy.toFixed(1)}`);
+    }
+  }
+  
   // Ensure we have a valid accuracy value
-  const displayedAccuracy = typeof sipp.averageAccuracy === 'number' && !isNaN(sipp.averageAccuracy) 
-    ? sipp.averageAccuracy 
+  displayedAccuracy = typeof displayedAccuracy === 'number' && !isNaN(displayedAccuracy) 
+    ? displayedAccuracy 
     : 2.0;
   
   // Get top categories by accuracy with error handling
-  const topCategories = getTopCategories(sipp);
+  const topCategories = getTopCategories(sipp, selectedCategory);
 
   return (
     <motion.div

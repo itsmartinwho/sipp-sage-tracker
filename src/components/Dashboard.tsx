@@ -233,8 +233,16 @@ const Dashboard: React.FC = () => {
   const filteredSipps = sipps.filter(sipp => {
     // Category filter
     if (selectedCategory !== 'all') {
+      // Convert dash to underscore for the object key lookup
       const categoryKey = selectedCategory.replace('-', '_') as keyof typeof sipp.categoryAccuracy;
-      if (!sipp.categoryAccuracy[categoryKey]) return false;
+      
+      // Check if this SIPP has any predictions in the selected category
+      const hasPredictionsInCategory = sipp.predictions.some(
+        prediction => prediction.category === selectedCategory
+      );
+      
+      // Only include SIPPs that have predictions in the selected category
+      if (!hasPredictionsInCategory) return false;
     }
     
     // Search query
@@ -253,9 +261,12 @@ const Dashboard: React.FC = () => {
     } else {
       // Sort by specific category accuracy
       const categoryKey = selectedCategory.replace('-', '_') as keyof typeof a.categoryAccuracy;
+      const scoreA = a.categoryAccuracy[categoryKey] as number;
+      const scoreB = b.categoryAccuracy[categoryKey] as number;
+      
       return sortOrder === 'desc' 
-        ? b.categoryAccuracy[categoryKey] - a.categoryAccuracy[categoryKey] 
-        : a.categoryAccuracy[categoryKey] - b.categoryAccuracy[categoryKey];
+        ? scoreB - scoreA 
+        : scoreA - scoreB;
     }
   });
 
@@ -345,7 +356,12 @@ const Dashboard: React.FC = () => {
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
       >
         {filteredSipps.map((sipp, index) => (
-          <SippCard key={sipp.id} sipp={sipp} index={index} />
+          <SippCard 
+            key={sipp.id} 
+            sipp={sipp} 
+            index={index} 
+            selectedCategory={selectedCategory} 
+          />
         ))}
       </motion.div>
       
