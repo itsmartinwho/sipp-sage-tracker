@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -46,6 +45,8 @@
     --accuracy-low: 0 85% 61%; 
     --accuracy-medium: 38 95% 58%;
     --accuracy-high: 142 71% 45%;
+
+    font-family: 'Inter', 'Roboto', 'Helvetica Neue', sans-serif;
   }
  
   .dark {

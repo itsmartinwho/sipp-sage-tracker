@@ -1,0 +1,1 @@
+<h1 className="text-2xl font-bold font-sans">PROPHET</h1> 
