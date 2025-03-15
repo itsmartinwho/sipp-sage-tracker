@@ -530,7 +530,7 @@ export const calculateSippAccuracy = (predictions: Prediction[]): {
   weakestCategory: PredictionCategory | null
 } => {
   const verifiedPredictions = predictions.filter(p => 
-    p.verificationStatus === 'verified' && typeof p.accuracyRating === 'number'
+    p.verificationStatus === 'verified' && typeof p.accuracyRating === 'number' && !isNaN(p.accuracyRating)
   );
   
   console.log(`[DEBUG] calculateSippAccuracy: Processing ${verifiedPredictions.length} verified predictions`);
@@ -555,8 +555,12 @@ export const calculateSippAccuracy = (predictions: Prediction[]): {
   
   // Calculate overall average with better logging
   const totalAccuracy = verifiedPredictions.reduce((sum, p) => {
+    if (typeof p.accuracyRating !== 'number' || isNaN(p.accuracyRating)) {
+      console.warn(`[DEBUG] Invalid accuracy rating for prediction: ${p.id}`);
+      return sum;
+    }
     console.log(`[DEBUG] Prediction score: ${p.accuracyRating}`);
-    return sum + (p.accuracyRating || 0);
+    return sum + p.accuracyRating;
   }, 0);
   
   const averageAccuracy = parseFloat((totalAccuracy / verifiedPredictions.length).toFixed(2));
@@ -573,7 +577,7 @@ export const calculateSippAccuracy = (predictions: Prediction[]): {
   
   // Group predictions by category
   verifiedPredictions.forEach(p => {
-    if (p.accuracyRating !== undefined) {
+    if (typeof p.accuracyRating === 'number' && !isNaN(p.accuracyRating)) {
       const categoryKey = p.category.replace('-', '_') as keyof typeof categories;
       if (categories[categoryKey]) {
         categories[categoryKey].push(p.accuracyRating);

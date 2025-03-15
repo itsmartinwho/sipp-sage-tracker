@@ -11,6 +11,27 @@ import PredictionItem from '@/components/PredictionItem';
 import PredictionAnalysisPanel from '@/components/PredictionAnalysisPanel';
 import { Loader2 } from 'lucide-react';
 import { preloadImages, getFallbackImageUrl } from '@/lib/utils';
+import { calculateSippAccuracy } from '@/data/predictionAnalysis';
+
+// Helper function to ensure we have valid accuracy data
+const validateSippData = (sipp: SIPP): SIPP => {
+  console.log(`[DEBUG] Validating SIPP data for ${sipp.name} in detail view`);
+  
+  // Make a deep copy to avoid mutating the original object
+  const validatedSipp = JSON.parse(JSON.stringify(sipp));
+  
+  // Recalculate averages based on the actual predictions
+  const accuracyData = calculateSippAccuracy(validatedSipp.predictions);
+  
+  // Apply the calculated data
+  validatedSipp.averageAccuracy = accuracyData.averageAccuracy;
+  validatedSipp.categoryAccuracy = accuracyData.categoryAccuracy;
+  
+  console.log(`[DEBUG] Validated accuracy for ${sipp.name}: ${validatedSipp.averageAccuracy.toFixed(2)}`);
+  console.log('[DEBUG] Category accuracy:', validatedSipp.categoryAccuracy);
+  
+  return validatedSipp;
+};
 
 const SippDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -57,11 +78,13 @@ const SippDetail: React.FC = () => {
                 matchingSipp.photoUrl = reliableImagePaths[matchingSipp.name];
               }
               
-              setSipp(matchingSipp);
+              // Validate the SIPP data to ensure accuracy scores are correct
+              const validatedSipp = validateSippData(matchingSipp);
+              setSipp(validatedSipp);
               
               // Preload the image for this SIPP
-              if (matchingSipp.photoUrl) {
-                preloadImages([matchingSipp.photoUrl]);
+              if (validatedSipp.photoUrl) {
+                preloadImages([validatedSipp.photoUrl]);
               }
               
               setLoading(false);
@@ -80,7 +103,13 @@ const SippDetail: React.FC = () => {
           fallbackSipp.photoUrl = reliableImagePaths[fallbackSipp.name];
         }
         
-        setSipp(fallbackSipp || null);
+        // Validate fallback SIPP data as well
+        if (fallbackSipp) {
+          const validatedFallbackSipp = validateSippData(fallbackSipp);
+          setSipp(validatedFallbackSipp);
+        } else {
+          setSipp(null);
+        }
       } catch (error) {
         console.error("Error loading SIPP data:", error);
       } finally {

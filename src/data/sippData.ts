@@ -46,13 +46,8 @@ export const formatNumber = (num: number): string => {
   // Ensure num is a number and not undefined
   if (typeof num !== 'number' || isNaN(num)) {
     console.error('formatNumber received a non-number value:', num);
-    // Instead of quietly defaulting to 2.0, throw an error in development
-    // or return an error indicator in production
-    if (process.env.NODE_ENV === 'development') {
-      console.trace('Stack trace for formatNumber error');
-      throw new Error(`Invalid number value: ${num}`);
-    }
-    return 'ERR'; // Return an error indicator rather than a default value
+    // Instead of defaulting to 2.0, return an error indicator
+    return 'N/A';
   }
   return num.toFixed(1);
 };
