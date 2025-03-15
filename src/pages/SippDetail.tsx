@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -37,6 +38,11 @@ const SippDetail: React.FC = () => {
             const matchingSipp = jsonData.find((s: SIPP) => s.id === id);
             
             if (matchingSipp) {
+              // Make sure the Tucker Carlson image is updated
+              if (matchingSipp.name === "Tucker Carlson") {
+                matchingSipp.photoUrl = "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png";
+              }
+              
               setSipp(matchingSipp);
               
               // Preload the image for this SIPP
@@ -54,6 +60,12 @@ const SippDetail: React.FC = () => {
         
         // Fallback to template data
         const fallbackSipp = SIPP_DATA.find(s => s.id === id);
+        
+        // Make sure the Tucker Carlson image is updated in the fallback data
+        if (fallbackSipp && fallbackSipp.name === "Tucker Carlson") {
+          fallbackSipp.photoUrl = "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png";
+        }
+        
         setSipp(fallbackSipp || null);
       } catch (error) {
         console.error("Error loading SIPP data:", error);
@@ -125,53 +137,68 @@ const SippDetail: React.FC = () => {
         <div className="flex flex-col items-center">
           <div className="w-32 h-32 overflow-hidden rounded-full mb-4">
             <img 
-              src={sipp.photoUrl} 
-              alt={sipp.name} 
+              src={sipp?.photoUrl} 
+              alt={sipp?.name} 
               className="w-full h-full object-cover"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.onerror = null; // Prevent infinite loops
-                console.log(`Image load error for ${sipp.name} in detail view, using fallback`);
-                target.src = getFallbackImageUrl(sipp.name, 128);
+                console.log(`Image load error for ${sipp?.name} in detail view, using fallback`);
+                target.src = getFallbackImageUrl(sipp?.name || "", 128);
               }} 
             />
           </div>
-          <h1 className="text-4xl font-bold mb-2">{sipp.name}</h1>
-          <p className="text-muted-foreground mb-4">{sipp.shortBio}</p>
-          <Badge style={{ backgroundColor: `hsl(var(--${getAccuracyColor(sipp.averageAccuracy)}))` }}>
-            Overall Accuracy: {formatNumber(sipp.averageAccuracy)}
-          </Badge>
+          <h1 className="text-4xl font-bold mb-2">{sipp?.name}</h1>
+          <p className="text-muted-foreground mb-4">{sipp?.shortBio}</p>
+          {sipp && (
+            <Badge style={{ backgroundColor: `hsl(var(--${getAccuracyColor(sipp.averageAccuracy)}))` }}>
+              Overall Accuracy: {formatNumber(sipp.averageAccuracy)}
+            </Badge>
+          )}
         </div>
         
-        <Tabs defaultValue="predictions" className="mt-8">
-          <TabsList>
-            <TabsTrigger value="predictions">Predictions</TabsTrigger>
-            <TabsTrigger value="analysis">Analysis</TabsTrigger>
-          </TabsList>
-          <TabsContent value="predictions">
-            <div className="grid grid-cols-1 gap-4">
-              {sortedPredictions.map((prediction, index) => (
-                <PredictionItem key={prediction.id} prediction={prediction} index={index} />
-              ))}
-            </div>
-          </TabsContent>
-          <TabsContent value="analysis">
-            <Card>
-              <CardContent className="pt-6">
-                <ResponsiveContainer width="100%" height={300}>
-                  <BarChart data={categoryChartData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="category" />
-                    <YAxis domain={[0, 3]} />
-                    <Tooltip />
-                    <Bar dataKey="value" fill="#8884d8" />
-                  </BarChart>
-                </ResponsiveContainer>
-                <p className="mt-4 whitespace-pre-line">{sipp.patternAnalysis}</p>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
+        {sipp && (
+          <Tabs defaultValue="predictions" className="mt-8">
+            <TabsList>
+              <TabsTrigger value="predictions">Predictions</TabsTrigger>
+              <TabsTrigger value="analysis">Analysis</TabsTrigger>
+            </TabsList>
+            <TabsContent value="predictions">
+              <div className="grid grid-cols-1 gap-4">
+                {sipp.predictions.sort(
+                  (a, b) => new Date(b.dateStated).getTime() - new Date(a.dateStated).getTime()
+                ).map((prediction, index) => (
+                  <PredictionItem key={prediction.id} prediction={prediction} index={index} />
+                ))}
+              </div>
+            </TabsContent>
+            <TabsContent value="analysis">
+              <Card>
+                <CardContent className="pt-6">
+                  <ResponsiveContainer width="100%" height={300}>
+                    <BarChart 
+                      data={[
+                        { category: 'Economy', value: sipp.categoryAccuracy.economy },
+                        { category: 'Politics', value: sipp.categoryAccuracy.politics },
+                        { category: 'Technology', value: sipp.categoryAccuracy.technology },
+                        { category: 'Foreign Policy', value: sipp.categoryAccuracy.foreign_policy },
+                        { category: 'Social Trends', value: sipp.categoryAccuracy.social_trends }
+                      ]} 
+                      margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="category" />
+                      <YAxis domain={[0, 3]} />
+                      <Tooltip />
+                      <Bar dataKey="value" fill="#8884d8" />
+                    </BarChart>
+                  </ResponsiveContainer>
+                  <p className="mt-4 whitespace-pre-line">{sipp.patternAnalysis}</p>
+                </CardContent>
+              </Card>
+            </TabsContent>
+          </Tabs>
+        )}
       </motion.main>
     </div>
   );

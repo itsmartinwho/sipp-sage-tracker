@@ -63,7 +63,7 @@ const sippList = [
 
 // Map of SIPP names to reliable image URLs
 const RELIABLE_SIPP_IMAGES = {
-  "Tucker Carlson": "https://i.imgur.com/vQLRInY.jpg",
+  "Tucker Carlson": "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png",
   "Rachel Maddow": "https://i.imgur.com/wQ0p9E8.jpg",
   "Elon Musk": "https://i.imgur.com/6Df9vJz.jpg",
   "Nate Silver": "https://i.imgur.com/vbtMQAe.jpg",
@@ -526,4 +526,4 @@ function ensureDirectoryExists(directory) {
     console.error("Error in main execution:", error);
     process.exit(1);
   }
-})(); 
+})();
