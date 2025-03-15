@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { SIPP_DATA, formatNumber, getAccuracyColor, SIPP } from '@/data/sippData';
 import NavBar from '@/components/NavBar';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
@@ -9,10 +10,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import PredictionItem from '@/components/PredictionItem';
 import { Loader2 } from 'lucide-react';
-import { SIPP_DATA, SIPP } from '@/data/sippData';
-import { formatNumber } from '@/utils/formatting'; 
-import { getAccuracyColor } from '@/utils/styleUtils';
-import { formatDate } from '@/lib/utils';
 
 const SippDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();

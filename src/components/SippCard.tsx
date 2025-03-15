@@ -2,11 +2,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { SIPP, formatNumber, getAccuracyColor, getCategoryColor, PredictionCategory } from '@/data/sippData';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { SIPP, PredictionCategory } from '@/types/sipp';
-import { formatNumber } from '@/utils/formatting';
-import { getAccuracyColor, getCategoryColor } from '@/utils/styleUtils';
 
 interface SippCardProps {
   sipp: SIPP;

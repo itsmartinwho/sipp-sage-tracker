@@ -1,10 +1,9 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { SIPP_DATA, loadRealSippData } from '@/data/sippData';
-import { PredictionCategory, SIPP } from '@/types/sipp';
+import { SIPP_DATA, PredictionCategory, loadRealSippData, SIPP } from '@/data/sippData';
 import SippCard from './SippCard';
 import { Button } from '@/components/ui/button';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Search, Filter, SortDesc, SortAsc, Loader2 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
