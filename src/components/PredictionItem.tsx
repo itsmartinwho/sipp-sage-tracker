@@ -1,8 +1,10 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Prediction, formatNumber, getAccuracyColor, getCategoryColor, formatDate } from '@/data/sippData';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 interface PredictionItemProps {
   prediction: Prediction;

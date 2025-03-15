@@ -436,12 +436,26 @@ export const loadRealSippData = async (): Promise<SIPP[]> => {
   }
 };
 
-// Updated SIPP data with realistic photo URLs and predictions
+// Map of SIPP names to reliable image URLs
+const RELIABLE_SIPP_IMAGES: Record<string, string> = {
+  "Tucker Carlson": "https://upload.wikimedia.org/wikipedia/commons/6/62/Tucker_Carlson_2020.jpg",
+  "Rachel Maddow": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Rachel_Maddow_in_2008.jpg",
+  "Elon Musk": "https://upload.wikimedia.org/wikipedia/commons/3/34/Elon_Musk_Royal_Society_%28crop2%29.jpg",
+  "Nate Silver": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Nate_Silver_2009.png",
+  "Sean Hannity": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Sean_Hannity.jpg",
+  "Anderson Cooper": "https://upload.wikimedia.org/wikipedia/commons/5/51/Anderson_Cooper_at_the_Edinburgh_TV_fest.jpg",
+  "Ben Shapiro": "https://upload.wikimedia.org/wikipedia/commons/6/62/Ben_Shapiro_2018.jpg",
+  "Ezra Klein": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Ezra_Klein_2012_Shankbone.JPG",
+  "Joe Rogan": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Joe_Rogan_-_2023_%28cropped%29.jpg",
+  "Krystal Ball": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Krystal_Ball_by_Gage_Skidmore.jpg"
+};
+
+// Updated SIPP data with reliable photo URLs
 export const SIPP_DATA: SIPP[] = [
   {
     id: "tucker-carlson",
     name: "Tucker Carlson",
-    photoUrl: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&q=80&w=387&ixlib=rb-4.0.3",
+    photoUrl: RELIABLE_SIPP_IMAGES["Tucker Carlson"],
     shortBio: "Conservative political commentator, former Fox News host",
     averageAccuracy: 1.8,
     categoryAccuracy: {
@@ -457,7 +471,7 @@ export const SIPP_DATA: SIPP[] = [
   {
     id: "rachel-maddow",
     name: "Rachel Maddow",
-    photoUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=461&ixlib=rb-4.0.3",
+    photoUrl: RELIABLE_SIPP_IMAGES["Rachel Maddow"],
     shortBio: "Progressive political commentator, MSNBC host",
     averageAccuracy: 2.1,
     categoryAccuracy: {
@@ -473,7 +487,7 @@ export const SIPP_DATA: SIPP[] = [
   {
     id: "elon-musk",
     name: "Elon Musk",
-    photoUrl: "https://images.unsplash.com/photo-1566753323558-f4e0952af115?auto=format&fit=crop&q=80&w=1021&ixlib=rb-4.0.3",
+    photoUrl: RELIABLE_SIPP_IMAGES["Elon Musk"],
     shortBio: "Tech entrepreneur, owner of X/Twitter",
     averageAccuracy: 2.3,
     categoryAccuracy: {
@@ -489,7 +503,7 @@ export const SIPP_DATA: SIPP[] = [
   {
     id: "nate-silver",
     name: "Nate Silver",
-    photoUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3",
+    photoUrl: RELIABLE_SIPP_IMAGES["Nate Silver"],
     shortBio: "Data journalist, founder of FiveThirtyEight",
     averageAccuracy: 2.7,
     categoryAccuracy: {
@@ -505,7 +519,7 @@ export const SIPP_DATA: SIPP[] = [
   {
     id: "sean-hannity",
     name: "Sean Hannity",
-    photoUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3",
+    photoUrl: RELIABLE_SIPP_IMAGES["Sean Hannity"],
     shortBio: "Conservative political commentator, Fox News host",
     averageAccuracy: 1.6,
     categoryAccuracy: {
@@ -521,7 +535,7 @@ export const SIPP_DATA: SIPP[] = [
   {
     id: "anderson-cooper",
     name: "Anderson Cooper",
-    photoUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=987&ixlib=rb-4.0.3",
+    photoUrl: RELIABLE_SIPP_IMAGES["Anderson Cooper"],
     shortBio: "CNN anchor and correspondent",
     averageAccuracy: 2.2,
     categoryAccuracy: {
@@ -537,7 +551,7 @@ export const SIPP_DATA: SIPP[] = [
   {
     id: "ben-shapiro",
     name: "Ben Shapiro",
-    photoUrl: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=987&ixlib=rb-4.0.3",
+    photoUrl: RELIABLE_SIPP_IMAGES["Ben Shapiro"],
     shortBio: "Conservative political commentator, founder of The Daily Wire",
     averageAccuracy: 1.9,
     categoryAccuracy: {
@@ -553,7 +567,7 @@ export const SIPP_DATA: SIPP[] = [
   {
     id: "ezra-klein",
     name: "Ezra Klein",
-    photoUrl: "https://images.unsplash.com/photo-1548372290-8d01b6c8e78c?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3",
+    photoUrl: RELIABLE_SIPP_IMAGES["Ezra Klein"],
     shortBio: "Liberal political analyst, co-founder of Vox",
     averageAccuracy: 2.4,
     categoryAccuracy: {
@@ -569,7 +583,7 @@ export const SIPP_DATA: SIPP[] = [
   {
     id: "joe-rogan",
     name: "Joe Rogan",
-    photoUrl: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3",
+    photoUrl: RELIABLE_SIPP_IMAGES["Joe Rogan"],
     shortBio: "Podcast host with wide-ranging political discussions",
     averageAccuracy: 1.7,
     categoryAccuracy: {
@@ -585,7 +599,7 @@ export const SIPP_DATA: SIPP[] = [
   {
     id: "krystal-ball",
     name: "Krystal Ball",
-    photoUrl: "https://images.unsplash.com/photo-1521252659862-eec69941b071?auto=format&fit=crop&q=80&w=1025&ixlib=rb-4.0.3",
+    photoUrl: RELIABLE_SIPP_IMAGES["Krystal Ball"],
     shortBio: "Progressive political commentator, co-host of Breaking Points",
     averageAccuracy: 2.0,
     categoryAccuracy: {
@@ -599,4 +613,3 @@ export const SIPP_DATA: SIPP[] = [
     predictions: createPredictions()
   }
 ];
-

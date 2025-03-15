@@ -1,3 +1,4 @@
+
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 import OpenAI from "openai"
@@ -55,8 +56,11 @@ export async function fetchSippImages(sippName: string): Promise<string> {
     return response.data[0].url;
   } catch (error) {
     console.error("Error fetching image:", error);
-    // Return a generic placeholder based on name initials
-    const initials = sippName.split(' ').map(n => n[0]).join('');
+    // Return a reliable image from our map if available
+    if (RELIABLE_SIPP_IMAGES[sippName]) {
+      return RELIABLE_SIPP_IMAGES[sippName];
+    }
+    // Fallback to a generic placeholder based on name initials
     return `https://ui-avatars.com/api/?name=${encodeURIComponent(sippName)}&background=random&size=200`;
   }
 }
