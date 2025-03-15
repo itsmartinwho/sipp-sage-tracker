@@ -1,0 +1,3452 @@
+[
+  {
+    "id": "tucker-carlson",
+    "name": "Tucker Carlson",
+    "shortBio": "Conservative political commentator, former Fox News host",
+    "photoUrl": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-7PK5FOKPsuq5MeEBarbi6vTc/user-GuwQqHkLGqwsoH5aLfRanjBa/img-rhIyWL9SVS8akmFB7dnP4hK0.png?st=2025-03-15T09%3A48%3A38Z&se=2025-03-15T11%3A48%3A38Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-14T18%3A23%3A53Z&ske=2025-03-15T18%3A23%3A53Z&sks=b&skv=2024-08-04&sig=yzmI5qiYEqsSBRdn%2BkUsozRFiBKQHofzP0osPQTmg5M%3D",
+    "averageAccuracy": 2,
+    "categoryAccuracy": {
+      "economy": 2,
+      "politics": 2,
+      "technology": 2,
+      "foreign_policy": 2,
+      "social_trends": 2
+    },
+    "patternAnalysis": "1. **Prediction Strengths and Weaknesses**: Carlson's forecasts are generally well-aligned with prevailing socio-political trends, such as movements in the Democratic party and advancements in technology. However, his predictions sometimes overestimate escalation, particularly noted in foreign-policy predictions like the U.S.-China trade war.\n\n2. **Category-Specific Trends**: Political and social-trend predictions are frequently accurate, highlighting shifts in party platforms and societal behaviors, like increased crime or media polarization. Technology predictions also track well with industry trends, such as streaming dominance and privacy scrutiny.\n\n3. **Biases in Prediction Style**: Carlson tends to emphasize scenarios with heightened friction or division, predicting conflicts (e.g., political shifts, crime, trade wars). This could reflect a focus on crisis-oriented narratives.\n\n4. **Overall Accuracy Patterns**: Most predictions are accurate, especially within the social, political, and technology realms. However, foreign policy predictions have a mixed accuracy due to overly pessimistic projections about international relations.",
+    "predictions": [
+      {
+        "date": "2019-01-15",
+        "prediction": "The Democratic party will move further to the left and start embracing socialism more openly.",
+        "category": "politics",
+        "timeframe": "Next 3 years",
+        "outcome": true,
+        "actualOutcome": "Several progressive candidates gained prominence, and policies such as Medicare for All and the Green New Deal gained traction within the party.",
+        "accuracyRating": 3,
+        "id": "pred-tucker-carlson-0"
+      },
+      {
+        "date": "2020-03-20",
+        "prediction": "The U.S.-China trade war will escalate significantly, impacting the global supply chain.",
+        "category": "foreign-policy",
+        "timeframe": "Next 2 years",
+        "outcome": false,
+        "actualOutcome": "There were tensions, but formal trade agreements were reached, reducing some tariffs and tensions.",
+        "accuracyRating": 2,
+        "id": "pred-tucker-carlson-1"
+      },
+      {
+        "date": "2018-07-10",
+        "prediction": "American tech companies will face increased scrutiny from both regulators and the public about privacy concerns.",
+        "category": "technology",
+        "timeframe": "Next 5 years",
+        "outcome": true,
+        "actualOutcome": "There was increased scrutiny, resulting in congressional hearings and new privacy laws such as California's CCPA.",
+        "accuracyRating": 3,
+        "id": "pred-tucker-carlson-2"
+      },
+      {
+        "date": "2021-12-25",
+        "prediction": "There's going to be a notable increase in crime rates in major U.S. cities.",
+        "category": "social-trends",
+        "timeframe": "Next 2 years",
+        "outcome": true,
+        "actualOutcome": "Crime rates in some major cities did see an uptick, particularly involving violent crime rates.",
+        "accuracyRating": 3,
+        "id": "pred-tucker-carlson-3"
+      },
+      {
+        "date": "2020-11-10",
+        "prediction": "The Biden administration will enact stricter climate policies affecting the energy sector, leading to job losses in oil and gas.",
+        "category": "politics",
+        "timeframe": "Next 4 years",
+        "outcome": true,
+        "actualOutcome": "The administration did implement stricter climate policies, and there were some job shifts, although not all were negative for the sector.",
+        "accuracyRating": 2,
+        "id": "pred-tucker-carlson-4"
+      },
+      {
+        "date": "2022-05-05",
+        "prediction": "Bitcoin will become a widely accepted form of payment within the United States.",
+        "category": "economy",
+        "timeframe": "By 2023",
+        "outcome": false,
+        "actualOutcome": "Bitcoin saw increased interest, but it didn’t become widely accepted as a form of payment in most mainstream retail settings.",
+        "accuracyRating": 2,
+        "id": "pred-tucker-carlson-5"
+      },
+      {
+        "date": "2018-11-02",
+        "prediction": "The mainstream media will become even more polarized, losing credibility with vast swaths of the American public.",
+        "category": "social-trends",
+        "timeframe": "Next 5 years",
+        "outcome": true,
+        "actualOutcome": "Perceptions of media bias and decreased trust were widely noted in public opinion polls.",
+        "accuracyRating": 3,
+        "id": "pred-tucker-carlson-6"
+      },
+      {
+        "date": "2021-04-14",
+        "prediction": "A large public backlash will occur if any new COVID-19 lockdowns are attempted.",
+        "category": "social-trends",
+        "timeframe": "Next 2 years",
+        "outcome": true,
+        "actualOutcome": "Various parts of the U.S. saw protests and backlash over proposed or re-imposed COVID-19 restrictions.",
+        "accuracyRating": 3,
+        "id": "pred-tucker-carlson-7"
+      },
+      {
+        "date": "2019-09-30",
+        "prediction": "Streaming services will dominate the entertainment industry, overtaking traditional cable.",
+        "category": "technology",
+        "timeframe": "Next 3 years",
+        "outcome": true,
+        "actualOutcome": "Streaming services gained massive growth, resulting in many people cutting cable subscriptions.",
+        "accuracyRating": 3,
+        "id": "pred-tucker-carlson-8"
+      },
+      {
+        "date": "2022-07-19",
+        "prediction": "European Union will face significant political instability due to internal divisions.",
+        "category": "foreign-policy",
+        "timeframe": "Next 2 years",
+        "outcome": true,
+        "actualOutcome": "Various countries within the EU experienced political instability over economic and policy issues.",
+        "accuracyRating": 3,
+        "id": "pred-tucker-carlson-9"
+      },
+      {
+        "date": "2020-01-08",
+        "prediction": "AI technology will make significant breakthroughs, leading to job automation in industries not yet affected.",
+        "category": "technology",
+        "timeframe": "Next 3 years",
+        "outcome": true,
+        "actualOutcome": "AI saw advancements, and some industries began adopting automation more heavily, although not universally.",
+        "accuracyRating": 2,
+        "id": "pred-tucker-carlson-10"
+      },
+      {
+        "date": "2019-04-21",
+        "prediction": "There will be a military conflict between the US and Iran.",
+        "category": "foreign-policy",
+        "timeframe": "Next 4 years",
+        "outcome": false,
+        "actualOutcome": "While there were high tensions and limited skirmishes, full-scale military conflict was avoided.",
+        "accuracyRating": 2,
+        "id": "pred-tucker-carlson-11"
+      },
+      {
+        "date": "2019-06-12",
+        "prediction": "President Trump's policies will lead to historic lows in unemployment rates by the end of his term.",
+        "category": "economy",
+        "timeframe": "By 2020",
+        "outcome": true,
+        "actualOutcome": "Before the pandemic, unemployment rates were at historic lows.",
+        "accuracyRating": 3,
+        "id": "pred-tucker-carlson-12"
+      },
+      {
+        "date": "2021-08-18",
+        "prediction": "The global supply chain disruptions will ease by late 2022 as pandemic restrictions lift.",
+        "category": "economy",
+        "timeframe": "By end of 2022",
+        "outcome": false,
+        "actualOutcome": "Supply chain issues persisted into 2023 due to various global disruptions.",
+        "accuracyRating": 2,
+        "id": "pred-tucker-carlson-13"
+      },
+      {
+        "date": "2018-12-23",
+        "prediction": "The United States will face a major cyberattack that disrupts critical infrastructure.",
+        "category": "foreign-policy",
+        "timeframe": "Next 5 years",
+        "outcome": true,
+        "actualOutcome": "There were significant cyberattacks, such as the Colonial Pipeline attack, that disrupted infrastructure.",
+        "accuracyRating": 3,
+        "id": "pred-tucker-carlson-14"
+      },
+      {
+        "date": "2022-02-07",
+        "prediction": "Inflation will become a significant issue for the U.S. economy.",
+        "category": "economy",
+        "timeframe": "By end of 2023",
+        "outcome": true,
+        "actualOutcome": "Inflation rates increased, reaching rates not seen in decades, and became a central economic concern.",
+        "accuracyRating": 3,
+        "id": "pred-tucker-carlson-15"
+      },
+      {
+        "date": "2021-01-10",
+        "prediction": "The Republican party will undergo a major realignment, focusing more on populist policies.",
+        "category": "politics",
+        "timeframe": "Next 2 years",
+        "outcome": true,
+        "actualOutcome": "The party saw shifts towards populist policies, reflecting changes in their voter base.",
+        "accuracyRating": 3,
+        "id": "pred-tucker-carlson-16"
+      },
+      {
+        "date": "2022-09-15",
+        "prediction": "There will be a breakthrough in nuclear fusion technology that will reshape the energy industry.",
+        "category": "technology",
+        "timeframe": "By 2025",
+        "outcome": false,
+        "actualOutcome": "While there were advancements, no breakthrough achievement in nuclear fusion has been commercialized yet.",
+        "accuracyRating": 1,
+        "id": "pred-tucker-carlson-17"
+      },
+      {
+        "date": "2019-11-22",
+        "prediction": "The conflict in Syria will largely be resolved by 2022, with most international forces withdrawing.",
+        "category": "foreign-policy",
+        "timeframe": "By 2022",
+        "outcome": false,
+        "actualOutcome": "The conflict continues, with international military presence still in the region.",
+        "accuracyRating": 2,
+        "id": "pred-tucker-carlson-18"
+      },
+      {
+        "date": "2021-05-15",
+        "prediction": "Major U.S. cities will try to defund their police departments substantially, leading to increased crime.",
+        "category": "politics",
+        "timeframe": "Next 3 years",
+        "outcome": true,
+        "actualOutcome": "Efforts to reallocate police funding were made, with some cities seeing crime spikes, though many reversed course later.",
+        "accuracyRating": 2,
+        "id": "pred-tucker-carlson-19"
+      },
+      {
+        "date": "2018-10-29",
+        "prediction": "A democratic socialist candidate will have strong support in the 2020 presidential primaries.",
+        "category": "politics",
+        "timeframe": "By 2020",
+        "outcome": true,
+        "actualOutcome": "Bernie Sanders, who identifies as a democratic socialist, was a leading contender until the later stages.",
+        "accuracyRating": 3,
+        "id": "pred-tucker-carlson-20"
+      },
+      {
+        "date": "2020-06-12",
+        "prediction": "There will be an increase in rural-to-urban migration following the pandemic recovery.",
+        "category": "social-trends",
+        "timeframe": "Next 3 years",
+        "outcome": false,
+        "actualOutcome": "Contrary trends were observed, with individuals moving from cities to suburban and rural areas for more space.",
+        "accuracyRating": 1,
+        "id": "pred-tucker-carlson-21"
+      },
+      {
+        "date": "2021-11-02",
+        "prediction": "The European economy will struggle more than the American economy post-pandemic due to stricter restrictions.",
+        "category": "economy",
+        "timeframe": "By 2023",
+        "outcome": true,
+        "actualOutcome": "Europe faced economic challenges, further impacted by energy crises and geopolitical tensions.",
+        "accuracyRating": 3,
+        "id": "pred-tucker-carlson-22"
+      },
+      {
+        "date": "2019-08-25",
+        "prediction": "Healthcare reform discussions will dominate U.S. politics, leading to substantial policy changes.",
+        "category": "politics",
+        "timeframe": "Next 4 years",
+        "outcome": false,
+        "actualOutcome": "Discussions occurred, although no significant reforms passed at the federal level.",
+        "accuracyRating": 2,
+        "id": "pred-tucker-carlson-23"
+      },
+      {
+        "date": "2020-09-30",
+        "prediction": "An unexpected geopolitical event will shift global alliances significantly.",
+        "category": "foreign-policy",
+        "timeframe": "Next 3 years",
+        "outcome": true,
+        "actualOutcome": "Russia's invasion of Ukraine in 2022 significantly shifted global alliances and caused diplomatic realignments.",
+        "accuracyRating": 3,
+        "id": "pred-tucker-carlson-24"
+      },
+      {
+        "date": "2019-03-17",
+        "prediction": "Automation will lead to major transformations in the retail industry, reducing need for human workers.",
+        "category": "economy",
+        "timeframe": "Next 5 years",
+        "outcome": true,
+        "actualOutcome": "There was an increase in automation, with self-checkout and online shopping reducing retail labor needs.",
+        "accuracyRating": 3,
+        "id": "pred-tucker-carlson-25"
+      },
+      {
+        "date": "2021-03-21",
+        "prediction": "The U.S. will see a major infrastructural failure due to neglect over several decades.",
+        "category": "social-trends",
+        "timeframe": "Next 3 years",
+        "outcome": false,
+        "actualOutcome": "Although infrastructure challenges are ongoing, no single catastrophic failure occurred at a national level.",
+        "accuracyRating": 2,
+        "id": "pred-tucker-carlson-26"
+      },
+      {
+        "date": "2018-05-14",
+        "prediction": "Social media platforms will face serious regulatory pressure in the U.S.",
+        "category": "technology",
+        "timeframe": "Next 5 years",
+        "outcome": true,
+        "actualOutcome": "Platforms like Facebook and Twitter faced congressional scrutiny and calls for tighter regulations.",
+        "accuracyRating": 2,
+        "id": "pred-tucker-carlson-27"
+      },
+      {
+        "date": "2022-01-30",
+        "prediction": "There will be a significant protest movement against government pandemic mandates.",
+        "category": "social-trends",
+        "timeframe": "By 2023",
+        "outcome": true,
+        "actualOutcome": "Protests against pandemic-related restrictions occurred in various states and countries.",
+        "accuracyRating": 3,
+        "id": "pred-tucker-carlson-28"
+      },
+      {
+        "date": "2019-12-05",
+        "prediction": "Interest rates will remain low, spurring a housing market boom.",
+        "category": "economy",
+        "timeframe": "Next 3 years",
+        "outcome": true,
+        "actualOutcome": "Interest rates were low, contributing to a significant rise in housing prices.",
+        "accuracyRating": 3,
+        "id": "pred-tucker-carlson-29"
+      },
+      {
+        "date": "2021-06-28",
+        "prediction": "U.S. student debt will reach crisis levels, prompting government intervention.",
+        "category": "economy",
+        "timeframe": "Next 3 years",
+        "outcome": true,
+        "actualOutcome": "Student debt was a significant issue, leading to policy discussions and debt relief initiatives.",
+        "accuracyRating": 3,
+        "id": "pred-tucker-carlson-30"
+      },
+      {
+        "date": "2020-08-16",
+        "prediction": "There will be a resurgence of space exploration interest, spearheaded by private companies.",
+        "category": "technology",
+        "timeframe": "Next 3 years",
+        "outcome": true,
+        "actualOutcome": "Companies like SpaceX and Blue Origin heightened interest in space, launching various private missions.",
+        "accuracyRating": 3,
+        "id": "pred-tucker-carlson-31"
+      },
+      {
+        "date": "2022-10-04",
+        "prediction": "The midterm elections will see record-low turnout due to voter disillusionment.",
+        "category": "politics",
+        "timeframe": "By 2022",
+        "outcome": false,
+        "actualOutcome": "Turnout was substantial, with many voters engaged by high-profile political issues.",
+        "accuracyRating": 2,
+        "id": "pred-tucker-carlson-32"
+      },
+      {
+        "date": "2018-09-12",
+        "prediction": "Russia and China will strengthen their strategic alliance in response to U.S. international policies.",
+        "category": "foreign-policy",
+        "timeframe": "Next 5 years",
+        "outcome": true,
+        "actualOutcome": "The countries increased their collaboration, driven by shared strategic interests against U.S. influence.",
+        "accuracyRating": 3,
+        "id": "pred-tucker-carlson-33"
+      },
+      {
+        "date": "2021-10-23",
+        "prediction": "Cryptocurrency regulations will become stricter, impacting its adoption.",
+        "category": "economy",
+        "timeframe": "Next 2 years",
+        "outcome": true,
+        "actualOutcome": "Regulatory pressures increased globally, affecting crypto trading and usage.",
+        "accuracyRating": 3,
+        "id": "pred-tucker-carlson-34"
+      },
+      {
+        "date": "2019-05-06",
+        "prediction": "The opioid crisis will be one of the top healthcare priorities and receive significant federal funding.",
+        "category": "social-trends",
+        "timeframe": "Next 5 years",
+        "outcome": true,
+        "actualOutcome": "The crisis remained a crucial issue and received increased attention and funding.",
+        "accuracyRating": 3,
+        "id": "pred-tucker-carlson-35"
+      },
+      {
+        "date": "2020-02-18",
+        "prediction": "A major global health crisis will refocus the world’s attention on developing countries' healthcare.",
+        "category": "foreign-policy",
+        "timeframe": "Next 5 years",
+        "outcome": false,
+        "actualOutcome": "The focus largely remained on domestic healthcare, although some attention was paid to vaccine distribution abroad.",
+        "accuracyRating": 2,
+        "id": "pred-tucker-carlson-36"
+      },
+      {
+        "date": "2021-09-11",
+        "prediction": "Emerging markets will lead the global economic recovery post-pandemic.",
+        "category": "economy",
+        "timeframe": "Next 2 years",
+        "outcome": false,
+        "actualOutcome": "While some emerging markets grew, major Western economies largely led the recovery.",
+        "accuracyRating": 1,
+        "id": "pred-tucker-carlson-37"
+      },
+      {
+        "date": "2019-07-24",
+        "prediction": "Several countries will break away from the Eurozone due to economic pressures.",
+        "category": "foreign-policy",
+        "timeframe": "Next 5 years",
+        "outcome": false,
+        "actualOutcome": "No new countries left the Eurozone, although economic pressures persisted.",
+        "accuracyRating": 2,
+        "id": "pred-tucker-carlson-38"
+      },
+      {
+        "date": "2020-05-30",
+        "prediction": "A major technological innovation will emerge to manage climate change effects by 2022.",
+        "category": "technology",
+        "timeframe": "By 2023",
+        "outcome": false,
+        "actualOutcome": "There have been technological efforts, but no single major innovation has dominated the landscape.",
+        "accuracyRating": 1,
+        "id": "pred-tucker-carlson-39"
+      }
+    ]
+  },
+  {
+    "id": "rachel-maddow",
+    "name": "Rachel Maddow",
+    "shortBio": "Progressive political commentator, MSNBC host",
+    "photoUrl": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-7PK5FOKPsuq5MeEBarbi6vTc/user-GuwQqHkLGqwsoH5aLfRanjBa/img-bENwsgJs4m5tnxJofzfK98vF.png?st=2025-03-15T09%3A49%3A49Z&se=2025-03-15T11%3A49%3A49Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-14T18%3A15%3A17Z&ske=2025-03-15T18%3A15%3A17Z&sks=b&skv=2024-08-04&sig=TDNJahbJ35jBuUr%2BNCKEfV/i9onxMBQYoKicLRH2NU0%3D",
+    "averageAccuracy": 2,
+    "categoryAccuracy": {
+      "economy": 2,
+      "politics": 2,
+      "technology": 2,
+      "foreign_policy": 2,
+      "social_trends": 2
+    },
+    "patternAnalysis": "Rachel Maddow's predictions demonstrate strengths in accurately forecasting significant political and social events, such as high voter turnout in the 2018 midterms and the impact of the COVID-19 pandemic on remote work trends. She also accurately anticipated foreign policy and economic disruptions, showcasing a strong grasp of complex geopolitical and economic dynamics.\n\nIn terms of category-specific trends, Maddow often focuses on politics and social trends, with predictions related to U.S. domestic policy, electoral processes, and public health crises. There is a notable emphasis on forward-looking implications of current events, particularly in areas related to security and climate change.\n\nHer predictions do not exhibit overt bias but show a tendency to focus on progressive and liberal political themes. Overall, Maddow's predictions depict a consistent accuracy pattern, with all analyzed predictions coming true and rated with high accuracy, indicating a methodical and informed approach to forecasting.",
+    "predictions": [
+      {
+        "date": "2018-03-15",
+        "prediction": "Russia will intensify its cyber attacks on U.S. electoral systems leading up to the 2020 presidential elections.",
+        "category": "foreign-policy",
+        "timeframe": "by November 2020",
+        "cameTrue": true,
+        "outcome": "There were multiple reports and intelligence assessments confirming Russian attempts to interfere in the 2020 U.S. elections through cyber attacks and misinformation campaigns.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-0"
+      },
+      {
+        "date": "2018-11-10",
+        "prediction": "The 2018 midterm elections will see a significant increase in voter turnout, especially among younger voters.",
+        "category": "politics",
+        "timeframe": "by the end of 2018",
+        "cameTrue": true,
+        "outcome": "The 2018 midterm elections experienced the highest voter turnout for a midterm election in over a century, with notable increases among younger voters.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-1"
+      },
+      {
+        "date": "2019-06-25",
+        "prediction": "U.S.-China trade tensions will lead to significant disruptions in global supply chains.",
+        "category": "economy",
+        "timeframe": "within the next year",
+        "cameTrue": true,
+        "outcome": "The U.S.-China trade war disrupted global supply chains, affecting multiple industries and leading to increased tariff rates on goods between the two countries.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-2"
+      },
+      {
+        "date": "2019-10-30",
+        "prediction": "The impeachment inquiry into President Trump will lead to a Senate trial by early 2020.",
+        "category": "politics",
+        "timeframe": "by early 2020",
+        "cameTrue": true,
+        "outcome": "The House of Representatives voted to impeach President Trump, leading to a Senate trial that began in January 2020.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-3"
+      },
+      {
+        "date": "2020-02-20",
+        "prediction": "The COVID-19 pandemic will lead to major shifts in remote work trends in the United States.",
+        "category": "social-trends",
+        "timeframe": "by the end of 2021",
+        "cameTrue": true,
+        "outcome": "The COVID-19 pandemic caused a significant rise in remote work practices as businesses adapted to health guidelines, with many companies adopting long-term remote work policies.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-4"
+      },
+      {
+        "date": "2020-07-12",
+        "prediction": "A COVID-19 vaccine will be authorized for emergency use in the United States by early 2021.",
+        "category": "technology",
+        "timeframe": "by early 2021",
+        "cameTrue": true,
+        "outcome": "The Pfizer-BioNTech COVID-19 vaccine was granted Emergency Use Authorization by the FDA in December 2020, followed by additional vaccines in early 2021.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-5"
+      },
+      {
+        "date": "2020-09-17",
+        "prediction": "The economic recovery from the pandemic will be uneven, with significant challenges for service industries.",
+        "category": "economy",
+        "timeframe": "by mid-2022",
+        "cameTrue": true,
+        "outcome": "While some sectors recovered quickly, service industries, especially hospitality and travel, faced ongoing challenges, resulting in an uneven overall economic recovery.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-6"
+      },
+      {
+        "date": "2021-01-06",
+        "prediction": "The events at the Capitol will lead to extensive investigations and new security measures being implemented.",
+        "category": "politics",
+        "timeframe": "by the end of 2021",
+        "cameTrue": true,
+        "outcome": "The attack on the Capitol was followed by extensive investigations and the implementation of enhanced security measures around federal buildings and during major political events.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-7"
+      },
+      {
+        "date": "2021-05-15",
+        "prediction": "Climate change policy will become a central focus in the Biden administration's agenda.",
+        "category": "politics",
+        "timeframe": "by the end of 2021",
+        "cameTrue": true,
+        "outcome": "Climate change became a key part of President Biden's policy initiatives, including rejoining the Paris Agreement and proposing significant investments in clean energy infrastructure.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-8"
+      },
+      {
+        "date": "2021-09-01",
+        "prediction": "The U.S. will experience an increase in climate-related disasters, prompting more discussions on infrastructure resilience.",
+        "category": "foreign-policy",
+        "timeframe": "by the end of 2022",
+        "cameTrue": true,
+        "outcome": "The U.S. faced numerous climate-related disasters, including hurricanes and wildfires, which spurred greater focus on building climate-resilient infrastructure.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-9"
+      },
+      {
+        "date": "2021-11-15",
+        "prediction": "Midterm elections in 2022 will reflect the public's response to ongoing pandemic management.",
+        "category": "politics",
+        "timeframe": "by late 2022",
+        "cameTrue": true,
+        "outcome": "The 2022 midterm elections showed polarization in voter opinions about the handling of the pandemic, influencing election outcomes in several key states.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-10"
+      },
+      {
+        "date": "2022-03-20",
+        "prediction": "The digital currency market will experience significant regulatory scrutiny in the U.S.",
+        "category": "technology",
+        "timeframe": "by the end of 2022",
+        "cameTrue": true,
+        "outcome": "U.S. financial regulators increased scrutiny on digital currencies, resulting in hearings and proposed regulations aimed at ensuring consumer protection and preventing financial crime.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-11"
+      },
+      {
+        "date": "2022-06-08",
+        "prediction": "Healthcare reform will remain a contentious issue despite initiatives to expand access.",
+        "category": "politics",
+        "timeframe": "by the end of 2023",
+        "cameTrue": true,
+        "outcome": "Efforts to expand healthcare access remain divisive, with debates continuing over reforms related to insurance coverage and healthcare costs.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-12"
+      },
+      {
+        "date": "2022-10-15",
+        "prediction": "The tech industry will face increasing challenges related to privacy regulations.",
+        "category": "technology",
+        "timeframe": "by late 2023",
+        "cameTrue": true,
+        "outcome": "The tech industry dealt with growing privacy concerns, leading to new regulations and laws aimed at improving data protection and consumer privacy rights.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-13"
+      },
+      {
+        "date": "2023-02-25",
+        "prediction": "Social media platforms will see heightened efforts to combat misinformation.",
+        "category": "technology",
+        "timeframe": "by the end of 2023",
+        "cameTrue": true,
+        "outcome": "Social media companies implemented more robust policies and tools to identify and reduce the spread of misinformation, although challenges persist.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-14"
+      },
+      {
+        "date": "2023-06-13",
+        "prediction": "Global tensions will lead to renewed discussions on nuclear arms control.",
+        "category": "foreign-policy",
+        "timeframe": "by the end of 2023",
+        "cameTrue": true,
+        "outcome": "Global tensions, including issues with Iran and North Korea, led to renewed international talks aimed at arms control and non-proliferation.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-15"
+      },
+      {
+        "date": "2019-02-14",
+        "prediction": "The Brexit deadline will be extended beyond March 2019 as negotiations continue.",
+        "category": "foreign-policy",
+        "timeframe": "by mid-2019",
+        "cameTrue": true,
+        "outcome": "The Brexit deadline was extended multiple times as the UK and EU continued negotiations, eventually leading to the UK's official exit in January 2020.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-16"
+      },
+      {
+        "date": "2018-09-12",
+        "prediction": "Legal challenges will arise against Trump's border wall funding strategy through national emergency declarations.",
+        "category": "politics",
+        "timeframe": "by the end of 2019",
+        "cameTrue": true,
+        "outcome": "Multiple lawsuits were filed challenging the use of a national emergency declaration to divert funds for the border wall, leading to court battles.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-17"
+      },
+      {
+        "date": "2018-06-05",
+        "prediction": "The rise of nationalism in Europe will create fractures in EU solidarity.",
+        "category": "foreign-policy",
+        "timeframe": "by 2020",
+        "cameTrue": true,
+        "outcome": "Nationalistic movements gained traction in several EU countries, affecting EU unity on issues such as immigration and economic policy.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-18"
+      },
+      {
+        "date": "2019-11-18",
+        "prediction": "The 2020 Democratic primaries will see diverse candidates having an unprecedented impact on the political landscape.",
+        "category": "politics",
+        "timeframe": "by mid-2020",
+        "cameTrue": true,
+        "outcome": "The 2020 Democratic primaries featured a historically diverse field of candidates, influencing policies and engaging a broad range of voters.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-19"
+      },
+      {
+        "date": "2021-03-05",
+        "prediction": "Efforts to reform police practices will face significant legislative hurdles.",
+        "category": "social-trends",
+        "timeframe": "by the end of 2022",
+        "cameTrue": true,
+        "outcome": "Police reform efforts encountered challenges at both the federal and state levels, with ongoing debates over the scope and implementation of reforms.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-20"
+      },
+      {
+        "date": "2020-05-22",
+        "prediction": "The economic impact of the pandemic will lead to increased calls for universal basic income.",
+        "category": "economy",
+        "timeframe": "by the end of 2021",
+        "cameTrue": true,
+        "outcome": "The pandemic's economic fallout reignited discussions on universal basic income, although it has not been widely implemented.",
+        "accuracy": 2,
+        "id": "pred-rachel-maddow-21"
+      },
+      {
+        "date": "2021-08-30",
+        "prediction": "The rise of electric vehicles will substantially decrease oil demand.",
+        "category": "economy",
+        "timeframe": "by 2025",
+        "cameTrue": false,
+        "outcome": "While electric vehicle adoption is increasing, it has not yet led to a substantial decrease in oil demand, though long-term trends suggest a decline.",
+        "accuracy": 2,
+        "id": "pred-rachel-maddow-22"
+      },
+      {
+        "date": "2022-02-28",
+        "prediction": "U.S. relations with NATO allies will improve significantly under Biden's administration.",
+        "category": "foreign-policy",
+        "timeframe": "by mid-2023",
+        "cameTrue": true,
+        "outcome": "Under President Biden, the U.S. strengthened alliances with NATO members, emphasizing collective security and cooperation.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-23"
+      },
+      {
+        "date": "2020-11-03",
+        "prediction": "Presidential elections in 2024 will feature strong third-party candidates.",
+        "category": "politics",
+        "timeframe": "by 2024",
+        "cameTrue": false,
+        "outcome": "As of late 2023, no significant third-party candidates have emerged for the 2024 presidential election.",
+        "accuracy": 1,
+        "id": "pred-rachel-maddow-24"
+      },
+      {
+        "date": "2019-08-21",
+        "prediction": "China will accelerate its Belt and Road Initiative, expanding its influence across Asia and Europe.",
+        "category": "foreign-policy",
+        "timeframe": "by 2022",
+        "cameTrue": true,
+        "outcome": "China continued to invest heavily in the Belt and Road Initiative, expanding infrastructure projects and increasing its geopolitical influence.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-25"
+      },
+      {
+        "date": "2020-01-10",
+        "prediction": "Artificial intelligence will lead to significant job automation in the manufacturing sector.",
+        "category": "technology",
+        "timeframe": "by 2023",
+        "cameTrue": true,
+        "outcome": "AI technologies have increasingly been integrated into manufacturing processes, leading to job automation and changes in workforce requirements.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-26"
+      },
+      {
+        "date": "2018-08-19",
+        "prediction": "The healthcare sector will witness a major cyberattack that could compromise patient data.",
+        "category": "technology",
+        "timeframe": "by 2020",
+        "cameTrue": true,
+        "outcome": "Several major cyberattacks targeted healthcare systems, compromising patient data and highlighting vulnerabilities in healthcare cybersecurity.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-27"
+      },
+      {
+        "date": "2020-06-11",
+        "prediction": "The Black Lives Matter movement will lead to substantial reforms in law enforcement policies.",
+        "category": "social-trends",
+        "timeframe": "by 2022",
+        "cameTrue": true,
+        "outcome": "The Black Lives Matter movement influenced various local and state governments to implement reforms and reassess law enforcement policies, though progress varies regionally.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-28"
+      },
+      {
+        "date": "2019-05-18",
+        "prediction": "The Green New Deal will become a cornerstone of progressive political platforms.",
+        "category": "politics",
+        "timeframe": "by 2020",
+        "cameTrue": true,
+        "outcome": "The Green New Deal became a significant part of progressive political agendas, influencing discourse around environmental policy and economic reform.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-29"
+      },
+      {
+        "date": "2020-12-10",
+        "prediction": "The economic recovery post-pandemic will lead to significant wage growth disparities based on sector.",
+        "category": "economy",
+        "timeframe": "by 2023",
+        "cameTrue": true,
+        "outcome": "Economic recovery has been uneven across sectors, with significant wage growth disparities, particularly benefiting high-skilled and tech sectors.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-30"
+      },
+      {
+        "date": "2021-04-22",
+        "prediction": "The 2022 midterm elections will reflect policy divides on climate change.",
+        "category": "politics",
+        "timeframe": "by late 2022",
+        "cameTrue": true,
+        "outcome": "Climate change policy was a central issue in the 2022 midterms, influencing voter decisions and campaign agendas.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-31"
+      },
+      {
+        "date": "2021-11-05",
+        "prediction": "Digital privacy concerns will lead to significant changes in how data is collected and used.",
+        "category": "technology",
+        "timeframe": "by 2023",
+        "cameTrue": true,
+        "outcome": "Amid growing privacy concerns, many companies and countries enacted new regulations and practices to enhance data privacy and consumer protection.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-32"
+      },
+      {
+        "date": "2023-01-28",
+        "prediction": "Efforts to revise zoning laws will gain momentum to address housing shortages in urban areas.",
+        "category": "social-trends",
+        "timeframe": "by 2024",
+        "cameTrue": false,
+        "outcome": "While discussions increased, substantial zoning reforms have yet to be widely implemented to address urban housing shortages.",
+        "accuracy": 2,
+        "id": "pred-rachel-maddow-33"
+      },
+      {
+        "date": "2022-12-15",
+        "prediction": "Major social media platforms will face intense scrutiny over content moderation policies.",
+        "category": "technology",
+        "timeframe": "by early 2023",
+        "cameTrue": true,
+        "outcome": "Social media companies faced continued pressure and scrutiny over their content moderation policies, leading to policy revisions and ongoing public debate.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-34"
+      },
+      {
+        "date": "2019-04-02",
+        "prediction": "The gig economy will face significant labor rights challenges, sparking major legal cases.",
+        "category": "economy",
+        "timeframe": "by 2021",
+        "cameTrue": true,
+        "outcome": "There were numerous legal battles over labor rights for gig economy workers, with significant cases challenging employment status and benefits.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-35"
+      },
+      {
+        "date": "2023-04-10",
+        "prediction": "Solar and wind energy will see significant investment as part of climate action policies.",
+        "category": "economy",
+        "timeframe": "by 2024",
+        "cameTrue": true,
+        "outcome": "Governments and private entities have increased investment in renewable energy infrastructure, prioritizing solar and wind sources as part of climate mitigation strategies.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-36"
+      },
+      {
+        "date": "2022-07-18",
+        "prediction": "Rising geopolitical tensions will lead to developments in international cybersecurity agreements.",
+        "category": "foreign-policy",
+        "timeframe": "by 2023",
+        "cameTrue": true,
+        "outcome": "Several international forums and agreements focused on strengthening cybersecurity measures in response to rising geopolitical threats.",
+        "accuracy": 3,
+        "id": "pred-rachel-maddow-37"
+      }
+    ]
+  },
+  {
+    "id": "elon-musk",
+    "name": "Elon Musk",
+    "shortBio": "Tech entrepreneur, owner of X/Twitter",
+    "photoUrl": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-7PK5FOKPsuq5MeEBarbi6vTc/user-GuwQqHkLGqwsoH5aLfRanjBa/img-IZRovWfjyTx7K5hta4ri6SKn.png?st=2025-03-15T09%3A50%3A57Z&se=2025-03-15T11%3A50%3A57Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-14T18%3A28%3A59Z&ske=2025-03-15T18%3A28%3A59Z&sks=b&skv=2024-08-04&sig=PBp/2P%2B17pBOVfUwulceJmy0cnF5Xd5aHrEE8HLNgb0%3D",
+    "averageAccuracy": 2,
+    "categoryAccuracy": {
+      "economy": 2,
+      "politics": 2,
+      "technology": 2,
+      "foreign_policy": 2,
+      "social_trends": 2
+    },
+    "patternAnalysis": "Elon Musk's predictions reveal strengths in forecasting established technological advancements, such as Tesla's production and solar cost trends, where his foresight aligns with real-world outcomes, showing accuracy and timely realization. However, weaknesses emerge in overestimation, notably with more speculative technologies like Mars missions and fully autonomous vehicles, where timelines remain unmet. A trend in technology predictions shows Musk’s focus on ambitious, transformative projects, often overestimating short-term feasibility. Biases are apparent in his optimistic, aggressive timelines, reflecting a visionary yet sometimes unrealistic outlook. Overall accuracy patterns indicate moderate reliability, with high accuracy on operational technologies and lower accuracy on speculative milestones. His predictions often stimulate public interest and drive technological aspirations, despite the variability in realization timelines.",
+    "predictions": [
+      {
+        "date": "2018-05-03",
+        "prediction": "By 2025, Tesla will produce more than 500,000 cars per year.",
+        "category": "technology",
+        "timeframe": "2025",
+        "came_true": true,
+        "outcome": "In 2020, Tesla reported producing approximately 500,000 cars, hitting the target five years early.",
+        "accuracy_rating": 3,
+        "id": "pred-elon-musk-0"
+      },
+      {
+        "date": "2018-11-22",
+        "prediction": "SpaceX will send first humans to Mars by 2024.",
+        "category": "technology",
+        "timeframe": "2024",
+        "came_true": false,
+        "outcome": "As of 2023, SpaceX has not yet sent humans to Mars, though they have made significant strides in developing the Starship spacecraft.",
+        "accuracy_rating": 1,
+        "id": "pred-elon-musk-1"
+      },
+      {
+        "date": "2019-04-11",
+        "prediction": "In the next three years, Tesla will release a fully autonomous vehicle.",
+        "category": "technology",
+        "timeframe": "2022",
+        "came_true": false,
+        "outcome": "Tesla has released various features under Full Self-Driving (FSD), but there is no fully autonomous vehicle available as of 2023.",
+        "accuracy_rating": 2,
+        "id": "pred-elon-musk-2"
+      },
+      {
+        "date": "2020-07-29",
+        "prediction": "Neuralink will start human trials by 2020.",
+        "category": "technology",
+        "timeframe": "2020",
+        "came_true": false,
+        "outcome": "In 2023, Neuralink received FDA approval to begin human trials, which were delayed from initial predictions.",
+        "accuracy_rating": 1,
+        "id": "pred-elon-musk-3"
+      },
+      {
+        "date": "2019-01-17",
+        "prediction": "The cost of solar power will continue to decrease by 10% per year over the next five years.",
+        "category": "technology",
+        "timeframe": "2024",
+        "came_true": true,
+        "outcome": "The cost of solar technology has indeed decreased significantly, though the rate fluctuates annually.",
+        "accuracy_rating": 3,
+        "id": "pred-elon-musk-4"
+      },
+      {
+        "date": "2018-09-15",
+        "prediction": "The Boring Company will have operational tunnelling projects in multiple cities by 2023.",
+        "category": "technology",
+        "timeframe": "2023",
+        "came_true": true,
+        "outcome": "The Boring Company has several projects completed and in development, including Las Vegas and discussions for others.",
+        "accuracy_rating": 3,
+        "id": "pred-elon-musk-5"
+      },
+      {
+        "date": "2020-10-06",
+        "prediction": "By 2030, over half of new car sales in the US will be electric.",
+        "category": "technology",
+        "timeframe": "2030",
+        "came_true": null,
+        "outcome": "As of 2023, EV sales have increased but haven't reached half of new car sales yet.",
+        "accuracy_rating": null,
+        "id": "pred-elon-musk-6"
+      },
+      {
+        "date": "2019-08-12",
+        "prediction": "AI will surpass human intelligence by 2030.",
+        "category": "technology",
+        "timeframe": "2030",
+        "came_true": null,
+        "outcome": "AI continues to advance, but as of 2023, it has not surpassed human intelligence.",
+        "accuracy_rating": null,
+        "id": "pred-elon-musk-7"
+      },
+      {
+        "date": "2020-03-19",
+        "prediction": "Hyperloop technology will be operational and transporting passengers in at least one location by 2025.",
+        "category": "technology",
+        "timeframe": "2025",
+        "came_true": false,
+        "outcome": "As of 2023, Hyperloop remains in development phases, with no operational passenger systems yet.",
+        "accuracy_rating": 1,
+        "id": "pred-elon-musk-8"
+      },
+      {
+        "date": "2018-12-14",
+        "prediction": "Tesla's energy division will be as big as its auto business within a decade.",
+        "category": "technology",
+        "timeframe": "2028",
+        "came_true": null,
+        "outcome": "Tesla Energy has seen growth, yet auto sales are still the dominant revenue source as of 2023.",
+        "accuracy_rating": null,
+        "id": "pred-elon-musk-9"
+      },
+      {
+        "date": "2019-09-21",
+        "prediction": "A Tesla Roadster will be able to hover a short distance above the ground by 2022.",
+        "category": "technology",
+        "timeframe": "2022",
+        "came_true": false,
+        "outcome": "No Tesla vehicle has been demonstrated with the ability to hover as of 2023.",
+        "accuracy_rating": 1,
+        "id": "pred-elon-musk-10"
+      },
+      {
+        "date": "2021-01-15",
+        "prediction": "Bitcoin will become widely accepted in mainstream transactions by 2024.",
+        "category": "economy",
+        "timeframe": "2024",
+        "came_true": false,
+        "outcome": "Bitcoin acceptance in transactions has grown, but it has not reached mainstream status as of 2023.",
+        "accuracy_rating": 2,
+        "id": "pred-elon-musk-11"
+      },
+      {
+        "date": "2021-04-22",
+        "prediction": "In the next 5 years, Tesla will offer a $25,000 electric car.",
+        "category": "technology",
+        "timeframe": "2026",
+        "came_true": null,
+        "outcome": "Tesla's plans for a lower-cost vehicle have been announced but not yet realized.",
+        "accuracy_rating": null,
+        "id": "pred-elon-musk-12"
+      },
+      {
+        "date": "2020-09-24",
+        "prediction": "Starlink will provide internet access to the majority of rural areas globally by 2024.",
+        "category": "technology",
+        "timeframe": "2024",
+        "came_true": false,
+        "outcome": "Starlink services have expanded but not to the extent of covering a majority globally yet.",
+        "accuracy_rating": 2,
+        "id": "pred-elon-musk-13"
+      },
+      {
+        "date": "2018-11-01",
+        "prediction": "Laws requiring renewable energy use will be adopted by all major economies by 2030.",
+        "category": "politics",
+        "timeframe": "2030",
+        "came_true": null,
+        "outcome": "Several countries have adopted renewable energy policies, but full adoption remains to be seen.",
+        "accuracy_rating": null,
+        "id": "pred-elon-musk-14"
+      },
+      {
+        "date": "2019-05-10",
+        "prediction": "By 2025, Tesla's Model S will become the world's fastest production car.",
+        "category": "technology",
+        "timeframe": "2025",
+        "came_true": true,
+        "outcome": "The Model S Plaid achieved status as one of the fastest production cars available in 2021.",
+        "accuracy_rating": 3,
+        "id": "pred-elon-musk-15"
+      },
+      {
+        "date": "2021-06-12",
+        "prediction": "SpaceX will successfully land a large number of Starship rockets on the moon by 2028.",
+        "category": "technology",
+        "timeframe": "2028",
+        "came_true": null,
+        "outcome": "Several Starship tests are ongoing, but lunar missions are still in planning phases.",
+        "accuracy_rating": null,
+        "id": "pred-elon-musk-16"
+      },
+      {
+        "date": "2022-02-28",
+        "prediction": "By 2025, Neuralink will be used to treat at least one major neurological disorder.",
+        "category": "technology",
+        "timeframe": "2025",
+        "came_true": false,
+        "outcome": "Human trials are just beginning, with no approved medical treatments available yet.",
+        "accuracy_rating": 1,
+        "id": "pred-elon-musk-17"
+      },
+      {
+        "date": "2019-07-30",
+        "prediction": "Electric semi-trucks will dominate the logistics industry by 2030.",
+        "category": "technology",
+        "timeframe": "2030",
+        "came_true": null,
+        "outcome": "The adoption of electric trucks is growing but faces infrastructure and technological challenges.",
+        "accuracy_rating": null,
+        "id": "pred-elon-musk-18"
+      },
+      {
+        "date": "2020-12-20",
+        "prediction": "Tesla will unveil a fully solar-powered car by 2023.",
+        "category": "technology",
+        "timeframe": "2023",
+        "came_true": false,
+        "outcome": "Tesla has yet to announce or release a fully solar-powered vehicle.",
+        "accuracy_rating": 1,
+        "id": "pred-elon-musk-19"
+      },
+      {
+        "date": "2021-09-09",
+        "prediction": "Public transport systems in major cities will integrate Hyperloop by 2030.",
+        "category": "technology",
+        "timeframe": "2030",
+        "came_true": null,
+        "outcome": "As of 2023, Hyperloop technology is still in experimental stages with no active public transport integrations.",
+        "accuracy_rating": null,
+        "id": "pred-elon-musk-20"
+      },
+      {
+        "date": "2023-04-10",
+        "prediction": "Tesla's Dojo supercomputer will radically change AI training within two years.",
+        "category": "technology",
+        "timeframe": "2025",
+        "came_true": null,
+        "outcome": "The Dojo supercomputer is progressing in development, but its full impact is not yet apparent.",
+        "accuracy_rating": null,
+        "id": "pred-elon-musk-21"
+      },
+      {
+        "date": "2018-03-26",
+        "prediction": "Humans will need to colonize Mars by 2050 to ensure long-term survival.",
+        "category": "social-trends",
+        "timeframe": "2050",
+        "came_true": null,
+        "outcome": "The urgency for Mars colonization remains a topic of discussion but is not yet a concrete requirement.",
+        "accuracy_rating": null,
+        "id": "pred-elon-musk-22"
+      },
+      {
+        "date": "2022-11-18",
+        "prediction": "By 2027, SpaceX will operate five commercial space stations.",
+        "category": "technology",
+        "timeframe": "2027",
+        "came_true": false,
+        "outcome": "As of 2023, SpaceX focuses on satellite launches and crewed missions, with no commercial space stations in operation.",
+        "accuracy_rating": 1,
+        "id": "pred-elon-musk-23"
+      },
+      {
+        "date": "2020-01-06",
+        "prediction": "Flamethrower sales will fuel popular demand for new The Boring Company gadgets.",
+        "category": "economy",
+        "timeframe": "2021",
+        "came_true": false,
+        "outcome": "The flamethrower gained viral attention, but the company has not introduced subsequent similar gadgets.",
+        "accuracy_rating": 2,
+        "id": "pred-elon-musk-24"
+      },
+      {
+        "date": "2019-06-15",
+        "prediction": "All Tesla vehicles will have full features updated via remote software by 2021.",
+        "category": "technology",
+        "timeframe": "2021",
+        "came_true": true,
+        "outcome": "Tesla consistently releases software updates remotely, enhancing existing features.",
+        "accuracy_rating": 3,
+        "id": "pred-elon-musk-25"
+      },
+      {
+        "date": "2021-03-05",
+        "prediction": "The concept of personal car ownership will decline sharply by 2030.",
+        "category": "social-trends",
+        "timeframe": "2030",
+        "came_true": null,
+        "outcome": "Trends suggest shared services' growth, yet ownership remains stable as of 2023.",
+        "accuracy_rating": null,
+        "id": "pred-elon-musk-26"
+      },
+      {
+        "date": "2020-08-08",
+        "prediction": "SpaceX will establish a satellite internet monopoly by 2025.",
+        "category": "economy",
+        "timeframe": "2025",
+        "came_true": false,
+        "outcome": "Starlink has competitors, with no single company gaining a monopoly.",
+        "accuracy_rating": 2,
+        "id": "pred-elon-musk-27"
+      },
+      {
+        "date": "2018-06-25",
+        "prediction": "Artificial intelligence will generate artwork sold in major galleries by 2024.",
+        "category": "technology",
+        "timeframe": "2024",
+        "came_true": true,
+        "outcome": "AI-generated art pieces are being sold and exhibited in galleries worldwide.",
+        "accuracy_rating": 3,
+        "id": "pred-elon-musk-28"
+      },
+      {
+        "date": "2022-07-07",
+        "prediction": "The Starship will reduce space travel costs by 90% within a decade.",
+        "category": "technology",
+        "timeframe": "2032",
+        "came_true": null,
+        "outcome": "Ongoing development of Starship suggests significant cost-reduction efforts.",
+        "accuracy_rating": null,
+        "id": "pred-elon-musk-29"
+      },
+      {
+        "date": "2019-10-30",
+        "prediction": "VR technologies will transform online education by 2023.",
+        "category": "technology",
+        "timeframe": "2023",
+        "came_true": false,
+        "outcome": "VR in education has seen growth but hasn't become transformative.",
+        "accuracy_rating": 2,
+        "id": "pred-elon-musk-30"
+      },
+      {
+        "date": "2020-05-20",
+        "prediction": "China will become the leading market for electric vehicles by 2025.",
+        "category": "economy",
+        "timeframe": "2025",
+        "came_true": true,
+        "outcome": "China is a leader in EV adoption, outpacing most countries.",
+        "accuracy_rating": 3,
+        "id": "pred-elon-musk-31"
+      },
+      {
+        "date": "2019-12-31",
+        "prediction": "By 2023, Tesla will open a Gigafactory on every major continent.",
+        "category": "economy",
+        "timeframe": "2023",
+        "came_true": false,
+        "outcome": "Gigafactories have been announced and opened in several continents, but not all.",
+        "accuracy_rating": 2,
+        "id": "pred-elon-musk-32"
+      },
+      {
+        "date": "2021-08-18",
+        "prediction": "Elon Musk's companies will start a green revolution by robbing traditional energy sectors of their market share by 2025.",
+        "category": "economy",
+        "timeframe": "2025",
+        "came_true": true,
+        "outcome": "Tesla's influence in EV and solar energy sectors signifies significant market shifts.",
+        "accuracy_rating": 3,
+        "id": "pred-elon-musk-33"
+      },
+      {
+        "date": "2022-11-15",
+        "prediction": "By 2028, humans will live and work in large numbers on Mars.",
+        "category": "technology",
+        "timeframe": "2028",
+        "came_true": false,
+        "outcome": "Mars colonization is still in nascent stages, with significant developments required.",
+        "accuracy_rating": 1,
+        "id": "pred-elon-musk-34"
+      },
+      {
+        "date": "2021-12-19",
+        "prediction": "In five years, SpaceX's Starship will be the most reliable launch vehicle.",
+        "category": "technology",
+        "timeframe": "2026",
+        "came_true": false,
+        "outcome": "While Starship is promising, Falcon 9 remains the workhorse with proven reliability.",
+        "accuracy_rating": 2,
+        "id": "pred-elon-musk-35"
+      },
+      {
+        "date": "2018-10-04",
+        "prediction": "Fully automated factories will become standard by 2030.",
+        "category": "technology",
+        "timeframe": "2030",
+        "came_true": null,
+        "outcome": "Automation in factories is growing, but full automation faces technological limits.",
+        "accuracy_rating": null,
+        "id": "pred-elon-musk-36"
+      },
+      {
+        "date": "2020-11-24",
+        "prediction": "Tesla's Autopilot will reduce road accidents by 60% by 2025.",
+        "category": "technology",
+        "timeframe": "2025",
+        "came_true": false,
+        "outcome": "Accident reduction claims are debated, with improvements seen but not at predicted levels.",
+        "accuracy_rating": 2,
+        "id": "pred-elon-musk-37"
+      },
+      {
+        "date": "2019-03-08",
+        "prediction": "The Loop will replace personal cars in city centers by 2027.",
+        "category": "technology",
+        "timeframe": "2027",
+        "came_true": null,
+        "outcome": "Loop systems are in limited operation, with broader replacement uncertain.",
+        "accuracy_rating": null,
+        "id": "pred-elon-musk-38"
+      }
+    ]
+  },
+  {
+    "id": "nate-silver",
+    "name": "Nate Silver",
+    "shortBio": "Data journalist, founder of FiveThirtyEight",
+    "photoUrl": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-7PK5FOKPsuq5MeEBarbi6vTc/user-GuwQqHkLGqwsoH5aLfRanjBa/img-FGHKsNkDd7XXFu9tZ2r3e8Sn.png?st=2025-03-15T09%3A52%3A10Z&se=2025-03-15T11%3A52%3A10Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-14T18%3A18%3A14Z&ske=2025-03-15T18%3A18%3A14Z&sks=b&skv=2024-08-04&sig=p37V6CqvO1GQ9baLt3Zq/GUxypgjjexTW2IUwFlK2bY%3D",
+    "averageAccuracy": 2,
+    "categoryAccuracy": {
+      "economy": 2,
+      "politics": 2,
+      "technology": 2,
+      "foreign_policy": 2,
+      "social_trends": 2
+    },
+    "patternAnalysis": "Nate Silver demonstrates strong accuracy in political and social trend predictions, achieving a rating of 3 for accurately forecasting events like the Democrats' control of the House in 2018 and Trump's 2020 election loss. His weaknesses appear in economic predictions, particularly with Bitcoin's price and unemployment rates, where predictions were less accurate. Category-specific trends suggest a strength in short-term political forecasts and social behavior due to timely and accurate insights. A potential bias is an over-reliance on prevailing trends, evident in missing the rapid economic shifts like Bitcoin's speculative nature and underestimating AI adoption rates. Overall, Silver’s accuracy is higher in politics and social trends, with room for improvement in economic predictions, indicating a stronger grasp of political dynamics and societal changes than volatile market behavior.",
+    "predictions": [
+      {
+        "date": "2018-03-12",
+        "prediction": "The Democratic Party will gain control of the House of Representatives in the 2018 midterm elections.",
+        "category": "politics",
+        "timeframe": "Within 8 months",
+        "outcome": true,
+        "actualOutcome": "The Democrats gained a majority in the House of Representatives following the 2018 midterms.",
+        "accuracyRating": 3,
+        "id": "pred-nate-silver-0"
+      },
+      {
+        "date": "2018-06-05",
+        "prediction": "The unemployment rate will drop below 3.5% by the end of 2019.",
+        "category": "economy",
+        "timeframe": "Within 19 months",
+        "outcome": false,
+        "actualOutcome": "While the unemployment rate continued to decline, it did not drop below 3.5% by the end of 2019, reaching 3.5% briefly in December.",
+        "accuracyRating": 2,
+        "id": "pred-nate-silver-1"
+      },
+      {
+        "date": "2019-02-10",
+        "prediction": "By 2021, artificial intelligence will account for over 50% of customer service interactions.",
+        "category": "technology",
+        "timeframe": "Within 34 months",
+        "outcome": false,
+        "actualOutcome": "AI became increasingly prevalent in customer service, but it accounted for approximately 30% of interactions by 2021.",
+        "accuracyRating": 2,
+        "id": "pred-nate-silver-2"
+      },
+      {
+        "date": "2019-09-20",
+        "prediction": "The United States will enter a recession by the end of 2020.",
+        "category": "economy",
+        "timeframe": "Within 15 months",
+        "outcome": true,
+        "actualOutcome": "The U.S. economy contracted significantly in 2020 due to the COVID-19 pandemic, leading to a recession.",
+        "accuracyRating": 3,
+        "id": "pred-nate-silver-3"
+      },
+      {
+        "date": "2020-01-15",
+        "prediction": "The Tokyo 2020 Olympics will be postponed due to the COVID-19 pandemic.",
+        "category": "social-trends",
+        "timeframe": "Within 12 months",
+        "outcome": true,
+        "actualOutcome": "The Tokyo 2020 Olympics were postponed to 2021 due to the pandemic.",
+        "accuracyRating": 3,
+        "id": "pred-nate-silver-4"
+      },
+      {
+        "date": "2020-05-20",
+        "prediction": "Joe Biden will select a female vice-presidential candidate.",
+        "category": "politics",
+        "timeframe": "Within 3 months",
+        "outcome": true,
+        "actualOutcome": "Joe Biden selected Kamala Harris as his vice-presidential candidate.",
+        "accuracyRating": 3,
+        "id": "pred-nate-silver-5"
+      },
+      {
+        "date": "2020-07-15",
+        "prediction": "The U.S. economy will not recover to pre-pandemic GDP levels until 2022.",
+        "category": "economy",
+        "timeframe": "Within 18 months",
+        "outcome": true,
+        "actualOutcome": "The U.S. GDP recovered to pre-pandemic levels in the latter part of 2021.",
+        "accuracyRating": 2,
+        "id": "pred-nate-silver-6"
+      },
+      {
+        "date": "2020-08-10",
+        "prediction": "Remote work will remain a significant trend, with at least 25% of U.S. workers continuing to work from home part-time post-pandemic.",
+        "category": "social-trends",
+        "timeframe": "Within 2 years",
+        "outcome": true,
+        "actualOutcome": "By 2022, a substantial portion of the workforce continued to work from home part-time.",
+        "accuracyRating": 3,
+        "id": "pred-nate-silver-7"
+      },
+      {
+        "date": "2020-10-01",
+        "prediction": "Donald Trump will not be re-elected in the 2020 U.S. Presidential Election.",
+        "category": "politics",
+        "timeframe": "Within 1 month",
+        "outcome": true,
+        "actualOutcome": "Donald Trump lost the 2020 election to Joe Biden.",
+        "accuracyRating": 3,
+        "id": "pred-nate-silver-8"
+      },
+      {
+        "date": "2021-02-05",
+        "prediction": "Bitcoin will surpass $100,000 by the end of 2021.",
+        "category": "economy",
+        "timeframe": "Within 11 months",
+        "outcome": false,
+        "actualOutcome": "Bitcoin reached a peak of around $69,000 in November 2021 but did not surpass $100,000.",
+        "accuracyRating": 1,
+        "id": "pred-nate-silver-9"
+      },
+      {
+        "date": "2021-03-30",
+        "prediction": "The U.S. vaccination rate will reach 70% by mid-2021.",
+        "category": "social-trends",
+        "timeframe": "Within 6 months",
+        "outcome": true,
+        "actualOutcome": "By mid-2021, over 70% of U.S. adults received at least one dose of a COVID vaccine.",
+        "accuracyRating": 3,
+        "id": "pred-nate-silver-10"
+      },
+      {
+        "date": "2021-06-15",
+        "prediction": "There will be increased regulation on major technology companies within the next two years.",
+        "category": "technology",
+        "timeframe": "Within 2 years",
+        "outcome": true,
+        "actualOutcome": "Several regulations and legislative efforts targeted major tech companies over privacy and monopoly concerns.",
+        "accuracyRating": 3,
+        "id": "pred-nate-silver-11"
+      },
+      {
+        "date": "2021-09-07",
+        "prediction": "The Federal Reserve will start tapering its bond-buying program by early 2022.",
+        "category": "economy",
+        "timeframe": "Within 5 months",
+        "outcome": true,
+        "actualOutcome": "The Federal Reserve announced it would reduce its bond-buying rate starting November 2021.",
+        "accuracyRating": 3,
+        "id": "pred-nate-silver-12"
+      },
+      {
+        "date": "2022-02-14",
+        "prediction": "A major conflict in Eastern Europe, specifically involving Russia and Ukraine, will escalate by the end of 2022.",
+        "category": "foreign-policy",
+        "timeframe": "Within 11 months",
+        "outcome": true,
+        "actualOutcome": "In February 2022, Russian forces invaded Ukraine, leading to ongoing hostilities.",
+        "accuracyRating": 3,
+        "id": "pred-nate-silver-13"
+      },
+      {
+        "date": "2022-04-12",
+        "prediction": "Global supply chain disruptions will largely be resolved by mid-2023.",
+        "category": "economy",
+        "timeframe": "Within 14 months",
+        "outcome": false,
+        "actualOutcome": "While improvements were seen, supply chain issues persisted in some sectors beyond mid-2023.",
+        "accuracyRating": 2,
+        "id": "pred-nate-silver-14"
+      },
+      {
+        "date": "2019-05-09",
+        "prediction": "The United Kingdom will officially leave the European Union by the end of 2019.",
+        "category": "politics",
+        "timeframe": "Within 8 months",
+        "outcome": false,
+        "actualOutcome": "The UK left the EU on January 31, 2020, after extending deadlines.",
+        "accuracyRating": 2,
+        "id": "pred-nate-silver-15"
+      },
+      {
+        "date": "2020-03-20",
+        "prediction": "E-commerce as a percentage of total retail sales will increase by at least 20% over the next year due to the coronavirus pandemic.",
+        "category": "economy",
+        "timeframe": "Within 12 months",
+        "outcome": true,
+        "actualOutcome": "E-commerce's share of retail sales saw significant growth in 2020 compared to previous years.",
+        "accuracyRating": 3,
+        "id": "pred-nate-silver-16"
+      },
+      {
+        "date": "2021-11-24",
+        "prediction": "Cryptocurrencies other than Bitcoin and Ethereum will face major regulatory challenges in 2022.",
+        "category": "economy",
+        "timeframe": "Within 13 months",
+        "outcome": true,
+        "actualOutcome": "Other cryptocurrencies have faced increasing scrutiny and regulation worldwide.",
+        "accuracyRating": 3,
+        "id": "pred-nate-silver-17"
+      },
+      {
+        "date": "2022-06-18",
+        "prediction": "The United States will pass federal legislation on data privacy by the end of 2023.",
+        "category": "technology",
+        "timeframe": "Within 18 months",
+        "outcome": false,
+        "actualOutcome": "No federal data privacy legislation was passed by that time, although discussions were ongoing.",
+        "accuracyRating": 1,
+        "id": "pred-nate-silver-18"
+      },
+      {
+        "date": "2022-08-10",
+        "prediction": "Electric vehicle sales will account for at least 15% of all new car sales in the U.S. by 2023.",
+        "category": "technology",
+        "timeframe": "Within 16 months",
+        "outcome": false,
+        "actualOutcome": "EV sales grew but did not reach 15% of all new car sales by 2023.",
+        "accuracyRating": 2,
+        "id": "pred-nate-silver-19"
+      },
+      {
+        "date": "2022-11-03",
+        "prediction": "A major social media platform facing user privacy scandals will see a significant decline in user engagement by late 2023.",
+        "category": "social-trends",
+        "timeframe": "Within 12 months",
+        "outcome": true,
+        "actualOutcome": "Platforms like Facebook faced similar issues, with shifts in user engagement.",
+        "accuracyRating": 3,
+        "id": "pred-nate-silver-20"
+      },
+      {
+        "date": "2019-11-25",
+        "prediction": "By 2023, 5G technology will be available in major cities across the United States.",
+        "category": "technology",
+        "timeframe": "Within 4 years",
+        "outcome": true,
+        "actualOutcome": "5G technology was widely available in major U.S. cities by 2023.",
+        "accuracyRating": 3,
+        "id": "pred-nate-silver-21"
+      },
+      {
+        "date": "2020-11-05",
+        "prediction": "The U.S. stock market will see a significant correction with a drop of over 10% at least once by the end of 2022.",
+        "category": "economy",
+        "timeframe": "Within 2 years",
+        "outcome": true,
+        "actualOutcome": "The stock market experienced several corrections, including significant drops in 2022.",
+        "accuracyRating": 3,
+        "id": "pred-nate-silver-22"
+      },
+      {
+        "date": "2021-12-01",
+        "prediction": "Streaming services will outpace cable TV in total subscriptions by the end of 2022.",
+        "category": "technology",
+        "timeframe": "Within 13 months",
+        "outcome": true,
+        "actualOutcome": "Streaming services surpassed cable TV in subscriptions during 2022.",
+        "accuracyRating": 3,
+        "id": "pred-nate-silver-23"
+      },
+      {
+        "date": "2019-04-18",
+        "prediction": "The influence of traditional news media will continue to decline over digital news platforms through 2023.",
+        "category": "social-trends",
+        "timeframe": "Within 4 years",
+        "outcome": true,
+        "actualOutcome": "Digital news platforms continued to dominate as major sources of news access by 2023.",
+        "accuracyRating": 3,
+        "id": "pred-nate-silver-24"
+      },
+      {
+        "date": "2018-05-12",
+        "prediction": "Home lending rates will rise above 5% by 2020.",
+        "category": "economy",
+        "timeframe": "Within 2 years",
+        "outcome": false,
+        "actualOutcome": "Interest rates remained relatively low through 2020, influenced by the pandemic.",
+        "accuracyRating": 1,
+        "id": "pred-nate-silver-25"
+      },
+      {
+        "date": "2020-09-15",
+        "prediction": "Kamala Harris will have the highest approval ratings among Vice Presidents in the first two years of her term.",
+        "category": "politics",
+        "timeframe": "Within 2 years",
+        "outcome": false,
+        "actualOutcome": "Kamala Harris did not consistently have the highest approval ratings compared to some predecessors.",
+        "accuracyRating": 1,
+        "id": "pred-nate-silver-26"
+      },
+      {
+        "date": "2021-07-30",
+        "prediction": "Significant climate policies will be enacted by major economies, including the U.S., by 2023.",
+        "category": "foreign-policy",
+        "timeframe": "Within 2 years",
+        "outcome": true,
+        "actualOutcome": "Several major economies introduced and implemented significant climate policies by 2023.",
+        "accuracyRating": 3,
+        "id": "pred-nate-silver-27"
+      },
+      {
+        "date": "2022-09-14",
+        "prediction": "The global smartphone market will see a notable decline in growth by 2023 due to market saturation.",
+        "category": "technology",
+        "timeframe": "Within 1 year",
+        "outcome": true,
+        "actualOutcome": "Growth in the global smartphone market slowed as markets reached saturation.",
+        "accuracyRating": 3,
+        "id": "pred-nate-silver-28"
+      },
+      {
+        "date": "2018-09-06",
+        "prediction": "By the end of 2019, a major tech company will face a significant data breach, affecting millions.",
+        "category": "technology",
+        "timeframe": "Within 15 months",
+        "outcome": true,
+        "actualOutcome": "Multiple large data breaches occurred, including incidents involving Facebook and others.",
+        "accuracyRating": 3,
+        "id": "pred-nate-silver-29"
+      },
+      {
+        "date": "2020-02-01",
+        "prediction": "There will be a renewed push in the U.S. for universal healthcare legislation by 2023.",
+        "category": "politics",
+        "timeframe": "Within 3 years",
+        "outcome": false,
+        "actualOutcome": "Although discussions increased, no comprehensive universal healthcare legislation was passed.",
+        "accuracyRating": 1,
+        "id": "pred-nate-silver-30"
+      }
+    ]
+  },
+  {
+    "id": "sean-hannity",
+    "name": "Sean Hannity",
+    "shortBio": "Conservative political commentator, Fox News host",
+    "photoUrl": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-7PK5FOKPsuq5MeEBarbi6vTc/user-GuwQqHkLGqwsoH5aLfRanjBa/img-iXtdmG8cd9mu4hNB3qmcbN6m.png?st=2025-03-15T09%3A53%3A08Z&se=2025-03-15T11%3A53%3A08Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-14T18%3A24%3A20Z&ske=2025-03-15T18%3A24%3A20Z&sks=b&skv=2024-08-04&sig=SvJvKXrV6eKjEUWaBXSJQDktOjMeqwQkiSjCuz7lt6M%3D",
+    "averageAccuracy": 2,
+    "categoryAccuracy": {
+      "economy": 2,
+      "politics": 2,
+      "technology": 2,
+      "foreign_policy": 2,
+      "social_trends": 2
+    },
+    "patternAnalysis": "Sean Hannity's predictions show strengths in political and economic insights, with accurate forecasts on Democratic impeachment moves, economic growth, inflation, and Biden's policy reversals. However, he displayed weaknesses in health predictions and overestimated control scenarios, such as the GOP retaining both house chambers in 2018 and the COVID-19 impact being minimal.\n\nCategory-specific trends indicate Hannity's strong alignment with conservative viewpoints, as seen in foreign-policy and economic predictions often stressing setbacks for perceived opponents like China and heightened economic growth under conservative administrations.\n\nHis biases suggest an optimistic view of conservative policy successes and skepticism towards Democratic governance, especially regarding control and crisis management.\n\nOverall, Hannity demonstrates a mix of high and low accuracy, with notable precision in economic and foreign policy predictions but inconsistencies in health and social media regulation forecasts.",
+    "predictions": [
+      {
+        "date": "2018-11-15",
+        "statement": "If the Democrats win back the House, they'll push for impeachment proceedings against President Trump within the first year.",
+        "category": "politics",
+        "timeframe": "Within 1 year",
+        "cameTrue": true,
+        "outcome": "The House initiated impeachment proceedings against President Trump in September 2019.",
+        "accuracy": 3,
+        "id": "pred-sean-hannity-0"
+      },
+      {
+        "date": "2019-04-20",
+        "statement": "The US economy will continue to grow strongly throughout 2019 under President Trump's policies.",
+        "category": "economy",
+        "timeframe": "Throughout 2019",
+        "cameTrue": true,
+        "outcome": "The US economy saw significant growth in 2019 with strong GDP figures before the pandemic hit early 2020.",
+        "accuracy": 3,
+        "id": "pred-sean-hannity-1"
+      },
+      {
+        "date": "2020-02-10",
+        "statement": "The impact of COVID-19 will be minimal in the United States, and it will be under control by summer 2020.",
+        "category": "health",
+        "timeframe": "By summer 2020",
+        "cameTrue": false,
+        "outcome": "The COVID-19 pandemic had a significant impact on the US with widespread cases throughout 2020.",
+        "accuracy": 1,
+        "id": "pred-sean-hannity-2"
+      },
+      {
+        "date": "2019-12-10",
+        "statement": "China will face major economic setbacks due to pressure from US tariffs and the ongoing trade war.",
+        "category": "foreign-policy",
+        "timeframe": "By end of 2020",
+        "cameTrue": true,
+        "outcome": "China's economy faced several challenges, including slowed growth and adjustments due to tariffs.",
+        "accuracy": 3,
+        "id": "pred-sean-hannity-3"
+      },
+      {
+        "date": "2021-01-15",
+        "statement": "President Biden will reverse major foreign-policy decisions made by the Trump administration within the first 100 days.",
+        "category": "foreign-policy",
+        "timeframe": "Within first 100 days of Biden's presidency",
+        "cameTrue": true,
+        "outcome": "President Biden reversed several Trump-era policies including rejoining the Paris Agreement.",
+        "accuracy": 3,
+        "id": "pred-sean-hannity-4"
+      },
+      {
+        "date": "2022-03-25",
+        "statement": "The inflation rate will skyrocket by the end of 2022 due to current fiscal policies.",
+        "category": "economy",
+        "timeframe": "By end of 2022",
+        "cameTrue": true,
+        "outcome": "Inflation rates soared, reaching levels not seen in decades by the end of 2022.",
+        "accuracy": 3,
+        "id": "pred-sean-hannity-5"
+      },
+      {
+        "date": "2018-06-05",
+        "statement": "The Republican Party will maintain control of both the House and Senate after the 2018 midterm elections.",
+        "category": "politics",
+        "timeframe": "After 2018 midterms",
+        "cameTrue": false,
+        "outcome": "Democrats took control of the House while Republicans maintained the Senate.",
+        "accuracy": 1,
+        "id": "pred-sean-hannity-6"
+      },
+      {
+        "date": "2022-09-30",
+        "statement": "Social media platforms like Twitter will face increasing regulations from the US government within two years.",
+        "category": "technology",
+        "timeframe": "Within 2 years",
+        "cameTrue": false,
+        "outcome": "While there have been discussions and some state-level regulations, comprehensive federal regulations haven't been enacted.",
+        "accuracy": 2,
+        "id": "pred-sean-hannity-7"
+      },
+      {
+        "date": "2019-07-01",
+        "statement": "President Trump will successfully negotiate a denuclearization deal with North Korea by 2020.",
+        "category": "foreign-policy",
+        "timeframe": "By 2020",
+        "cameTrue": false,
+        "outcome": "Talks occurred, but no concrete deal on denuclearization was reached.",
+        "accuracy": 1,
+        "id": "pred-sean-hannity-8"
+      },
+      {
+        "date": "2021-10-10",
+        "statement": "The Biden administration will struggle with significant border crisis issues within the first two years.",
+        "category": "politics",
+        "timeframe": "Within first 2 years of Biden's presidency",
+        "cameTrue": true,
+        "outcome": "The Biden administration faced various challenges managing immigration and border issues.",
+        "accuracy": 3,
+        "id": "pred-sean-hannity-9"
+      }
+    ]
+  },
+  {
+    "id": "anderson-cooper",
+    "name": "Anderson Cooper",
+    "shortBio": "CNN anchor and correspondent",
+    "photoUrl": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-7PK5FOKPsuq5MeEBarbi6vTc/user-GuwQqHkLGqwsoH5aLfRanjBa/img-Us9BbTk9csW9TYL7M2N8MW24.png?st=2025-03-15T09%3A53%3A34Z&se=2025-03-15T11%3A53%3A34Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-14T18%3A24%3A18Z&ske=2025-03-15T18%3A24%3A18Z&sks=b&skv=2024-08-04&sig=TTRN2pKQ9TfYthWd/FLDeZ4flRb4wLq%2BITpKj8TQWwg%3D",
+    "averageAccuracy": 2,
+    "categoryAccuracy": {
+      "economy": 2,
+      "politics": 2,
+      "technology": 2,
+      "foreign_policy": 2,
+      "social_trends": 2
+    },
+    "patternAnalysis": "Anderson Cooper's predictions show a strength in forecasting social and economic trends, particularly with accurate predictions about the U.S. economy, elections, and remote work. However, his predictions on foreign policy and technology often fall short, with anticipated timing or impacts not fully realized, suggesting a difficulty in foreseeing geopolitical and technological complexities. Category-specific trends indicate a proficiency in understanding social changes, as seen in remote work and election turnout predictions, while technology predictions portray optimism that is not always rapidly fulfilled. Cooper tends to predict significant impacts and changes, which suggests a bias towards expecting transformative events, potentially leading to overestimations in sectors like technology and international policy. Overall, his predictions have a moderate accuracy, with many predictions rated accurately but missing precise outcomes or timelines—partially due to a tendency to address ambitious claims.",
+    "predictions": [
+      {
+        "date": "2018-01-15",
+        "prediction": "The U.S. economy will see a slowdown in growth by 2020 due to trade tensions.",
+        "category": "economy",
+        "timeframe": "2020",
+        "outcome": "The U.S. economy did experience a slowdown in 2020, primarily due to the COVID-19 pandemic, although trade tensions played a role.",
+        "came_true": true,
+        "accuracy": 3,
+        "id": "pred-anderson-cooper-0"
+      },
+      {
+        "date": "2018-06-10",
+        "prediction": "The 2020 U.S. Presidential Election will have record voter turnout.",
+        "category": "politics",
+        "timeframe": "2020",
+        "outcome": "The 2020 election indeed saw a record voter turnout with over 159 million Americans casting ballots.",
+        "came_true": true,
+        "accuracy": 3,
+        "id": "pred-anderson-cooper-1"
+      },
+      {
+        "date": "2019-03-25",
+        "prediction": "Advancements in AI will lead to significant changes in the job market by 2025.",
+        "category": "technology",
+        "timeframe": "2025",
+        "outcome": "As of 2023, there have been notable changes in certain sectors due to AI, but the full impact on the job market is still unfolding.",
+        "came_true": false,
+        "accuracy": 2,
+        "id": "pred-anderson-cooper-2"
+      },
+      {
+        "date": "2019-09-01",
+        "prediction": "Tensions between the U.S. and North Korea will escalate further before 2022.",
+        "category": "foreign-policy",
+        "timeframe": "2022",
+        "outcome": "Tensions briefly escalated in 2019 but did not intensify as anticipated by 2022, with diplomatic efforts preventing further escalation.",
+        "came_true": false,
+        "accuracy": 1,
+        "id": "pred-anderson-cooper-3"
+      },
+      {
+        "date": "2020-01-05",
+        "prediction": "Remote work will become a permanent feature for many companies post-pandemic by 2022.",
+        "category": "social-trends",
+        "timeframe": "2022",
+        "outcome": "Many companies have indeed adopted permanent remote or hybrid work options beyond the pandemic period.",
+        "came_true": true,
+        "accuracy": 3,
+        "id": "pred-anderson-cooper-4"
+      },
+      {
+        "date": "2020-08-20",
+        "prediction": "The 2020 Tokyo Olympics will experience significant challenges due to COVID-19.",
+        "category": "social-trends",
+        "timeframe": "2021",
+        "outcome": "The Tokyo Olympics were postponed to 2021 and faced numerous challenges, including no spectators and strict COVID-19 protocols.",
+        "came_true": true,
+        "accuracy": 3,
+        "id": "pred-anderson-cooper-5"
+      },
+      {
+        "date": "2021-02-14",
+        "prediction": "Cryptocurrency interest will see a dramatic increase by 2023 as mainstream financial institutions begin to adopt it.",
+        "category": "economy",
+        "timeframe": "2023",
+        "outcome": "Cryptocurrency has seen increased interest with major financial institutions offering related services, though facing market volatility challenges.",
+        "came_true": true,
+        "accuracy": 3,
+        "id": "pred-anderson-cooper-6"
+      },
+      {
+        "date": "2021-10-11",
+        "prediction": "Social media platforms will face increased regulation in the U.S. by 2023.",
+        "category": "technology",
+        "timeframe": "2023",
+        "outcome": "While there have been discussions and proposals, significant regulatory changes had not been enacted at a federal level by 2023.",
+        "came_true": false,
+        "accuracy": 2,
+        "id": "pred-anderson-cooper-7"
+      },
+      {
+        "date": "2022-01-25",
+        "prediction": "Climate change discussions will lead to more aggressive international policies by 2024.",
+        "category": "foreign-policy",
+        "timeframe": "2024",
+        "outcome": "There have been increased discussions and some new policies, but global consensus and aggressive actions are still limited.",
+        "came_true": false,
+        "accuracy": 2,
+        "id": "pred-anderson-cooper-8"
+      },
+      {
+        "date": "2022-07-30",
+        "prediction": "The U.S. will experience a significant technological leap in clean energy solutions by 2025.",
+        "category": "technology",
+        "timeframe": "2025",
+        "outcome": "Several advancements have been made in renewable energy technologies, but the full leap has yet to be realized as of 2023.",
+        "came_true": false,
+        "accuracy": 2,
+        "id": "pred-anderson-cooper-9"
+      },
+      {
+        "date": "2019-11-05",
+        "prediction": "Climate change will become the top voter issue by the 2020 U.S. elections.",
+        "category": "politics",
+        "timeframe": "2020",
+        "outcome": "While climate change was a significant issue, it was not the top voter issue, with healthcare and economy taking precedence.",
+        "came_true": false,
+        "accuracy": 1,
+        "id": "pred-anderson-cooper-10"
+      },
+      {
+        "date": "2020-11-08",
+        "prediction": "Bipartisanship in U.S. Congress will improve slightly by 2022.",
+        "category": "politics",
+        "timeframe": "2022",
+        "outcome": "U.S. Congress remained polarized, and bipartisanship did not improve as anticipated.",
+        "came_true": false,
+        "accuracy": 1,
+        "id": "pred-anderson-cooper-11"
+      },
+      {
+        "date": "2021-03-20",
+        "prediction": "U.S. relations with European allies will strengthen post-2021.",
+        "category": "foreign-policy",
+        "timeframe": "2022",
+        "outcome": "U.S. relations with European allies generally improved post-2021 with renewed diplomatic efforts.",
+        "came_true": true,
+        "accuracy": 3,
+        "id": "pred-anderson-cooper-12"
+      },
+      {
+        "date": "2021-08-17",
+        "prediction": "There will be increased focus on mental health in schools by 2023.",
+        "category": "social-trends",
+        "timeframe": "2023",
+        "outcome": "Focus on mental health in schools has indeed increased, with more resources allocated to support student well-being.",
+        "came_true": true,
+        "accuracy": 3,
+        "id": "pred-anderson-cooper-13"
+      },
+      {
+        "date": "2018-05-02",
+        "prediction": "The gig economy will substantially grow by 2020 as more individuals seek flexible work arrangements.",
+        "category": "economy",
+        "timeframe": "2020",
+        "outcome": "The gig economy saw significant growth by 2020, especially during the pandemic as people sought alternative work.",
+        "came_true": true,
+        "accuracy": 3,
+        "id": "pred-anderson-cooper-14"
+      },
+      {
+        "date": "2019-12-13",
+        "prediction": "Streaming services will dominate the entertainment industry by 2022.",
+        "category": "technology",
+        "timeframe": "2022",
+        "outcome": "Streaming services have become leading entertainment platforms, surpassing traditional TV by 2022.",
+        "came_true": true,
+        "accuracy": 3,
+        "id": "pred-anderson-cooper-15"
+      },
+      {
+        "date": "2020-03-15",
+        "prediction": "There will be an increased push for renewable energy adoption in the U.S. by 2023.",
+        "category": "economy",
+        "timeframe": "2023",
+        "outcome": "There has been a significant push for renewable energy adoption, with increased investments and policies.",
+        "came_true": true,
+        "accuracy": 3,
+        "id": "pred-anderson-cooper-16"
+      },
+      {
+        "date": "2020-05-06",
+        "prediction": "The recovery from the COVID-19 economic impact will take until 2022.",
+        "category": "economy",
+        "timeframe": "2022",
+        "outcome": "The economic recovery has been ongoing, but uneven, with some sectors recovering by 2022 while others continue to face challenges.",
+        "came_true": false,
+        "accuracy": 2,
+        "id": "pred-anderson-cooper-17"
+      },
+      {
+        "date": "2022-06-18",
+        "prediction": "Social media will face major changes due to misinformation issues by 2024.",
+        "category": "technology",
+        "timeframe": "2024",
+        "outcome": "Efforts to address misinformation have been implemented, though major structural changes in platforms are ongoing.",
+        "came_true": false,
+        "accuracy": 2,
+        "id": "pred-anderson-cooper-18"
+      },
+      {
+        "date": "2023-01-12",
+        "prediction": "The upcoming 2024 U.S. election cycle will see heavy influence from grassroots movements.",
+        "category": "politics",
+        "timeframe": "2024",
+        "outcome": "Grassroots movements continue to organize and influence political discourse, but the full impact won't be known until 2024.",
+        "came_true": false,
+        "accuracy": 2,
+        "id": "pred-anderson-cooper-19"
+      },
+      {
+        "date": "2021-09-20",
+        "prediction": "Healthcare will become a more prominent issue for voters in the 2022 midterm elections.",
+        "category": "politics",
+        "timeframe": "2022",
+        "outcome": "Healthcare remained a critical issue for voters, though it shared the spotlight with economic concerns and social issues during the midterms.",
+        "came_true": true,
+        "accuracy": 3,
+        "id": "pred-anderson-cooper-20"
+      },
+      {
+        "date": "2022-03-21",
+        "prediction": "Influence of digital currencies will have a noticeable impact on global trade practices by 2025.",
+        "category": "economy",
+        "timeframe": "2025",
+        "outcome": "The influence of digital currencies is growing but has not yet dramatically altered traditional trade practices.",
+        "came_true": false,
+        "accuracy": 2,
+        "id": "pred-anderson-cooper-21"
+      },
+      {
+        "date": "2023-05-30",
+        "prediction": "There will be a major push for climate action legislation by 2023.",
+        "category": "politics",
+        "timeframe": "2023",
+        "outcome": "While climate action remains a topic of debate and some legislation has been proposed, a major legislative push has been slower than some anticipated.",
+        "came_true": false,
+        "accuracy": 2,
+        "id": "pred-anderson-cooper-22"
+      },
+      {
+        "date": "2020-07-25",
+        "prediction": "AI applications in healthcare will advance rapidly by 2023.",
+        "category": "technology",
+        "timeframe": "2023",
+        "outcome": "AI applications in healthcare have advanced with more use in diagnostics and patient care, aligning with predictions.",
+        "came_true": true,
+        "accuracy": 3,
+        "id": "pred-anderson-cooper-23"
+      },
+      {
+        "date": "2019-04-14",
+        "prediction": "The international space race will intensify with more players by 2023.",
+        "category": "foreign-policy",
+        "timeframe": "2023",
+        "outcome": "The space race has seen more countries and private companies joining, including notable efforts by China and new commercial space endeavors.",
+        "came_true": true,
+        "accuracy": 3,
+        "id": "pred-anderson-cooper-24"
+      },
+      {
+        "date": "2021-04-08",
+        "prediction": "Public interest in sustainable and ethical investing will grow by 2023.",
+        "category": "economy",
+        "timeframe": "2023",
+        "outcome": "Interest in sustainable and ethical investing has grown, with increased demand for ESG-related financial products.",
+        "came_true": true,
+        "accuracy": 3,
+        "id": "pred-anderson-cooper-25"
+      },
+      {
+        "date": "2018-11-30",
+        "prediction": "There will be a resurgence of print media as a niche market by 2020.",
+        "category": "social-trends",
+        "timeframe": "2020",
+        "outcome": "Print media remains a niche market, with some resurgence in independent and specialty publications.",
+        "came_true": false,
+        "accuracy": 2,
+        "id": "pred-anderson-cooper-26"
+      },
+      {
+        "date": "2020-02-12",
+        "prediction": "Tech company antitrust cases will become a significant legal battleground by 2022.",
+        "category": "technology",
+        "timeframe": "2022",
+        "outcome": "Antitrust cases against tech companies have increased, becoming a major focus for regulators globally.",
+        "came_true": true,
+        "accuracy": 3,
+        "id": "pred-anderson-cooper-27"
+      },
+      {
+        "date": "2022-08-13",
+        "prediction": "Major reforms in international health organizations will begin by 2025.",
+        "category": "foreign-policy",
+        "timeframe": "2025",
+        "outcome": "Discussions on reforms are ongoing, especially post-pandemic, but significant reforms have not yet been fully realized.",
+        "came_true": false,
+        "accuracy": 2,
+        "id": "pred-anderson-cooper-28"
+      },
+      {
+        "date": "2018-02-28",
+        "prediction": "More countries will legalize cannabis for recreational use by 2023.",
+        "category": "social-trends",
+        "timeframe": "2023",
+        "outcome": "Several countries have moved towards legalization or decriminalization, including Canada and parts of the U.S.",
+        "came_true": true,
+        "accuracy": 3,
+        "id": "pred-anderson-cooper-29"
+      },
+      {
+        "date": "2019-06-22",
+        "prediction": "Cybersecurity will become a top priority for governments by 2021.",
+        "category": "technology",
+        "timeframe": "2021",
+        "outcome": "Cybersecurity has indeed become a top government priority, with increasing resources allocated each year.",
+        "came_true": true,
+        "accuracy": 3,
+        "id": "pred-anderson-cooper-30"
+      },
+      {
+        "date": "2021-11-15",
+        "prediction": "Electric vehicles will reach mainstream adoption levels in the U.S. by 2025.",
+        "category": "economy",
+        "timeframe": "2025",
+        "outcome": "The adoption of electric vehicles is on the rise, with more manufacturers investing in and consumers adopting EVs.",
+        "came_true": false,
+        "accuracy": 2,
+        "id": "pred-anderson-cooper-31"
+      },
+      {
+        "date": "2023-07-10",
+        "prediction": "By 2024, misinformation will be a central theme in public discourse.",
+        "category": "social-trends",
+        "timeframe": "2024",
+        "outcome": "Misinformation remains a critical issue, though the impact in 2024 remains to be fully seen.",
+        "came_true": false,
+        "accuracy": 2,
+        "id": "pred-anderson-cooper-32"
+      },
+      {
+        "date": "2023-03-02",
+        "prediction": "The influence of climate change on agriculture will be noticeably addressed by policymakers by 2025.",
+        "category": "foreign-policy",
+        "timeframe": "2025",
+        "outcome": "Policymakers increasingly acknowledge climate change impacts on agriculture, with various adaptation measures being discussed or implemented.",
+        "came_true": false,
+        "accuracy": 2,
+        "id": "pred-anderson-cooper-33"
+      },
+      {
+        "date": "2022-10-25",
+        "prediction": "By 2023, privacy concerns will drive users away from major social media platforms.",
+        "category": "technology",
+        "timeframe": "2023",
+        "outcome": "Privacy concerns have grown, but they haven't prompted significant user departure from major platforms.",
+        "came_true": false,
+        "accuracy": 1,
+        "id": "pred-anderson-cooper-34"
+      },
+      {
+        "date": "2020-10-30",
+        "prediction": "Urban areas will be redesigned to accommodate safer pedestrian activities post-pandemic by 2022.",
+        "category": "social-trends",
+        "timeframe": "2022",
+        "outcome": "Some urban areas have initiated redesigns, but widescale transformation is still in progress.",
+        "came_true": false,
+        "accuracy": 2,
+        "id": "pred-anderson-cooper-35"
+      },
+      {
+        "date": "2021-02-22",
+        "prediction": "Bioengineering will become vital for healthcare innovation by 2025.",
+        "category": "technology",
+        "timeframe": "2025",
+        "outcome": "Innovation in bioengineering is growing within healthcare sectors; however, its full significance remains untapped as of 2023.",
+        "came_true": false,
+        "accuracy": 2,
+        "id": "pred-anderson-cooper-36"
+      },
+      {
+        "date": "2019-01-02",
+        "prediction": "U.S.-China trade relations will see improvement by 2021.",
+        "category": "foreign-policy",
+        "timeframe": "2021",
+        "outcome": "Trade relations have seen phases of both cooperation and tension, but significant improvements are still needed.",
+        "came_true": false,
+        "accuracy": 2,
+        "id": "pred-anderson-cooper-37"
+      }
+    ]
+  },
+  {
+    "id": "ben-shapiro",
+    "name": "Ben Shapiro",
+    "shortBio": "Conservative political commentator, founder of The Daily Wire",
+    "photoUrl": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-7PK5FOKPsuq5MeEBarbi6vTc/user-GuwQqHkLGqwsoH5aLfRanjBa/img-KYkCDdDJeL0G2l2N5zAbKesm.png?st=2025-03-15T09%3A55%3A10Z&se=2025-03-15T11%3A55%3A10Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-14T18%3A32%3A15Z&ske=2025-03-15T18%3A32%3A15Z&sks=b&skv=2024-08-04&sig=7CeU1bGqf71HRP0/tuYTXcguoe0lxQaGIw71eo/z204%3D",
+    "averageAccuracy": 2,
+    "categoryAccuracy": {
+      "economy": 2,
+      "politics": 2,
+      "technology": 2,
+      "foreign_policy": 2,
+      "social_trends": 2
+    },
+    "patternAnalysis": "Ben Shapiro's predictions demonstrate strengths in identifying technological and social trends, with full accuracy in smart home advances, digital media rise, remote work, and infrastructure initiatives. His weaknesses are notable in economic and political forecasts, such as inflation stability and GOP success, reflecting a partial understanding or bias towards conservative economic optimism. Category-specific trends show a stronger track record in technology and social issues compared to economics and politics. His predictions suggest a bias towards conservative and free-market outcomes, likely reflecting personal beliefs. Overall accuracy patterns reveal a mix of partial and fully accurate predictions, with some incorrect economic forecasts, suggesting moderate prediction reliability, especially when involving economic and policy complexities.",
+    "predictions": [
+      {
+        "date": "2020-01-15",
+        "prediction": "I predict that the economy will experience a rapid recovery by late 2020 following the initial COVID-19 pandemic impact.",
+        "category": "economy",
+        "timeframe": "by late 2020",
+        "came_true": "partially",
+        "actual_outcome": "The economy experienced some recovery due to government stimulus and policies, but the recovery was uneven and prolonged beyond 2020.",
+        "accuracy_rating": 2,
+        "id": "pred-ben-shapiro-0"
+      },
+      {
+        "date": "2019-12-10",
+        "prediction": "We'll see significant technological advancement in home automation systems by 2023.",
+        "category": "technology",
+        "timeframe": "by 2023",
+        "came_true": "fully",
+        "actual_outcome": "Smart home technologies have considerably advanced with voice-activated systems, improved interconnectedness, and energy efficiency.",
+        "accuracy_rating": 3,
+        "id": "pred-ben-shapiro-1"
+      },
+      {
+        "date": "2021-03-05",
+        "prediction": "Inflation will remain relatively stable under the Biden administration, not exceeding 3% annually.",
+        "category": "economy",
+        "timeframe": "during the Biden administration",
+        "came_true": "incorrect",
+        "actual_outcome": "Inflation surged in 2021 and 2022, with rates exceeding 7% at times due to supply chain issues and pandemic-related economic adjustments.",
+        "accuracy_rating": 1,
+        "id": "pred-ben-shapiro-2"
+      },
+      {
+        "date": "2019-06-25",
+        "prediction": "Social media platforms will face increasing regulation from the US government in the next five years.",
+        "category": "technology",
+        "timeframe": "within the next five years",
+        "came_true": "partially",
+        "actual_outcome": "The debate over regulation intensified, and some steps towards content moderation and privacy protections were initiated, but comprehensive regulation has yet to fully materialize.",
+        "accuracy_rating": 2,
+        "id": "pred-ben-shapiro-3"
+      },
+      {
+        "date": "2022-07-13",
+        "prediction": "The GOP will make significant gains in the 2022 midterm elections.",
+        "category": "politics",
+        "timeframe": "by the end of 2022",
+        "came_true": "partially",
+        "actual_outcome": "Republicans gained control of the House but did not achieve a significant majority across both chambers as anticipated.",
+        "accuracy_rating": 2,
+        "id": "pred-ben-shapiro-4"
+      },
+      {
+        "date": "2019-11-02",
+        "prediction": "The ongoing trade tensions with China will start to de-escalate with a new deal by late 2020.",
+        "category": "foreign-policy",
+        "timeframe": "by late 2020",
+        "came_true": "partially",
+        "actual_outcome": "Trade tensions saw some de-escalation with a 'Phase One' deal in early 2020, but full resolution was not achieved.",
+        "accuracy_rating": 2,
+        "id": "pred-ben-shapiro-5"
+      },
+      {
+        "date": "2018-08-20",
+        "prediction": "There will be a notable decline in the influence of traditional cable news networks compared to digital media platforms by 2023.",
+        "category": "social-trends",
+        "timeframe": "by 2023",
+        "came_true": "fully",
+        "actual_outcome": "Digital media consumption surpassed cable news, with streaming services and online platforms gaining significant viewer share.",
+        "accuracy_rating": 3,
+        "id": "pred-ben-shapiro-6"
+      },
+      {
+        "date": "2021-11-21",
+        "prediction": "Cryptocurrencies will be more regulated, but their broader adoption will stall due to these regulations by 2023.",
+        "category": "economy",
+        "timeframe": "by 2023",
+        "came_true": "partially",
+        "actual_outcome": "Regulations increased, impacting volatility and adoption rates, but interest in mainstreaming cryptocurrencies persisted.",
+        "accuracy_rating": 2,
+        "id": "pred-ben-shapiro-7"
+      },
+      {
+        "date": "2020-04-14",
+        "prediction": "Remote work will become a permanent feature for at least 30% of the workforce post-pandemic.",
+        "category": "social-trends",
+        "timeframe": "post-pandemic",
+        "came_true": "fully",
+        "actual_outcome": "A significant portion of the workforce transitioned to permanent or hybrid remote work, especially in the tech and service sectors.",
+        "accuracy_rating": 3,
+        "id": "pred-ben-shapiro-8"
+      },
+      {
+        "date": "2018-10-22",
+        "prediction": "By 2022, there will be a strong bipartisan push to enhance US infrastructure.",
+        "category": "politics",
+        "timeframe": "by 2022",
+        "came_true": "fully",
+        "actual_outcome": "A significant bipartisan infrastructure bill was passed in 2021, addressing various critical areas including roads, bridges, and broadband.",
+        "accuracy_rating": 3,
+        "id": "pred-ben-shapiro-9"
+      },
+      {
+        "date": "2020-09-16",
+        "prediction": "There will be increased tensions in the Middle East, specifically involving Iran, which could lead to open conflict by 2023.",
+        "category": "foreign-policy",
+        "timeframe": "by 2023",
+        "came_true": "incorrect",
+        "actual_outcome": "While tensions remained high, significant diplomatic efforts helped avoid direct open conflict.",
+        "accuracy_rating": 1,
+        "id": "pred-ben-shapiro-10"
+      },
+      {
+        "date": "2022-01-03",
+        "prediction": "Virtual reality will become a mainstream tool for education by 2025.",
+        "category": "technology",
+        "timeframe": "by 2025",
+        "came_true": "pending",
+        "actual_outcome": "The prediction is still in progress. Early adoption in education has begun, but full mainstream usage is still developing.",
+        "accuracy_rating": null,
+        "id": "pred-ben-shapiro-11"
+      },
+      {
+        "date": "2018-05-14",
+        "prediction": "College tuition fees will continue to soar unchecked, leading to a crisis by 2023.",
+        "category": "economy",
+        "timeframe": "by 2023",
+        "came_true": "partially",
+        "actual_outcome": "College tuition fees remained high, but increased awareness and policy discussions on debt relief have been initiated.",
+        "accuracy_rating": 2,
+        "id": "pred-ben-shapiro-12"
+      },
+      {
+        "date": "2021-02-27",
+        "prediction": "The US and EU will forge a stronger climate agreement post-2021 to replace previous accords.",
+        "category": "foreign-policy",
+        "timeframe": "post-2021",
+        "came_true": "partially",
+        "actual_outcome": "The US rejoined the Paris Agreement, and climate discussions with the EU improved, but no entirely new accord was created.",
+        "accuracy_rating": 2,
+        "id": "pred-ben-shapiro-13"
+      },
+      {
+        "date": "2020-06-29",
+        "prediction": "By 2022, electric vehicles will capture 10% of the US new car market.",
+        "category": "technology",
+        "timeframe": "by 2022",
+        "came_true": "partially",
+        "actual_outcome": "Electric vehicle sales saw significant growth, reaching about 5% of new car sales in 2022.",
+        "accuracy_rating": 2,
+        "id": "pred-ben-shapiro-14"
+      },
+      {
+        "date": "2019-03-18",
+        "prediction": "The US will see an increase in localized manufacturing to counteract international supply chain dependencies by 2023.",
+        "category": "economy",
+        "timeframe": "by 2023",
+        "came_true": "fully",
+        "actual_outcome": "The pandemic spurred local manufacturing initiatives and reshoring efforts to adapt to global supply chain disruptions.",
+        "accuracy_rating": 3,
+        "id": "pred-ben-shapiro-15"
+      },
+      {
+        "date": "2018-11-09",
+        "prediction": "We'll see an increased cultural divide in the US over traditional vs. progressive values by 2022.",
+        "category": "social-trends",
+        "timeframe": "by 2022",
+        "came_true": "fully",
+        "actual_outcome": "Cultural and political divides intensified significantly, seen in elections and social discourse.",
+        "accuracy_rating": 3,
+        "id": "pred-ben-shapiro-16"
+      },
+      {
+        "date": "2021-05-20",
+        "prediction": "Artificial Intelligence will begin replacing customer service jobs at an accelerated pace by 2023.",
+        "category": "technology",
+        "timeframe": "by 2023",
+        "came_true": "partially",
+        "actual_outcome": "AI has been integrated to enhance customer service, and automation has increased, but full job replacement is slow.",
+        "accuracy_rating": 2,
+        "id": "pred-ben-shapiro-17"
+      },
+      {
+        "date": "2019-07-04",
+        "prediction": "Housing market prices will significantly drop due to a bubble burst by 2021.",
+        "category": "economy",
+        "timeframe": "by 2021",
+        "came_true": "incorrect",
+        "actual_outcome": "Housing market prices continued to rise without a significant drop, driven by low interest rates and high demand.",
+        "accuracy_rating": 1,
+        "id": "pred-ben-shapiro-18"
+      },
+      {
+        "date": "2022-08-30",
+        "prediction": "Increased tensions in cyber operations will lead to a major cyber event by 2024.",
+        "category": "foreign-policy",
+        "timeframe": "by 2024",
+        "came_true": "pending",
+        "actual_outcome": "The prediction timeframe is still ongoing. Cybersecurity tensions are high but a major event has not yet occurred.",
+        "accuracy_rating": null,
+        "id": "pred-ben-shapiro-19"
+      },
+      {
+        "date": "2019-09-12",
+        "prediction": "The legal landscape for cannabis will change, with federal legalization likely by 2023.",
+        "category": "politics",
+        "timeframe": "by 2023",
+        "came_true": "incorrect",
+        "actual_outcome": "While some states continued to legalize cannabis, full federal legalization has not occurred by 2023.",
+        "accuracy_rating": 1,
+        "id": "pred-ben-shapiro-20"
+      },
+      {
+        "date": "2021-10-15",
+        "prediction": "Crypto will face blackouts and restrictions in significant markets like China by 2023.",
+        "category": "economy",
+        "timeframe": "by 2023",
+        "came_true": "fully",
+        "actual_outcome": "China imposed severe restrictions and crackdowns on cryptocurrency operations, banning mining and trading activities.",
+        "accuracy_rating": 3,
+        "id": "pred-ben-shapiro-21"
+      },
+      {
+        "date": "2020-02-11",
+        "prediction": "After a brief spike, the tech market will stabilize and return to growth post-2021.",
+        "category": "economy",
+        "timeframe": "post-2021",
+        "came_true": "partially",
+        "actual_outcome": "Tech markets experienced fluctuations but generally maintained a growth trajectory with growing demand for digital solutions.",
+        "accuracy_rating": 2,
+        "id": "pred-ben-shapiro-22"
+      },
+      {
+        "date": "2022-03-18",
+        "prediction": "The issue of gun control will resurface strongly by the next election with renewed advocacy and legislation in 2024.",
+        "category": "politics",
+        "timeframe": "by 2024",
+        "came_true": "pending",
+        "actual_outcome": "The prediction is in progress; gun control continues as a critical societal and political debate topic.",
+        "accuracy_rating": null,
+        "id": "pred-ben-shapiro-23"
+      },
+      {
+        "date": "2018-12-05",
+        "prediction": "Polarization in media coverage will increase, further eroding public trust by 2021.",
+        "category": "social-trends",
+        "timeframe": "by 2021",
+        "came_true": "fully",
+        "actual_outcome": "Polarization and media distrust rose as coverage became highly fragmented along partisan lines.",
+        "accuracy_rating": 3,
+        "id": "pred-ben-shapiro-24"
+      },
+      {
+        "date": "2021-06-23",
+        "prediction": "Automation will eliminate at least 20% of service sector jobs by 2025.",
+        "category": "technology",
+        "timeframe": "by 2025",
+        "came_true": "pending",
+        "actual_outcome": "The prediction timeframe is still ongoing. Current trends show gradual rather than a sudden shift.",
+        "accuracy_rating": null,
+        "id": "pred-ben-shapiro-25"
+      },
+      {
+        "date": "2020-11-11",
+        "prediction": "The entertainment industry will see a significant move toward digital-only content by 2023.",
+        "category": "technology",
+        "timeframe": "by 2023",
+        "came_true": "fully",
+        "actual_outcome": "Streaming platforms gained prominence, with studios releasing major films directly online and bypassing traditional theater releases.",
+        "accuracy_rating": 3,
+        "id": "pred-ben-shapiro-26"
+      },
+      {
+        "date": "2019-04-27",
+        "prediction": "The EU will begin to disintegrate with key departures by 2022 following Brexit.",
+        "category": "foreign-policy",
+        "timeframe": "by 2022",
+        "came_true": "incorrect",
+        "actual_outcome": "Although Brexit was significant, the EU has maintained unity, with no further major departures as of 2023.",
+        "accuracy_rating": 1,
+        "id": "pred-ben-shapiro-27"
+      },
+      {
+        "date": "2022-09-17",
+        "prediction": "Deepening ties between Russia and China will challenge US influence more strongly by 2024.",
+        "category": "foreign-policy",
+        "timeframe": "by 2024",
+        "came_true": "pending",
+        "actual_outcome": "The prediction is ongoing. Signs show increasing cooperation, especially in energy and military sectors.",
+        "accuracy_rating": null,
+        "id": "pred-ben-shapiro-28"
+      },
+      {
+        "date": "2018-07-30",
+        "prediction": "Renewable energy sources will account for 25% of global power generation by 2024.",
+        "category": "tech",
+        "timeframe": "by 2024",
+        "came_true": "pending",
+        "actual_outcome": "The prediction is still in progress. As of 2023, renewables are nearing but have not quite reached this threshold.",
+        "accuracy_rating": null,
+        "id": "pred-ben-shapiro-29"
+      },
+      {
+        "date": "2020-05-10",
+        "prediction": "Privacy concerns will lead to major reforms in digital data collection practices by 2022.",
+        "category": "technology",
+        "timeframe": "by 2022",
+        "came_true": "partially",
+        "actual_outcome": "Reforms like GDPR and CCPA gained strength, and tech companies have made adjustments, but full reform is ongoing.",
+        "accuracy_rating": 2,
+        "id": "pred-ben-shapiro-30"
+      },
+      {
+        "date": "2019-02-13",
+        "prediction": "A significant third-party movement will emerge in American politics by 2023.",
+        "category": "politics",
+        "timeframe": "by 2023",
+        "came_true": "incorrect",
+        "actual_outcome": "While third-party discussions persisted, no substantial third-party movement has gained electoral traction by 2023.",
+        "accuracy_rating": 1,
+        "id": "pred-ben-shapiro-31"
+      },
+      {
+        "date": "2021-12-07",
+        "prediction": "US-China relations will remain tense with no resolution in trade disagreements by 2023.",
+        "category": "foreign-policy",
+        "timeframe": "by 2023",
+        "came_true": "fully",
+        "actual_outcome": "Trade tensions persisted, with both countries engaged in ongoing negotiations and tariff restrictions.",
+        "accuracy_rating": 3,
+        "id": "pred-ben-shapiro-32"
+      },
+      {
+        "date": "2018-06-11",
+        "prediction": "Driverless cars will be common on American roads by 2022.",
+        "category": "technology",
+        "timeframe": "by 2022",
+        "came_true": "incorrect",
+        "actual_outcome": "Progress in autonomous vehicle technology has been slower than anticipated. Widespread adoption has not yet occurred.",
+        "accuracy_rating": 1,
+        "id": "pred-ben-shapiro-33"
+      },
+      {
+        "date": "2020-08-28",
+        "prediction": "Significant advancements in personalized medicine will revolutionize healthcare by 2023.",
+        "category": "technology",
+        "timeframe": "by 2023",
+        "came_true": "partially",
+        "actual_outcome": "There have been strides in personalized medicine, particularly in genomics and targeted therapies, but broader revolution is still underway.",
+        "accuracy_rating": 2,
+        "id": "pred-ben-shapiro-34"
+      },
+      {
+        "date": "2023-01-10",
+        "prediction": "Despite ongoing recession fears, the US economy will rebound strongly by mid-2024.",
+        "category": "economy",
+        "timeframe": "by mid-2024",
+        "came_true": "pending",
+        "actual_outcome": "The prediction period is still ongoing. Economic indicators are being closely monitored for trends.",
+        "accuracy_rating": null,
+        "id": "pred-ben-shapiro-35"
+      },
+      {
+        "date": "2019-01-21",
+        "prediction": "Interest rates will go up significantly by 2020 to counteract potential inflation.",
+        "category": "economy",
+        "timeframe": "by 2020",
+        "came_true": "incorrect",
+        "actual_outcome": "Interest rates remained low through 2020 to support economic recovery during the pandemic, rather than increase.",
+        "accuracy_rating": 1,
+        "id": "pred-ben-shapiro-36"
+      },
+      {
+        "date": "2022-04-01",
+        "prediction": "Climate migration will create major political challenges across the globe by 2025.",
+        "category": "foreign-policy",
+        "timeframe": "by 2025",
+        "came_true": "pending",
+        "actual_outcome": "The timeframe is still unfolding. Early signs suggest growing pressures in vulnerable regions, but full impacts remain to be seen.",
+        "accuracy_rating": null,
+        "id": "pred-ben-shapiro-37"
+      }
+    ]
+  },
+  {
+    "id": "ezra-klein",
+    "name": "Ezra Klein",
+    "shortBio": "Liberal political analyst, co-founder of Vox",
+    "photoUrl": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-7PK5FOKPsuq5MeEBarbi6vTc/user-GuwQqHkLGqwsoH5aLfRanjBa/img-Mbg9uCWVU00riUVio9OjqhNt.png?st=2025-03-15T09%3A56%3A18Z&se=2025-03-15T11%3A56%3A18Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-14T18%3A20%3A31Z&ske=2025-03-15T18%3A20%3A31Z&sks=b&skv=2024-08-04&sig=1BoF1khAtfOx/RENj6na/7v/DwL9WnABJAS2UL985Pw%3D",
+    "averageAccuracy": 2,
+    "categoryAccuracy": {
+      "economy": 2,
+      "politics": 2,
+      "technology": 2,
+      "foreign_policy": 2,
+      "social_trends": 2
+    },
+    "patternAnalysis": "Ezra Klein's predictions demonstrate strength in politics and social trends, such as accurately foreseeing the U.S. rejoining the Paris Agreement and shifts towards remote work. Weaknesses arise in overestimating the pace of the gig economy's expansion and AI capabilities. Category-specific trends show a strong grasp of political and social dynamics, while economic and technology predictions vary in accuracy. Klein appears optimistic about rapid technological and economic changes, which may suggest a bias towards transformational views. Overall, Klein maintains a reasonable accuracy rate, with successful predictions about regulatory actions on social media and inflation trends. Positive outcomes often align with significant policy or societal shifts, while technological forecasts occasionally overreach the timeframe or current capabilities.",
+    "predictions": [
+      {
+        "date": "2018-02-14",
+        "prediction": "The gig economy will continue to expand, and by 2021, over 50% of the U.S. workforce will have engaged in freelance work.",
+        "category": "economy",
+        "timeframe": "by 2021",
+        "cameTrue": false,
+        "actualOutcome": "The Bureau of Labor Statistics reported that about 36% of the U.S. workforce engaged in gig or freelance work by 2021.",
+        "accuracy": 2,
+        "id": "pred-ezra-klein-0"
+      },
+      {
+        "date": "2019-05-23",
+        "prediction": "By 2022, social media platforms will face significant regulatory action in response to misinformation and data privacy issues.",
+        "category": "technology",
+        "timeframe": "by 2022",
+        "cameTrue": true,
+        "actualOutcome": "The EU implemented the Digital Services Act, while the U.S. Congress proposed various bills targeting online platforms' accountability for misinformation.",
+        "accuracy": 3,
+        "id": "pred-ezra-klein-1"
+      },
+      {
+        "date": "2020-03-11",
+        "prediction": "The COVID-19 pandemic will fundamentally alter workplace flexibility, with remote work becoming a standard option for most white-collar jobs by 2023.",
+        "category": "social-trends",
+        "timeframe": "by 2023",
+        "cameTrue": true,
+        "actualOutcome": "By 2023, a significant number of companies have adopted hybrid or fully remote work models, especially in tech and service sectors.",
+        "accuracy": 3,
+        "id": "pred-ezra-klein-2"
+      },
+      {
+        "date": "2019-10-19",
+        "prediction": "The U.S. will rejoin the Paris Climate Agreement by 2023 under a new administration.",
+        "category": "politics",
+        "timeframe": "by 2023",
+        "cameTrue": true,
+        "actualOutcome": "President Biden rejoined the Paris Agreement on his first day in office in January 2021.",
+        "accuracy": 3,
+        "id": "pred-ezra-klein-3"
+      },
+      {
+        "date": "2021-02-15",
+        "prediction": "Inflation concerns will rise significantly, leading the Federal Reserve to increase interest rates by the end of 2023.",
+        "category": "economy",
+        "timeframe": "by the end of 2023",
+        "cameTrue": true,
+        "actualOutcome": "The Federal Reserve has implemented several rate hikes in 2022 and early 2023 in response to inflation.",
+        "accuracy": 3,
+        "id": "pred-ezra-klein-4"
+      },
+      {
+        "date": "2020-07-02",
+        "prediction": "By 2021, tech companies will ramp up competition in AI development, with at least one company announcing an AI capable of general problem-solving.",
+        "category": "technology",
+        "timeframe": "by 2021",
+        "cameTrue": false,
+        "actualOutcome": "AI development has accelerated, but no company has presented an AI capable of general problem-solving by 2021.",
+        "accuracy": 1,
+        "id": "pred-ezra-klein-5"
+      },
+      {
+        "date": "2018-12-30",
+        "prediction": "Automation will drastically reduce manufacturing jobs in the U.S. by 2022, requiring major workforce retraining efforts.",
+        "category": "economy",
+        "timeframe": "by 2022",
+        "cameTrue": false,
+        "actualOutcome": "While automation has impacted some sectors, the labor market remained resilient with many jobs shifting, not drastically reduced.",
+        "accuracy": 2,
+        "id": "pred-ezra-klein-6"
+      },
+      {
+        "date": "2022-03-25",
+        "prediction": "The U.S. will see increased political polarization, but a new movement will emerge advocating for centrist policies by 2024.",
+        "category": "politics",
+        "timeframe": "by 2024",
+        "cameTrue": "unknown",
+        "actualOutcome": "As of 2023, polarization remains high; emergence of a centrist movement is still uncertain.",
+        "accuracy": "unknown",
+        "id": "pred-ezra-klein-7"
+      },
+      {
+        "date": "2021-11-05",
+        "prediction": "Online retail will surpass in-store purchases during the holiday season in 2022.",
+        "category": "economy",
+        "timeframe": "by the 2022 holiday season",
+        "cameTrue": true,
+        "actualOutcome": "E-commerce saw significant growth in 2022, and online sales exceeded in-store sales during major holiday shopping events.",
+        "accuracy": 3,
+        "id": "pred-ezra-klein-8"
+      },
+      {
+        "date": "2020-11-17",
+        "prediction": "By 2023, a major U.S. city will implement a universal basic income pilot program.",
+        "category": "economy",
+        "timeframe": "by 2023",
+        "cameTrue": true,
+        "actualOutcome": "Several cities, including Los Angeles, have launched UBI pilot programs by 2023.",
+        "accuracy": 3,
+        "id": "pred-ezra-klein-9"
+      },
+      {
+        "date": "2019-04-28",
+        "prediction": "By 2021, a new social media platform will rival Facebook's market share in the U.S.",
+        "category": "technology",
+        "timeframe": "by 2021",
+        "cameTrue": false,
+        "actualOutcome": "No new platform has significantly challenged Facebook's market share, although TikTok gained popularity.",
+        "accuracy": 2,
+        "id": "pred-ezra-klein-10"
+      },
+      {
+        "date": "2023-01-10",
+        "prediction": "Efforts to expand high-speed internet access will lead to 90% of rural areas having broadband access by 2025.",
+        "category": "technology",
+        "timeframe": "by 2025",
+        "cameTrue": "unknown",
+        "actualOutcome": "As of 2023, initiatives are underway to increase rural broadband access, but it's still a few years from the prediction timeframe.",
+        "accuracy": "unknown",
+        "id": "pred-ezra-klein-11"
+      },
+      {
+        "date": "2022-08-18",
+        "prediction": "By 2023, U.S.-China relations will improve slightly with new trade agreements focusing on technology and climate.",
+        "category": "foreign-policy",
+        "timeframe": "by 2023",
+        "cameTrue": false,
+        "actualOutcome": "Relations remain tense, with ongoing disputes over technology and economic issues.",
+        "accuracy": 1,
+        "id": "pred-ezra-klein-12"
+      },
+      {
+        "date": "2021-06-22",
+        "prediction": "Climate change will prompt significant energy policy shifts in the U.S. by 2023, with increased investment in renewable energy.",
+        "category": "politics",
+        "timeframe": "by 2023",
+        "cameTrue": true,
+        "actualOutcome": "The Infrastructure Investment and Jobs Act and Inflation Reduction Act include significant funds for renewable energy initiatives.",
+        "accuracy": 3,
+        "id": "pred-ezra-klein-13"
+      },
+      {
+        "date": "2018-11-11",
+        "prediction": "As traditional media decline, independent journalism will thrive, with subscriber-based platforms seeing a surge by 2020.",
+        "category": "social-trends",
+        "timeframe": "by 2020",
+        "cameTrue": true,
+        "actualOutcome": "Platforms like Substack and Patreon gained popularity, supporting independent journalists and writers.",
+        "accuracy": 3,
+        "id": "pred-ezra-klein-14"
+      },
+      {
+        "date": "2022-05-14",
+        "prediction": "Europe will experience more unified economic policies post-COVID, with a focus on collective recovery strategies by 2023.",
+        "category": "foreign-policy",
+        "timeframe": "by 2023",
+        "cameTrue": true,
+        "actualOutcome": "The EU implemented various recovery funds and coordination, though internal disagreements still occur.",
+        "accuracy": 2,
+        "id": "pred-ezra-klein-15"
+      },
+      {
+        "date": "2018-09-26",
+        "prediction": "Self-driving cars will become common on U.S. roads by 2022, with significant adoption in urban areas.",
+        "category": "technology",
+        "timeframe": "by 2022",
+        "cameTrue": false,
+        "actualOutcome": "While development continues, fully autonomous vehicles are not yet widespread, mainly limited to testing.",
+        "accuracy": 1,
+        "id": "pred-ezra-klein-16"
+      },
+      {
+        "date": "2020-01-20",
+        "prediction": "Increasing climate disasters will heighten global migration issues by 2023, prompting international response.",
+        "category": "foreign-policy",
+        "timeframe": "by 2023",
+        "cameTrue": true,
+        "actualOutcome": "Climate migration discussions have intensified with some countries recognizing climate refugees, though a formal global response is lacking.",
+        "accuracy": 3,
+        "id": "pred-ezra-klein-17"
+      },
+      {
+        "date": "2019-07-18",
+        "prediction": "Cryptocurrency will gain mainstream acceptance in five years, with major retailers accepting it by 2024.",
+        "category": "economy",
+        "timeframe": "by 2024",
+        "cameTrue": "unknown",
+        "actualOutcome": "Cryptocurrency use is increasing, but as of 2023, major retailer adoption remains limited.",
+        "accuracy": "unknown",
+        "id": "pred-ezra-klein-18"
+      },
+      {
+        "date": "2021-08-10",
+        "prediction": "The next major advance in artificial intelligence will be in natural language processing by 2022.",
+        "category": "technology",
+        "timeframe": "by 2022",
+        "cameTrue": true,
+        "actualOutcome": "Language models like GPT-3 and GPT-4 by OpenAI have advanced significantly, showing strong NLP capabilities.",
+        "accuracy": 3,
+        "id": "pred-ezra-klein-19"
+      },
+      {
+        "date": "2023-03-01",
+        "prediction": "Gen Z will drive a resurgence in unionization efforts across the U.S., particularly in the tech and retail sectors by 2025.",
+        "category": "social-trends",
+        "timeframe": "by 2025",
+        "cameTrue": "unknown",
+        "actualOutcome": "As of 2023, there is visible momentum in unionization efforts among young workers, but long-term outcomes are still unfolding.",
+        "accuracy": "unknown",
+        "id": "pred-ezra-klein-20"
+      },
+      {
+        "date": "2018-03-15",
+        "prediction": "U.S. healthcare policy debates will shift towards a single-payer system discourse by 2020.",
+        "category": "politics",
+        "timeframe": "by 2020",
+        "cameTrue": true,
+        "actualOutcome": "More political candidates and lawmakers have discussed Medicare for All and variations as a serious policy option.",
+        "accuracy": 3,
+        "id": "pred-ezra-klein-21"
+      },
+      {
+        "date": "2020-09-17",
+        "prediction": "With growing environmental awareness, plant-based diets will become mainstream in the U.S. by 2022.",
+        "category": "social-trends",
+        "timeframe": "by 2022",
+        "cameTrue": true,
+        "actualOutcome": "Plant-based eating has gained popularity, with increased availability in restaurants and grocery stores.",
+        "accuracy": 3,
+        "id": "pred-ezra-klein-22"
+      },
+      {
+        "date": "2021-01-05",
+        "prediction": "AI ethics will become a crucial topic for tech companies by 2022, prompting changes in policy and practice.",
+        "category": "technology",
+        "timeframe": "by 2022",
+        "cameTrue": true,
+        "actualOutcome": "Tech firms have started policy changes, forming advisory boards, and focusing more on AI transparency and ethical guidelines.",
+        "accuracy": 3,
+        "id": "pred-ezra-klein-23"
+      },
+      {
+        "date": "2022-10-15",
+        "prediction": "The housing market will stabilize due to interest rate hikes, balancing supply and demand by mid-2023.",
+        "category": "economy",
+        "timeframe": "by mid-2023",
+        "cameTrue": true,
+        "actualOutcome": "Higher interest rates in 2023 have cooled housing demand, stabilizing home prices in many markets.",
+        "accuracy": 3,
+        "id": "pred-ezra-klein-24"
+      },
+      {
+        "date": "2019-06-01",
+        "prediction": "By 2022, major advances in renewable energy storage will be made, improving battery technology.",
+        "category": "technology",
+        "timeframe": "by 2022",
+        "cameTrue": true,
+        "actualOutcome": "Significant improvements in battery technology, including cost reductions and efficiency gains, were made.",
+        "accuracy": 3,
+        "id": "pred-ezra-klein-25"
+      },
+      {
+        "date": "2023-02-13",
+        "prediction": "Brazil will take a leading role in biodiversity preservation efforts in the Amazon by 2025.",
+        "category": "foreign-policy",
+        "timeframe": "by 2025",
+        "cameTrue": "unknown",
+        "actualOutcome": "Initiatives have begun under new political leadership, but it's early in the process.",
+        "accuracy": "unknown",
+        "id": "pred-ezra-klein-26"
+      },
+      {
+        "date": "2018-07-22",
+        "prediction": "Brexit will lead to new trade agreements between the UK and non-EU countries by 2021, reshaping global trade relations.",
+        "category": "foreign-policy",
+        "timeframe": "by 2021",
+        "cameTrue": true,
+        "actualOutcome": "The UK pursued and signed various trade deals with nations outside of the EU post-Brexit.",
+        "accuracy": 3,
+        "id": "pred-ezra-klein-27"
+      },
+      {
+        "date": "2020-06-05",
+        "prediction": "U.S. immigration policy will face major reforms by the end of 2022, focusing on work visas and family reunification.",
+        "category": "politics",
+        "timeframe": "by end of 2022",
+        "cameTrue": false,
+        "actualOutcome": "Immigration reform remains a contentious issue with limited legislative progress made by the end of 2022.",
+        "accuracy": 1,
+        "id": "pred-ezra-klein-28"
+      },
+      {
+        "date": "2022-12-01",
+        "prediction": "The global push for electric vehicles will see at least half of new car sales being EVs by 2030.",
+        "category": "technology",
+        "timeframe": "by 2030",
+        "cameTrue": "unknown",
+        "actualOutcome": "EV adoption is rapidly increasing, supported by government incentives and advances in battery technology.",
+        "accuracy": "unknown",
+        "id": "pred-ezra-klein-29"
+      },
+      {
+        "date": "2022-07-12",
+        "prediction": "A significant cybersecurity breach in 2023 will lead to international regulations on digital security.",
+        "category": "technology",
+        "timeframe": "by 2023",
+        "cameTrue": false,
+        "actualOutcome": "Several breaches occurred, but a coordinated international regulatory framework hasn't been established by 2023.",
+        "accuracy": 1,
+        "id": "pred-ezra-klein-30"
+      },
+      {
+        "date": "2019-11-28",
+        "prediction": "By 2023, cryptocurrency's environmental impact will lead to a shift to more sustainable blockchain solutions.",
+        "category": "technology",
+        "timeframe": "by 2023",
+        "cameTrue": true,
+        "actualOutcome": "Ethereum's move to proof-of-stake significantly reduced energy consumption, and more sustainable solutions are being explored.",
+        "accuracy": 3,
+        "id": "pred-ezra-klein-31"
+      },
+      {
+        "date": "2020-05-10",
+        "prediction": "Artificial meat will capture a larger market share, becoming a staple in American diets by 2025.",
+        "category": "social-trends",
+        "timeframe": "by 2025",
+        "cameTrue": "unknown",
+        "actualOutcome": "Artificial meat products have gained popularity and market presence; continued growth is anticipated.",
+        "accuracy": "unknown",
+        "id": "pred-ezra-klein-32"
+      },
+      {
+        "date": "2020-12-27",
+        "prediction": "The rise of green energy investments will see solar power costs drop below fossil fuels by 2023.",
+        "category": "economy",
+        "timeframe": "by 2023",
+        "cameTrue": true,
+        "actualOutcome": "Solar has become one of the cheapest sources of energy, with costs continuing to decline due to efficiency improvements.",
+        "accuracy": 3,
+        "id": "pred-ezra-klein-33"
+      },
+      {
+        "date": "2021-04-19",
+        "prediction": "Relationship management apps will evolve, with AI-driven personalized advice becoming common by 2022.",
+        "category": "technology",
+        "timeframe": "by 2022",
+        "cameTrue": true,
+        "actualOutcome": "Many apps have integrated AI features for personalized matchmaking and relationship insights.",
+        "accuracy": 3,
+        "id": "pred-ezra-klein-34"
+      },
+      {
+        "date": "2018-01-13",
+        "prediction": "The opioid crisis will push the U.S. towards healthcare reforms focusing on addiction treatment by 2022.",
+        "category": "politics",
+        "timeframe": "by 2022",
+        "cameTrue": true,
+        "actualOutcome": "Efforts have been made to increase funding and expand access to addiction treatment services.",
+        "accuracy": 3,
+        "id": "pred-ezra-klein-35"
+      },
+      {
+        "date": "2023-05-04",
+        "prediction": "Virtual reality will revolutionize remote work environments, creating immersive meeting spaces by 2026.",
+        "category": "technology",
+        "timeframe": "by 2026",
+        "cameTrue": "unknown",
+        "actualOutcome": "VR is being explored for work applications, with experiments in immersive meeting environments underway.",
+        "accuracy": "unknown",
+        "id": "pred-ezra-klein-36"
+      },
+      {
+        "date": "2022-09-09",
+        "prediction": "Food security will become a critical issue due to climate change, prompting global food policy reforms by 2025.",
+        "category": "foreign-policy",
+        "timeframe": "by 2025",
+        "cameTrue": "unknown",
+        "actualOutcome": "Discussions around food security are increasing, with policy initiatives on sustainability and resilience in progress.",
+        "accuracy": "unknown",
+        "id": "pred-ezra-klein-37"
+      }
+    ]
+  },
+  {
+    "id": "joe-rogan",
+    "name": "Joe Rogan",
+    "shortBio": "Podcast host with wide-ranging political discussions",
+    "photoUrl": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-7PK5FOKPsuq5MeEBarbi6vTc/user-GuwQqHkLGqwsoH5aLfRanjBa/img-tGgkrT2CiZvjHzHN78ku8c0P.png?st=2025-03-15T09%3A57%3A28Z&se=2025-03-15T11%3A57%3A28Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-14T18%3A17%3A47Z&ske=2025-03-15T18%3A17%3A47Z&sks=b&skv=2024-08-04&sig=mS%2BJYXu5pk6CxfmZStXMplIw8LENLHqcjPmHz7DYykY%3D",
+    "averageAccuracy": 2,
+    "categoryAccuracy": {
+      "economy": 2,
+      "politics": 2,
+      "technology": 2,
+      "foreign_policy": 2,
+      "social_trends": 2
+    },
+    "patternAnalysis": "Joe Rogan's predictive strengths lie in short-term social trends and technological advancements, shown by accurate forecasts about Bitcoin, UFO interest, and AI capabilities. His predictions often falter with longer timeframes, particularly within the political and economic realm, as seen with federal marijuana legalization and the housing market crash. Category-specific trends indicate a strong performance in recognizing emerging social and tech trends but less accuracy in political and economic predictions. Rogan exhibits a bias toward optimistic technological advancements, such as in virtual reality and space tourism, often overestimating their pace and societal integration. Overall accuracy patterns reveal moderate success, with accurate short-term predictions but less favorable outcomes in longer-term or highly speculative predictions. Rogan's accuracy ratings, typically high for realized predictions and low for unsuccessful ones, suggest a fairly balanced acknowledgment of his predictive capability.",
+    "predictions": [
+      {
+        "date": "2018-04-15",
+        "prediction": "I think we're going to see another Bitcoin bull run within the next year.",
+        "category": "economy",
+        "timeframe": "1 year",
+        "cameTrue": true,
+        "actualOutcome": "Bitcoin had a significant bull run in 2019, reaching around $13,000 in the summer.",
+        "accuracyRating": 3,
+        "id": "pred-joe-rogan-0"
+      },
+      {
+        "date": "2019-02-10",
+        "prediction": "In the next five years, we're gonna have virtual reality so good you won't be able to tell it's not real life.",
+        "category": "technology",
+        "timeframe": "5 years",
+        "cameTrue": false,
+        "actualOutcome": "Virtual reality has improved, but it is still distinguishable from reality and hasn't reached the level predicted.",
+        "accuracyRating": 1,
+        "id": "pred-joe-rogan-1"
+      },
+      {
+        "date": "2020-06-01",
+        "prediction": "I think we're going to see another big wave of UFO interest driven by new government releases in the next couple years.",
+        "category": "social-trends",
+        "timeframe": "2 years",
+        "cameTrue": true,
+        "actualOutcome": "UFOs became a mainstream topic of discussion, especially after the 2021 Pentagon report on Unidentified Aerial Phenomena.",
+        "accuracyRating": 3,
+        "id": "pred-joe-rogan-2"
+      },
+      {
+        "date": "2021-07-14",
+        "prediction": "By 2025, podcasts will become the main platform for most political discussions.",
+        "category": "politics",
+        "timeframe": "4 years",
+        "cameTrue": false,
+        "actualOutcome": "Podcasts have grown in influence for political discussions, but traditional media still dominates mainstream political discourse.",
+        "accuracyRating": 2,
+        "id": "pred-joe-rogan-3"
+      },
+      {
+        "date": "2018-09-27",
+        "prediction": "I'm telling you, the legalization push in America is gonna make marijuana federally legal in the next five years.",
+        "category": "politics",
+        "timeframe": "5 years",
+        "cameTrue": false,
+        "actualOutcome": "Marijuana legalization has progressed state by state, but it remains illegal at the federal level as of 2023.",
+        "accuracyRating": 1,
+        "id": "pred-joe-rogan-4"
+      },
+      {
+        "date": "2019-11-05",
+        "prediction": "We're gonna see a major political shift in the US within the next election cycle.",
+        "category": "politics",
+        "timeframe": "2 years",
+        "cameTrue": true,
+        "actualOutcome": "The 2020 US elections resulted in significant political changes, including Biden's presidency and shifts in Congress.",
+        "accuracyRating": 3,
+        "id": "pred-joe-rogan-5"
+      },
+      {
+        "date": "2020-03-28",
+        "prediction": "I think AI is gonna be capable of doing all basic human tasks, like writing emails or scheduling appointments, better than humans in five years.",
+        "category": "technology",
+        "timeframe": "5 years",
+        "cameTrue": true,
+        "actualOutcome": "AI advancements like GPT-3 and similar technologies have reached a level where they can efficiently handle such tasks.",
+        "accuracyRating": 3,
+        "id": "pred-joe-rogan-6"
+      },
+      {
+        "date": "2021-05-23",
+        "prediction": "Within the next year or so, we're going to see a resurgence in fitness trends, particularly at-home workouts, lingering from the pandemic.",
+        "category": "social-trends",
+        "timeframe": "1 year",
+        "cameTrue": true,
+        "actualOutcome": "At-home fitness continued to be a strong trend through 2022, bolstered by new tech and apps.",
+        "accuracyRating": 3,
+        "id": "pred-joe-rogan-7"
+      },
+      {
+        "date": "2022-01-11",
+        "prediction": "I'm gonna say we're looking at a major crash in the housing market within two years.",
+        "category": "economy",
+        "timeframe": "2 years",
+        "cameTrue": false,
+        "actualOutcome": "The housing market faced challenges but remained strong with price fluctuations instead of a major crash.",
+        "accuracyRating": 1,
+        "id": "pred-joe-rogan-8"
+      },
+      {
+        "date": "2022-08-18",
+        "prediction": "I foresee space tourism becoming relatively common by 2025. People are gonna be booking space flights like they used to book cruises.",
+        "category": "technology",
+        "timeframe": "3 years",
+        "cameTrue": false,
+        "actualOutcome": "Space tourism has made strides with companies like SpaceX and Blue Origin, but it remains a luxury rather than common.",
+        "accuracyRating": 2,
+        "id": "pred-joe-rogan-9"
+      },
+      {
+        "date": "2023-02-03",
+        "prediction": "In the next three years, I think we're going to see a more significant digital currency regulated by a major country, maybe even the U.S.",
+        "category": "economy",
+        "timeframe": "3 years",
+        "cameTrue": false,
+        "actualOutcome": "As of 2023, no major country has fully regulated a digital currency. Discussions and trials continue, but nothing substantial has been implemented yet.",
+        "accuracyRating": 2,
+        "id": "pred-joe-rogan-10"
+      },
+      {
+        "date": "2019-06-17",
+        "prediction": "There will be a massive cultural shift due to climate change awareness, especially among younger generations, within the next three years.",
+        "category": "social-trends",
+        "timeframe": "3 years",
+        "cameTrue": true,
+        "actualOutcome": "Climate change awareness has significantly risen, becoming a major factor in global youth movements and politics.",
+        "accuracyRating": 3,
+        "id": "pred-joe-rogan-11"
+      },
+      {
+        "date": "2020-10-24",
+        "prediction": "I'm expecting there will be another major attempt at tech regulation by governments around the world in the next couple of years.",
+        "category": "technology",
+        "timeframe": "2 years",
+        "cameTrue": true,
+        "actualOutcome": "There have been concerted efforts globally to regulate big tech companies, focusing on data privacy and monopolistic practices.",
+        "accuracyRating": 3,
+        "id": "pred-joe-rogan-12"
+      },
+      {
+        "date": "2021-09-29",
+        "prediction": "I believe we're going to see significant strides in life-expectancy technology, extending human life within five years.",
+        "category": "technology",
+        "timeframe": "5 years",
+        "cameTrue": false,
+        "actualOutcome": "While there have been advancements in health tech, significant life expectancy expansion is yet to be realized.",
+        "accuracyRating": 2,
+        "id": "pred-joe-rogan-13"
+      },
+      {
+        "date": "2018-12-02",
+        "prediction": "Global relations will be increasingly strained over tech dominance, especially between the US and China, over the next few years.",
+        "category": "foreign-policy",
+        "timeframe": "3 years",
+        "cameTrue": true,
+        "actualOutcome": "There have been ongoing tensions between U.S. and China regarding technology leadership and trade wars.",
+        "accuracyRating": 3,
+        "id": "pred-joe-rogan-14"
+      },
+      {
+        "date": "2022-04-12",
+        "prediction": "More people will adapt to plant-based diets as health and environmental trends continue pushing this within the next two years.",
+        "category": "social-trends",
+        "timeframe": "2 years",
+        "cameTrue": true,
+        "actualOutcome": "Plant-based diets have seen an increase in popularity, reflected in the growth of the plant-based food market and restaurants.",
+        "accuracyRating": 3,
+        "id": "pred-joe-rogan-15"
+      },
+      {
+        "date": "2023-01-08",
+        "prediction": "Within the next year, artificial intelligence is going to creep into art creation on a massive scale, like music and paintings.",
+        "category": "technology",
+        "timeframe": "1 year",
+        "cameTrue": true,
+        "actualOutcome": "AI art has surged in popularity, with tools like DALL-E and AI music composers becoming widely used.",
+        "accuracyRating": 3,
+        "id": "pred-joe-rogan-16"
+      },
+      {
+        "date": "2020-11-30",
+        "prediction": "I think the next decade will see a significant increase in geothermal energy usage.",
+        "category": "technology",
+        "timeframe": "10 years",
+        "cameTrue": false,
+        "actualOutcome": "Geothermal energy remains a small player in the renewables sector, with solar and wind taking the forefront.",
+        "accuracyRating": 1,
+        "id": "pred-joe-rogan-17"
+      },
+      {
+        "date": "2021-03-05",
+        "prediction": "I'm predicting a new major social media platform is gonna emerge within the next three years and challenge the current giants.",
+        "category": "technology",
+        "timeframe": "3 years",
+        "cameTrue": false,
+        "actualOutcome": "While newer platforms like TikTok have grown, no new platform has significantly displaced existing giants like Facebook or Twitter yet.",
+        "accuracyRating": 2,
+        "id": "pred-joe-rogan-18"
+      },
+      {
+        "date": "2022-10-19",
+        "prediction": "Fusion energy breakthroughs are going to be announced, bringing it much closer to commercial reality within five years.",
+        "category": "technology",
+        "timeframe": "5 years",
+        "cameTrue": false,
+        "actualOutcome": "Some advancements have been made in fusion research, but it remains far from commercial deployment.",
+        "accuracyRating": 2,
+        "id": "pred-joe-rogan-19"
+      },
+      {
+        "date": "2023-03-15",
+        "prediction": "I have a feeling we're going to see a global resurgence in nationalism over the next couple of years.",
+        "category": "politics",
+        "timeframe": "2 years",
+        "cameTrue": false,
+        "actualOutcome": "While nationalism remains a factor in global politics, it hasn't seen a significant resurgence as of yet. Global challenges have pushed more nations toward collaboration.",
+        "accuracyRating": 2,
+        "id": "pred-joe-rogan-20"
+      },
+      {
+        "date": "2019-08-21",
+        "prediction": "By 2023, there's going to be considerable mainstream adoption of cryptocurrencies beyond just financial speculation.",
+        "category": "economy",
+        "timeframe": "4 years",
+        "cameTrue": true,
+        "actualOutcome": "Mainstream interest and use of cryptocurrencies have grown, with major corporations and countries exploring and adopting them.",
+        "accuracyRating": 3,
+        "id": "pred-joe-rogan-21"
+      },
+      {
+        "date": "2020-05-14",
+        "prediction": "3D printing technology will revolutionize home construction in the next five years.",
+        "category": "technology",
+        "timeframe": "5 years",
+        "cameTrue": false,
+        "actualOutcome": "3D printing has seen some application in homebuilding, but it's not yet widespread or revolutionary in the industry.",
+        "accuracyRating": 1,
+        "id": "pred-joe-rogan-22"
+      },
+      {
+        "date": "2021-08-30",
+        "prediction": "In the next two years, we're going to witness at least one major cybersecurity event that changes how we view digital security.",
+        "category": "technology",
+        "timeframe": "2 years",
+        "cameTrue": true,
+        "actualOutcome": "Major cybersecurity incidents, such as the Colonial Pipeline ransomware attack, have reshaped discussions on digital security.",
+        "accuracyRating": 3,
+        "id": "pred-joe-rogan-23"
+      },
+      {
+        "date": "2018-05-30",
+        "prediction": "I honestly think marijuana is going to be an ordinary part of sports recovery and fitness by 2023.",
+        "category": "social-trends",
+        "timeframe": "5 years",
+        "cameTrue": true,
+        "actualOutcome": "There is an increasing acceptance and use of cannabis for recovery purposes in sports, especially in leagues like the NBA and UFC.",
+        "accuracyRating": 3,
+        "id": "pred-joe-rogan-24"
+      },
+      {
+        "date": "2019-03-17",
+        "prediction": "By 2024, a significant number of public schools will incorporate virtual reality into their teaching curriculum.",
+        "category": "technology",
+        "timeframe": "5 years",
+        "cameTrue": false,
+        "actualOutcome": "While some schools have experimented with VR, it hasn't achieved widespread integration due to cost and logistical challenges.",
+        "accuracyRating": 1,
+        "id": "pred-joe-rogan-25"
+      },
+      {
+        "date": "2021-02-11",
+        "prediction": "I think we're going to see massive improvements and breakthroughs in space exploration technology by 2030.",
+        "category": "technology",
+        "timeframe": "9 years",
+        "cameTrue": false,
+        "actualOutcome": "While there have been advancements in space tech and exploration, it is ongoing and not as rapid as predicted. The prediction timeline still extends into 2030.",
+        "accuracyRating": 2,
+        "id": "pred-joe-rogan-26"
+      },
+      {
+        "date": "2022-06-25",
+        "prediction": "In the next year, the global dialogue on mental health is going to become even more pronounced than ever before.",
+        "category": "social-trends",
+        "timeframe": "1 year",
+        "cameTrue": true,
+        "actualOutcome": "Awareness about mental health has increasingly become a global focus, driven by discussions of its effects and importance.",
+        "accuracyRating": 3,
+        "id": "pred-joe-rogan-27"
+      },
+      {
+        "date": "2020-01-19",
+        "prediction": "Augmented reality will begin to become part of our daily lives significantly within the next five years.",
+        "category": "technology",
+        "timeframe": "5 years",
+        "cameTrue": false,
+        "actualOutcome": "Augmented reality advancements are ongoing, notably in retail and gaming, but it hasn’t become a daily staple yet.",
+        "accuracyRating": 2,
+        "id": "pred-joe-rogan-28"
+      }
+    ]
+  },
+  {
+    "id": "krystal-ball",
+    "name": "Krystal Ball",
+    "shortBio": "Progressive political commentator, co-host of Breaking Points",
+    "photoUrl": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-7PK5FOKPsuq5MeEBarbi6vTc/user-GuwQqHkLGqwsoH5aLfRanjBa/img-DVuTEKLpSV3oLblDka4O75a4.png?st=2025-03-15T09%3A58%3A23Z&se=2025-03-15T11%3A58%3A23Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-14T18%3A19%3A20Z&ske=2025-03-15T18%3A19%3A20Z&sks=b&skv=2024-08-04&sig=bNRR9gFMwN7%2B/nc5LJEZ%2BDd2BAH8DLuNv2H5tiu%2BnFc%3D",
+    "averageAccuracy": 2,
+    "categoryAccuracy": {
+      "economy": 2,
+      "politics": 2,
+      "technology": 2,
+      "foreign_policy": 2,
+      "social_trends": 2
+    },
+    "patternAnalysis": "Krystal Ball demonstrates strong foresight in social trends and political predictions, with accurate forecasts about the rise of women in Congress, Medicare for All, and shifts in cable subscriptions. Her strengths lie in anticipating emerging social trends, such as remote work permanence and misinformation controls, showing a nuanced understanding of societal changes. However, she shows weaknesses in technology and foreign policy predictions, as seen with AI's impact on transportation and North Korea policy shifts. Category-specific trends indicate a robust accuracy in politics and social trends but less certainty in foreign policy. Her style leans towards progressive socio-political forecasts, potentially indicating a bias towards trends promoting societal change. Her overall accuracy is high, with most predictions rated as true or partially true, suggesting a careful approach to predicting well-grounded trends with some optimism towards progressive developments.",
+    "predictions": [
+      {
+        "date": "2018-06-15",
+        "prediction": "I expect that by 2020, the minimum wage in several major U.S. cities will reach $15 per hour.",
+        "category": "economy",
+        "timeframe": "by 2020",
+        "outcome": "True",
+        "actualOutcome": "Several cities including New York, Los Angeles, and San Francisco did implement a $15 minimum wage by 2020.",
+        "accuracy": 3,
+        "id": "pred-krystal-ball-0"
+      },
+      {
+        "date": "2018-10-10",
+        "prediction": "With the 2018 midterms, we may see a record number of women being elected to Congress.",
+        "category": "politics",
+        "timeframe": "After 2018 midterms",
+        "outcome": "True",
+        "actualOutcome": "The 2018 midterm elections broke records with 127 women elected to Congress.",
+        "accuracy": 3,
+        "id": "pred-krystal-ball-1"
+      },
+      {
+        "date": "2019-01-25",
+        "prediction": "It's likely that AI technology will significantly disrupt the transportation industry by 2022.",
+        "category": "technology",
+        "timeframe": "by 2022",
+        "outcome": "Partially true",
+        "actualOutcome": "AI has influenced various aspects of transportation, including autonomous vehicle development, but widespread disruption is still developing.",
+        "accuracy": 2,
+        "id": "pred-krystal-ball-2"
+      },
+      {
+        "date": "2019-03-17",
+        "prediction": "Expect a major shift in U.S. foreign policy towards North Korea within the next two years.",
+        "category": "foreign-policy",
+        "timeframe": "by 2021",
+        "outcome": "False",
+        "actualOutcome": "While negotiations were initiated, no major policy shifts occurred.",
+        "accuracy": 1,
+        "id": "pred-krystal-ball-3"
+      },
+      {
+        "date": "2019-05-02",
+        "prediction": "There will be significant pushes for Medicare for All within the Democratic Party leading up to the 2020 elections.",
+        "category": "politics",
+        "timeframe": "leading up to 2020",
+        "outcome": "True",
+        "actualOutcome": "Medicare for All became a central issue during the 2020 Democratic primaries.",
+        "accuracy": 3,
+        "id": "pred-krystal-ball-4"
+      },
+      {
+        "date": "2019-07-19",
+        "prediction": "We're going to see a continued decline in traditional cable subscriptions through 2021 as more people cut the cord.",
+        "category": "technology",
+        "timeframe": "by 2021",
+        "outcome": "True",
+        "actualOutcome": "Cable subscriptions have been declining as streaming services grow in popularity.",
+        "accuracy": 3,
+        "id": "pred-krystal-ball-5"
+      },
+      {
+        "date": "2019-10-30",
+        "prediction": "The U.S. will face a recession by the end of 2020 due to trade tensions and global economic factors.",
+        "category": "economy",
+        "timeframe": "by end of 2020",
+        "outcome": "Partially true",
+        "actualOutcome": "The U.S. did experience an economic downturn due to the pandemic, not primarily trade tensions.",
+        "accuracy": 2,
+        "id": "pred-krystal-ball-6"
+      },
+      {
+        "date": "2020-02-14",
+        "prediction": "Social media platforms will begin implementing stronger misinformation controls by 2021.",
+        "category": "social-trends",
+        "timeframe": "by 2021",
+        "outcome": "True",
+        "actualOutcome": "Platforms like Twitter and Facebook implemented new policies to curb misinformation.",
+        "accuracy": 3,
+        "id": "pred-krystal-ball-7"
+      },
+      {
+        "date": "2020-04-22",
+        "prediction": "Remote work will become a permanent feature for many companies even after the COVID-19 pandemic is over.",
+        "category": "social-trends",
+        "timeframe": "after COVID-19 pandemic",
+        "outcome": "True",
+        "actualOutcome": "Many companies have adopted permanent or hybrid remote work policies.",
+        "accuracy": 3,
+        "id": "pred-krystal-ball-8"
+      },
+      {
+        "date": "2020-07-14",
+        "prediction": "We will see significant reductions in carbon emissions in 2020 due to global lockdowns.",
+        "category": "environment",
+        "timeframe": "in 2020",
+        "outcome": "True",
+        "actualOutcome": "Global carbon emissions fell due to reduced travel and industrial activity during COVID-19 lockdowns.",
+        "accuracy": 3,
+        "id": "pred-krystal-ball-9"
+      },
+      {
+        "date": "2020-09-22",
+        "prediction": "Expect major rulings to support digital privacy rights in the U.S. by 2022.",
+        "category": "technology",
+        "timeframe": "by 2022",
+        "outcome": "Partially true",
+        "actualOutcome": "There have been some legal actions supporting digital privacy, but no landmark rulings significantly changing the landscape.",
+        "accuracy": 2,
+        "id": "pred-krystal-ball-10"
+      },
+      {
+        "date": "2021-01-10",
+        "prediction": "The stimulus packages passed in 2021 will trigger a large economic recovery by 2022.",
+        "category": "economy",
+        "timeframe": "by 2022",
+        "outcome": "True",
+        "actualOutcome": "The U.S. economy saw a strong rebound in 2021 and into 2022 due to fiscal stimulus.",
+        "accuracy": 3,
+        "id": "pred-krystal-ball-11"
+      },
+      {
+        "date": "2021-03-08",
+        "prediction": "The electric vehicle market will see exponential growth by 2023 as consumer preferences shift.",
+        "category": "technology",
+        "timeframe": "by 2023",
+        "outcome": "True",
+        "actualOutcome": "EV sales have grown significantly, boosted by policy support and consumer interest.",
+        "accuracy": 3,
+        "id": "pred-krystal-ball-12"
+      },
+      {
+        "date": "2021-06-15",
+        "prediction": "Expect more states to follow New York in legalizing recreational marijuana by 2023.",
+        "category": "social-trends",
+        "timeframe": "by 2023",
+        "outcome": "True",
+        "actualOutcome": "Several states have moved to legalize recreational marijuana following New York.",
+        "accuracy": 3,
+        "id": "pred-krystal-ball-13"
+      },
+      {
+        "date": "2021-09-20",
+        "prediction": "China will ramp up aggressive investment in Africa's infrastructure over the next five years.",
+        "category": "foreign-policy",
+        "timeframe": "by 2026",
+        "outcome": "Ongoing",
+        "actualOutcome": "China continues to invest heavily in African infrastructure, though assessments are ongoing.",
+        "accuracy": 3,
+        "id": "pred-krystal-ball-14"
+      },
+      {
+        "date": "2021-12-01",
+        "prediction": "The Biden administration will face significant challenges in passing voting rights legislation.",
+        "category": "politics",
+        "timeframe": "during Biden's first term",
+        "outcome": "True",
+        "actualOutcome": "Major voting rights legislation stalled in Congress due to Republican opposition and intra-party disagreements.",
+        "accuracy": 3,
+        "id": "pred-krystal-ball-15"
+      },
+      {
+        "date": "2022-02-15",
+        "prediction": "Masks will become a more common part of everyday life in major cities even post-pandemic for health and pollution reasons.",
+        "category": "social-trends",
+        "timeframe": "post-pandemic",
+        "outcome": "True",
+        "actualOutcome": "In some cities, mask usage remains prevalent, especially in Asia and during certain seasons.",
+        "accuracy": 3,
+        "id": "pred-krystal-ball-16"
+      },
+      {
+        "date": "2022-04-10",
+        "prediction": "Cryptocurrency will face increased regulation worldwide by 2024.",
+        "category": "economy",
+        "timeframe": "by 2024",
+        "outcome": "Ongoing",
+        "actualOutcome": "Several governments are actively developing regulatory frameworks, but the process is incomplete.",
+        "accuracy": 2,
+        "id": "pred-krystal-ball-17"
+      },
+      {
+        "date": "2022-06-06",
+        "prediction": "Expect a major shift in the global supply chain strategies post-COVID-19, emphasizing regional resilience.",
+        "category": "economy",
+        "timeframe": "post-COVID-19",
+        "outcome": "True",
+        "actualOutcome": "Many companies have moved to diversify supply chains, focusing on regional capabilities.",
+        "accuracy": 3,
+        "id": "pred-krystal-ball-18"
+      },
+      {
+        "date": "2022-08-22",
+        "prediction": "By 2023, the push towards renewable energy will gain unprecedented momentum, driven by policy and technological advances.",
+        "category": "technology",
+        "timeframe": "by 2023",
+        "outcome": "True",
+        "actualOutcome": "Global investment in renewable energy continues to rise, driven by government policies and technological innovations.",
+        "accuracy": 3,
+        "id": "pred-krystal-ball-19"
+      },
+      {
+        "date": "2022-11-18",
+        "prediction": "We may see major advancements in quantum computing by 2025 that could start impacting cybersecurity.",
+        "category": "technology",
+        "timeframe": "by 2025",
+        "outcome": "Ongoing",
+        "actualOutcome": "Research in quantum computing is progressing, with implications for cybersecurity being closely watched.",
+        "accuracy": 2,
+        "id": "pred-krystal-ball-20"
+      },
+      {
+        "date": "2023-01-12",
+        "prediction": "A significant rise in unionization efforts in the tech industry is expected over the next two years.",
+        "category": "social-trends",
+        "timeframe": "by 2025",
+        "outcome": "Ongoing",
+        "actualOutcome": "Unionization efforts have gained traction in some tech companies, but it's too early to assess the full impact.",
+        "accuracy": 2,
+        "id": "pred-krystal-ball-21"
+      },
+      {
+        "date": "2023-03-05",
+        "prediction": "The debate over AI ethics will intensify, leading to early policy frameworks by 2024.",
+        "category": "technology",
+        "timeframe": "by 2024",
+        "outcome": "Ongoing",
+        "actualOutcome": "Discussions on AI ethics are increasing, but comprehensive policies are still under development.",
+        "accuracy": 2,
+        "id": "pred-krystal-ball-22"
+      },
+      {
+        "date": "2023-05-23",
+        "prediction": "European nations will accelerate nuclear energy developments to secure energy independence by 2025.",
+        "category": "foreign-policy",
+        "timeframe": "by 2025",
+        "outcome": "Ongoing",
+        "actualOutcome": "Some European countries are revisiting nuclear energy plans, but progress varies widely.",
+        "accuracy": 2,
+        "id": "pred-krystal-ball-23"
+      },
+      {
+        "date": "2023-07-10",
+        "prediction": "AI-powered diagnostics will become standard in major hospitals by 2024.",
+        "category": "technology",
+        "timeframe": "by 2024",
+        "outcome": "Ongoing",
+        "actualOutcome": "AI diagnostics are being increasingly integrated, but it is not yet universally standard.",
+        "accuracy": 2,
+        "id": "pred-krystal-ball-24"
+      },
+      {
+        "date": "2019-07-04",
+        "prediction": "Single-payer healthcare systems will become a key issue in the 2020 Democratic primaries.",
+        "category": "politics",
+        "timeframe": "2020 primaries",
+        "outcome": "True",
+        "actualOutcome": "Single-payer healthcare was a central topic of debate among Democratic candidates.",
+        "accuracy": 3,
+        "id": "pred-krystal-ball-25"
+      },
+      {
+        "date": "2023-09-25",
+        "prediction": "Social media platforms will see a significant shift towards decentralized networks by 2026.",
+        "category": "social-trends",
+        "timeframe": "by 2026",
+        "outcome": "Ongoing",
+        "actualOutcome": "The exploration of decentralized social media is in progress, but adoption remains limited.",
+        "accuracy": 2,
+        "id": "pred-krystal-ball-26"
+      }
+    ]
+  }
+]

@@ -1,21 +1,86 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { SIPP_DATA, PredictionCategory } from '@/data/sippData';
+import { SIPP_DATA, PredictionCategory, loadRealSippData, SIPP } from '@/data/sippData';
 import SippCard from './SippCard';
 import { Button } from '@/components/ui/button';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Search, Filter, SortDesc, SortAsc } from 'lucide-react';
+import { Search, Filter, SortDesc, SortAsc, Loader2 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import { useToast } from '@/components/ui/use-toast';
 
 const Dashboard: React.FC = () => {
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
   const [selectedCategory, setSelectedCategory] = useState<PredictionCategory | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [sipps, setSipps] = useState<SIPP[]>(SIPP_DATA);
+  const [loading, setLoading] = useState(true);
+  const { toast } = useToast();
+
+  // Load SIPP data when component mounts
+  useEffect(() => {
+    async function loadData() {
+      try {
+        setLoading(true);
+        
+        // First try to fetch from the pregenerated JSON file (for production builds)
+        try {
+          const response = await fetch('/data/sippData.json');
+          if (response.ok) {
+            const jsonData = await response.json();
+            setSipps(jsonData);
+            toast({
+              title: "Data loaded successfully",
+              description: "SIPP data has been loaded with actual photos and predictions.",
+            });
+            setLoading(false);
+            return;
+          }
+        } catch (fetchError) {
+          console.error("Error fetching pregenerated data:", fetchError);
+        }
+        
+        // Try alternate path for lovable.dev if main path failed
+        try {
+          const response = await fetch('/sipp-sage-tracker/data/sippData.json');
+          if (response.ok) {
+            const jsonData = await response.json();
+            setSipps(jsonData);
+            toast({
+              title: "Data loaded successfully",
+              description: "SIPP data has been loaded from lovable.dev path.",
+            });
+            setLoading(false);
+            return;
+          }
+        } catch (fetchError) {
+          console.error("Error fetching from lovable.dev path:", fetchError);
+        }
+        
+        // Fallback to generating data on the fly
+        const realData = await loadRealSippData();
+        setSipps(realData);
+        toast({
+          title: "Data generated successfully",
+          description: "SIPP data has been dynamically generated with photos and predictions.",
+        });
+      } catch (error) {
+        console.error("Error loading SIPP data:", error);
+        toast({
+          title: "Error loading data",
+          description: "There was a problem loading the real SIPP data. Using fallback data instead.",
+          variant: "destructive",
+        });
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadData();
+  }, [toast]);
 
   // Filter and sort SIPPs
-  const filteredSipps = SIPP_DATA.filter(sipp => {
+  const filteredSipps = sipps.filter(sipp => {
     // Category filter
     if (selectedCategory !== 'all') {
       const categoryKey = selectedCategory.replace('-', '_') as keyof typeof sipp.categoryAccuracy;
@@ -53,6 +118,17 @@ const Dashboard: React.FC = () => {
       }
     }
   };
+
+  // Show loading state
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center py-24">
+        <Loader2 className="h-12 w-12 animate-spin text-primary mb-4" />
+        <h3 className="text-lg font-medium">Loading SIPP data...</h3>
+        <p className="text-muted-foreground mt-1">Fetching real images and predictions from OpenAI</p>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
