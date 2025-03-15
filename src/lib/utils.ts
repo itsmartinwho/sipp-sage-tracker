@@ -23,7 +23,7 @@ export const formatDate = (input: Date | string) => {
 }
 
 // Map of SIPP names to reliable image URLs
-const RELIABLE_SIPP_IMAGES: Record<string, string> = {
+export const RELIABLE_SIPP_IMAGES: Record<string, string> = {
   "Tucker Carlson": "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png",
   "Rachel Maddow": "/lovable-uploads/c844125c-dc7e-4e4d-878c-8c237999c9b5.png",
   "Elon Musk": "/lovable-uploads/0d2c9e34-5b94-48a2-a7ff-e928ed7818ac.png",
