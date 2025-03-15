@@ -1,4 +1,3 @@
-
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 import OpenAI from "openai"
@@ -79,23 +78,41 @@ export async function fetchSippPredictions(sippName: string): Promise<any[]> {
       messages: [
         {
           role: "system",
-          content: "You are an AI assistant that helps analyze predictions made by public figures. Generate realistic predictions that this person likely made in the past."
+          content: `You are an AI assistant specializing in analyzing predictions made by public figures. 
+          Your task is to generate highly realistic predictions that ${sippName} likely made in the past 2 years (2022-2023).
+          
+          Important guidelines:
+          1. Generate exactly 50 predictions
+          2. EACH prediction should be SPECIFIC to ${sippName}'s expertise, background, and known views
+          3. Include a mix of broad predictions (e.g., "Russia will decline as a geopolitical power") and specific ones (e.g., "NASDAQ will gain 12% in Q3")
+          4. Include realistic dates between January 1, 2022 and December 31, 2023
+          5. Distribute predictions across all five categories: economy, politics, technology, foreign-policy, social-trends
+          6. For each prediction, estimate whether it came true with realistic outcomes
+          7. For metrics-based predictions (with percentages or numbers), include specific variance information in the outcome
+          8. Be accurate to ${sippName}'s actual areas of expertise, political leanings, and public statements
+          
+          DO NOT generate generic predictions that could apply to any person. Each prediction must feel authentically connected to ${sippName}'s actual perspective.`
         },
         {
           role: "user", 
-          content: `Generate 40 realistic past predictions that ${sippName} likely made in news articles, interviews, social media, or other public sources. For each prediction:
-          1. Include a realistic date it was stated (between 2018-2023)
-          2. Write the exact prediction as they might have stated it
+          content: `Generate 50 realistic past predictions that ${sippName} specifically made between January 2022 and December 2023. For each prediction:
+          1. Include a realistic date it was stated (between Jan 2022 - Dec 2023)
+          2. Write the exact prediction as ${sippName} would have phrased it, matching their communication style
           3. Assign a category (economy, politics, technology, foreign-policy, or social-trends)
           4. Include a timeframe for when the prediction was supposed to occur
           5. Indicate whether the prediction came true or not
-          6. Describe what actually happened (the actual outcome)
+          6. Describe what actually happened (the actual outcome) with specific metrics when applicable
           7. Assign an accuracy rating from 1-3 (1=incorrect, 2=partially correct, 3=fully correct)
+          
+          Make sure to include a mix of:
+          - 15 broad conceptual predictions (trends, movements, general directions)
+          - 35 specific predictions with measurable outcomes (percentages, numbers, concrete events)
           
           Format your response as a JSON object with a "predictions" array.`
         }
       ],
       response_format: { type: "json_object" },
+      temperature: 0.8, // Add some variability to get diverse predictions
     });
     
     // Extract the JSON data from the response
@@ -104,6 +121,7 @@ export async function fetchSippPredictions(sippName: string): Promise<any[]> {
     
     try {
       const jsonData = JSON.parse(content);
+      console.log(`Successfully fetched ${jsonData.predictions?.length || 0} predictions for ${sippName}`);
       return jsonData.predictions || [];
     } catch (parseError) {
       console.error("Error parsing prediction JSON:", parseError);

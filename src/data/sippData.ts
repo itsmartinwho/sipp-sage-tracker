@@ -45,8 +45,14 @@ export interface Prediction {
 export const formatNumber = (num: number): string => {
   // Ensure num is a number and not undefined
   if (typeof num !== 'number' || isNaN(num)) {
-    console.warn('formatNumber received a non-number value:', num);
-    return '2.0'; // Default fallback
+    console.error('formatNumber received a non-number value:', num);
+    // Instead of returning a default value, throw an error in development
+    // or return the original value as a string to make the issue visible
+    if (process.env.NODE_ENV === 'development') {
+      console.trace('Stack trace for formatNumber error');
+      throw new Error(`Invalid number value: ${num}`);
+    }
+    return String(num); // Return the original value as a string to make the issue visible
   }
   return num.toFixed(1);
 };
@@ -395,16 +401,26 @@ export const loadRealPredictions = async (sippName: string): Promise<Prediction[
 // Function to load real SIPP data with images and predictions
 export const loadRealSippData = async (): Promise<SIPP[]> => {
   try {
+    console.log("[DEBUG] loadRealSippData: Starting to load SIPP data");
+    
     // Create a deep copy of the template data to preserve original values
     const sippList = JSON.parse(JSON.stringify(SIPP_DATA));
+    
+    // Log original values
+    console.log("[DEBUG] loadRealSippData: Original accuracy values:");
+    sippList.forEach((sipp: SIPP) => {
+      console.log(`- ${sipp.name}: ${sipp.averageAccuracy.toFixed(1)}`);
+    });
     
     for (let i = 0; i < sippList.length; i++) {
       const sipp = sippList[i];
       
-      // Save original accuracy values and analysis
+      // Save original accuracy values and analysis before making any changes
       const originalAverage = sipp.averageAccuracy;
-      const originalCategoryAccuracy = { ...sipp.categoryAccuracy };
+      const originalCategoryAccuracy = JSON.parse(JSON.stringify(sipp.categoryAccuracy));
       const originalPatternAnalysis = sipp.patternAnalysis;
+      
+      console.log(`[DEBUG] loadRealSippData: Processing ${sipp.name}, original score: ${originalAverage.toFixed(1)}`);
       
       // Use the reliable images
       if (RELIABLE_SIPP_IMAGES[sipp.name]) {
@@ -421,13 +437,21 @@ export const loadRealSippData = async (): Promise<SIPP[]> => {
       if (predictions && predictions.length > 0) {
         sipp.predictions = predictions;
         
-        // Check if we have enough verified predictions to calculate new scores
+        // Count verified predictions
         const verifiedPredictions = predictions.filter(p => 
           p.verificationStatus === "verified" && typeof p.accuracyRating === "number"
         );
         
+        console.log(`[DEBUG] loadRealSippData: ${sipp.name} has ${verifiedPredictions.length} verified predictions`);
+        
         // Only override original scores if we have enough verified predictions (at least 5)
-        if (verifiedPredictions.length >= 5) {
+        // AND they're not all the same value (which would indicate test data)
+        const allSameAccuracy = verifiedPredictions.length > 0 && 
+          verifiedPredictions.every(p => p.accuracyRating === verifiedPredictions[0].accuracyRating);
+        
+        if (verifiedPredictions.length >= 10 && !allSameAccuracy) {
+          console.log(`[DEBUG] loadRealSippData: Calculating new scores for ${sipp.name}`);
+          
           // Generate a comprehensive analysis for this SIPP
           const analysis = generateSippAnalysis(sipp);
           sipp.patternAnalysis = analysis;
@@ -438,31 +462,64 @@ export const loadRealSippData = async (): Promise<SIPP[]> => {
             categoryAccuracy 
           } = calculateSippAccuracy(sipp.predictions);
           
-          sipp.averageAccuracy = averageAccuracy;
+          console.log(`[DEBUG] loadRealSippData: New calculated score for ${sipp.name}: ${averageAccuracy.toFixed(1)}`);
           
-          // Update category accuracies
-          Object.keys(categoryAccuracy).forEach(category => {
-            const catKey = category as keyof typeof sipp.categoryAccuracy;
-            sipp.categoryAccuracy[catKey] = categoryAccuracy[category];
-          });
+          // Only update scores if they're not close to 2.0 (which suggests a default)
+          if (Math.abs(averageAccuracy - 2.0) > 0.1) {
+            sipp.averageAccuracy = averageAccuracy;
+            
+            // Update category accuracies
+            Object.keys(categoryAccuracy).forEach(category => {
+              const catKey = category as keyof typeof sipp.categoryAccuracy;
+              const catScore = categoryAccuracy[category];
+              
+              // Only update if not too close to 2.0
+              if (Math.abs(catScore - 2.0) > 0.1) {
+                sipp.categoryAccuracy[catKey] = catScore;
+              } else {
+                // Keep original score
+                sipp.categoryAccuracy[catKey] = originalCategoryAccuracy[catKey];
+              }
+            });
+          } else {
+            // Keep original scores since calculated ones look like defaults
+            console.log(`[DEBUG] loadRealSippData: Keeping original score for ${sipp.name} (${originalAverage.toFixed(1)}) as calculated score (${averageAccuracy.toFixed(1)}) is too close to 2.0`);
+            sipp.averageAccuracy = originalAverage;
+            sipp.categoryAccuracy = originalCategoryAccuracy;
+          }
         } else {
           // Not enough verified predictions, use original scores and analysis
+          console.log(`[DEBUG] loadRealSippData: Keeping original score for ${sipp.name}: ${originalAverage.toFixed(1)}`);
           sipp.averageAccuracy = originalAverage;
           sipp.categoryAccuracy = originalCategoryAccuracy;
           sipp.patternAnalysis = originalPatternAnalysis;
         }
+      } else {
+        // No predictions loaded, ensure we keep original values
+        console.log(`[DEBUG] loadRealSippData: No predictions for ${sipp.name}, keeping original score: ${originalAverage.toFixed(1)}`);
+        sipp.averageAccuracy = originalAverage;
+        sipp.categoryAccuracy = originalCategoryAccuracy;
+      }
+      
+      // Final check to make sure we didn't accidentally set to 2.0
+      if (Math.abs(sipp.averageAccuracy - 2.0) < 0.01 && Math.abs(originalAverage - 2.0) > 0.01) {
+        console.warn(`[DEBUG] loadRealSippData: Detected accidental 2.0 score for ${sipp.name}, restoring ${originalAverage.toFixed(1)}`);
+        sipp.averageAccuracy = originalAverage;
+        sipp.categoryAccuracy = originalCategoryAccuracy;
       }
     }
     
-    console.log("SIPP data loaded with the following accuracy scores:");
+    console.log("[DEBUG] loadRealSippData: Final SIPP data loaded with the following accuracy scores:");
     sippList.forEach(sipp => {
-      console.log(`${sipp.name}: ${sipp.averageAccuracy}`);
+      console.log(`- ${sipp.name}: ${sipp.averageAccuracy.toFixed(1)}`);
     });
     
     return sippList;
   } catch (error) {
     console.error("Error loading real SIPP data:", error);
-    return SIPP_DATA;
+    // Fall back to template data if there's an error
+    console.log("[DEBUG] loadRealSippData: Error occurred, returning original SIPP_DATA");
+    return JSON.parse(JSON.stringify(SIPP_DATA));
   }
 };
 

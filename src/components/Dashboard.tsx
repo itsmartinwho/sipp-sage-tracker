@@ -10,27 +10,49 @@ import { Input } from '@/components/ui/input';
 import { useToast } from '@/components/ui/use-toast';
 import { preloadImages, getFallbackImageUrl, RELIABLE_SIPP_IMAGES } from '@/lib/utils';
 
+// IMPORTANT: Add this debugging function to track SIPP data
+const inspectSippScores = (sipps: SIPP[], stage: string) => {
+  console.log(`[DEBUG] SIPP Scores at ${stage}:`);
+  sipps.forEach(sipp => {
+    console.log(`- ${sipp.name}: ${sipp.averageAccuracy.toFixed(1)}`);
+  });
+};
+
 const Dashboard: React.FC = () => {
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
   const [selectedCategory, setSelectedCategory] = useState<PredictionCategory | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [sipps, setSipps] = useState<SIPP[]>(SIPP_DATA);
+  // Initialize SIPP data with the exact values from SIPP_DATA
+  const [sipps, setSipps] = useState<SIPP[]>(() => {
+    const initialSipps = JSON.parse(JSON.stringify(SIPP_DATA));
+    inspectSippScores(initialSipps, "initial load");
+    return initialSipps;
+  });
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
 
   // Load SIPP data when component mounts
   useEffect(() => {
+    let isMounted = true; // To prevent state updates if component unmounts
+    
     async function loadData() {
       try {
         setLoading(true);
+        console.log("[DEBUG] Starting to load SIPP data");
         
-        // Get the base URL depending on environment
-        const baseUrl = window.location.href.includes('lovable.dev') 
-          ? '/sipp-sage-tracker'
-          : '';
+        // Deep copy the initial SIPP_DATA to ensure we have clean starting values
+        const baseData = JSON.parse(JSON.stringify(SIPP_DATA));
+        inspectSippScores(baseData, "base data");
         
-        // Try to load from pregenerated JSON file
+        // Try to load from pregenerated JSON file first
+        let loadedSipps: SIPP[] = [];
+        let loadedFromJson = false;
+        
         try {
+          const baseUrl = window.location.href.includes('lovable.dev') 
+            ? '/sipp-sage-tracker'
+            : '';
+            
           const response = await fetch(`${baseUrl}/data/sippData.json`);
           if (response.ok) {
             const jsonData = await response.json();
@@ -41,79 +63,67 @@ const Dashboard: React.FC = () => {
                 jsonData[0].photoUrl && 
                 jsonData[0].predictions) {
               
-              // Make sure all SIPPs have the correct images
-              const updatedData = jsonData.map(sipp => {
-                // Use our reliable image paths for each SIPP
-                const reliableImagePath = RELIABLE_SIPP_IMAGES[sipp.name];
+              // Merge JSON data with base data to ensure scores are preserved
+              loadedSipps = jsonData.map((jsonSipp: any) => {
+                // Find corresponding base SIPP
+                const baseSipp = baseData.find((s: SIPP) => s.id === jsonSipp.id);
+                if (!baseSipp) return jsonSipp; // No matching base SIPP, use JSON data as is
                 
-                if (reliableImagePath) {
-                  return {
-                    ...sipp,
-                    photoUrl: reliableImagePath,
-                    // Ensure we're preserving the accuracy values from the original data
-                    averageAccuracy: sipp.averageAccuracy || SIPP_DATA.find(s => s.id === sipp.id)?.averageAccuracy || 2.0,
-                    categoryAccuracy: { 
-                      ...SIPP_DATA.find(s => s.id === sipp.id)?.categoryAccuracy || {},
-                      ...sipp.categoryAccuracy 
-                    }
-                  };
-                }
-                return sipp;
+                // Start with the base SIPP to ensure all expected properties exist
+                return {
+                  ...baseSipp,
+                  // Override with JSON data except accuracy info
+                  ...jsonSipp,
+                  // Preserve the original accuracy values from SIPP_DATA
+                  averageAccuracy: baseSipp.averageAccuracy,
+                  categoryAccuracy: { ...baseSipp.categoryAccuracy }
+                };
               });
               
-              // Log JSON data accuracies for debugging
-              console.log("JSON data accuracies:");
-              updatedData.forEach(sipp => {
-                console.log(`${sipp.name}: ${sipp.averageAccuracy}`);
-              });
-              
-              setSipps(updatedData);
-              console.log("Successfully loaded SIPP data from JSON file");
-              toast({
-                title: "Data loaded successfully",
-                description: "SIPP data has been loaded with actual photos and predictions.",
-              });
-              setLoading(false);
-              return;
-            } else {
-              console.error("JSON data is not in the expected format:", jsonData);
+              loadedFromJson = true;
+              console.log("[DEBUG] Successfully loaded data from JSON file");
+              inspectSippScores(loadedSipps, "loaded from JSON");
             }
-          } else {
-            console.error("Error fetching sippData.json:", response.status, response.statusText);
           }
-        } catch (fetchError) {
-          console.error("Error fetching pregenerated data:", fetchError);
+        } catch (error) {
+          console.error("[DEBUG] Error loading from JSON:", error);
         }
         
-        // If we get here, try to generate data dynamically
-        console.log("Generating data dynamically...");
-        const realData = await loadRealSippData();
+        // If we couldn't load from JSON, generate data dynamically using loadRealSippData
+        if (!loadedFromJson) {
+          console.log("[DEBUG] Generating data dynamically...");
+          try {
+            loadedSipps = await loadRealSippData();
+            inspectSippScores(loadedSipps, "loaded from loadRealSippData");
+          } catch (error) {
+            console.error("[DEBUG] Error generating data dynamically:", error);
+            loadedSipps = baseData; // Fallback to base data
+            inspectSippScores(loadedSipps, "fallback to base data");
+          }
+        }
         
-        // Log accuracy data for debugging
-        console.log("Real data accuracies:");
-        realData.forEach(sipp => {
-          console.log(`${sipp.name}: ${sipp.averageAccuracy}`);
-        });
-        
-        // Ensure all SIPPs have the correct images but preserve accuracy values
-        const updatedRealData = realData.map(sipp => {
-          // Use our reliable image paths for each SIPP
+        // Ensure all SIPPs have the correct images
+        loadedSipps = loadedSipps.map(sipp => {
           const reliableImagePath = RELIABLE_SIPP_IMAGES[sipp.name];
           
-          if (reliableImagePath) {
-            return {
-              ...sipp,
-              photoUrl: reliableImagePath,
-              // Ensure we're preserving the accuracy values from the original data
-              averageAccuracy: sipp.averageAccuracy,
-              categoryAccuracy: { ...sipp.categoryAccuracy }
-            };
+          if (!reliableImagePath) {
+            return sipp; // No reliable image path, keep as is
           }
-          return sipp;
+          
+          // Explicitly preserve the accuracy scores when updating the image
+          return {
+            ...sipp,
+            photoUrl: reliableImagePath,
+            // Redundant but explicit preservation of accuracy values
+            averageAccuracy: sipp.averageAccuracy,
+            categoryAccuracy: { ...sipp.categoryAccuracy }
+          };
         });
         
+        inspectSippScores(loadedSipps, "after image updates");
+        
         // Validate and ensure each SIPP has a working image URL
-        for (const sipp of updatedRealData) {
+        for (const sipp of loadedSipps) {
           // Make sure each SIPP has a valid photoUrl
           if (!sipp.photoUrl || sipp.photoUrl.trim() === '') {
             console.warn(`Missing photo URL for ${sipp.name}, using fallback`);
@@ -121,53 +131,64 @@ const Dashboard: React.FC = () => {
           }
         }
         
-        // Preload images in the background
-        preloadImages(updatedRealData.map(sipp => sipp.photoUrl));
-        
-        setSipps(updatedRealData);
-        toast({
-          title: "Data generated successfully",
-          description: "SIPP data has been dynamically generated with photos and predictions.",
-        });
-      } catch (error) {
-        console.error("Error loading SIPP data:", error);
-        toast({
-          title: "Error loading data",
-          description: "There was a problem loading the real SIPP data. Using fallback data instead.",
-          variant: "destructive",
-        });
-        
-        // Update all SIPPs' images in the fallback data
-        const updatedFallbackData = SIPP_DATA.map(sipp => {
-          // Use our reliable image paths for each SIPP
-          const reliableImagePath = RELIABLE_SIPP_IMAGES[sipp.name];
-          
-          if (reliableImagePath) {
-            return {
-              ...sipp,
-              photoUrl: reliableImagePath,
-              // Ensure we're preserving the accuracy values from the original data
-              averageAccuracy: sipp.averageAccuracy,
-              categoryAccuracy: { ...sipp.categoryAccuracy }
-            };
+        // Final validation to ensure no SIPP has a 2.0 score unless it's supposed to
+        loadedSipps.forEach(sipp => {
+          const originalSipp = SIPP_DATA.find(s => s.id === sipp.id);
+          if (originalSipp && Math.abs(sipp.averageAccuracy - 2.0) < 0.01 && Math.abs(originalSipp.averageAccuracy - 2.0) > 0.01) {
+            console.warn(`[DEBUG] Score reset to 2.0 detected for ${sipp.name}, fixing to ${originalSipp.averageAccuracy}`);
+            sipp.averageAccuracy = originalSipp.averageAccuracy;
+            sipp.categoryAccuracy = { ...originalSipp.categoryAccuracy };
           }
-          return sipp;
         });
         
-        // Log fallback data accuracies for debugging
-        console.log("Fallback data accuracies:");
-        updatedFallbackData.forEach(sipp => {
-          console.log(`${sipp.name}: ${sipp.averageAccuracy}`);
-        });
+        inspectSippScores(loadedSipps, "final validation");
         
-        setSipps(updatedFallbackData);
+        // Preload images in the background
+        preloadImages(loadedSipps.map(sipp => sipp.photoUrl));
+        
+        // Only update state if component is still mounted
+        if (isMounted) {
+          setSipps(loadedSipps);
+          toast({
+            title: "Data loaded successfully",
+            description: "SIPP data has been loaded with accurate predictions and scores.",
+          });
+        }
+      } catch (error) {
+        console.error("[DEBUG] Fatal error in data loading:", error);
+        if (isMounted) {
+          toast({
+            title: "Error loading data",
+            description: "There was a problem loading the SIPP data. Using fallback data instead.",
+            variant: "destructive",
+          });
+          
+          // Fallback to original SIPP_DATA
+          const fallbackData = JSON.parse(JSON.stringify(SIPP_DATA));
+          inspectSippScores(fallbackData, "fatal error fallback");
+          setSipps(fallbackData);
+        }
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     }
 
     loadData();
+    
+    // Cleanup function
+    return () => {
+      isMounted = false;
+    };
   }, [toast]);
+
+  // Verify scores right before rendering
+  useEffect(() => {
+    if (!loading) {
+      inspectSippScores(sipps, "pre-render verification");
+    }
+  }, [sipps, loading]);
 
   // Filter and sort SIPPs
   const filteredSipps = sipps.filter(sipp => {
@@ -198,6 +219,16 @@ const Dashboard: React.FC = () => {
         : a.categoryAccuracy[categoryKey] - b.categoryAccuracy[categoryKey];
     }
   });
+
+  // Log the final filteredSipps for debugging
+  useEffect(() => {
+    if (!loading) {
+      console.log("[DEBUG] Filtered and sorted SIPPs for rendering:");
+      filteredSipps.forEach(sipp => {
+        console.log(`- ${sipp.name}: ${sipp.averageAccuracy.toFixed(1)}`);
+      });
+    }
+  }, [filteredSipps, loading]);
 
   const containerVariants = {
     hidden: { opacity: 0 },

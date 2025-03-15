@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -13,6 +12,9 @@ interface SippCardProps {
 }
 
 const SippCard: React.FC<SippCardProps> = ({ sipp, index }) => {
+  // Add console log for debugging
+  console.log(`[DEBUG] Rendering SippCard for ${sipp.name} with score: ${sipp.averageAccuracy.toFixed(1)}`);
+  
   // Get top categories by accuracy
   const topCategories = Object.entries(sipp.categoryAccuracy)
     .sort(([, a], [, b]) => b - a)
@@ -57,6 +59,9 @@ const SippCard: React.FC<SippCardProps> = ({ sipp, index }) => {
                   <Badge 
                     style={{ backgroundColor: `hsl(var(--${getAccuracyColor(sipp.averageAccuracy)}))` }}
                     variant="secondary"
+                    className="relative"
+                    // Add a data attribute for debugging
+                    data-accuracy={sipp.averageAccuracy.toFixed(1)}
                   >
                     {formatNumber(sipp.averageAccuracy)}
                   </Badge>
@@ -74,6 +79,8 @@ const SippCard: React.FC<SippCardProps> = ({ sipp, index }) => {
                       key={category.name}
                       style={{ backgroundColor: `hsl(var(--${getCategoryColor(category.name)}))` }}
                       variant="outline"
+                      // Add a data attribute for debugging
+                      data-category-accuracy={category.accuracy.toFixed(1)}
                     >
                       {category.name.replace('-', ' ')} ({formatNumber(category.accuracy)})
                     </Badge>

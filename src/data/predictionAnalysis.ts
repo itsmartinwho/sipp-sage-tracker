@@ -27,7 +27,44 @@ export const parsePrediction = (rawPrediction: any, sippName: string, index: num
 // ---------------------------------
 
 /**
+ * Category-specific variance thresholds for more accurate scoring
+ * These represent typical margins of error for different types of predictions
+ */
+export const CATEGORY_VARIANCE: Record<PredictionCategory, {
+  low: number,  // Low variance threshold
+  high: number, // High variance threshold
+  units: string // Unit of measurement (for context)
+}> = {
+  'economy': {
+    low: 0.05,  // 5% variance is considered low for economic predictions
+    high: 0.15, // 15% variance is considered high
+    units: 'percent'
+  },
+  'politics': {
+    low: 0.1,   // 10% variance for political outcomes (e.g., vote share)
+    high: 0.2,  // 20% variance is high
+    units: 'probability'
+  },
+  'technology': {
+    low: 0.3,   // Technology predictions have higher inherent variance
+    high: 0.5,  // 50% is considered high variance
+    units: 'timeframe'
+  },
+  'foreign-policy': {
+    low: 0.2,   // Foreign policy predictions have moderate-high variance
+    high: 0.4,  // 40% variance is high
+    units: 'likelihood'
+  },
+  'social-trends': {
+    low: 0.25,  // Social trends have inherently high variance
+    high: 0.45, // 45% variance is high
+    units: 'magnitude'
+  }
+};
+
+/**
  * Assesses a prediction against its actual outcome and assigns an accuracy rating
+ * using more robust category-specific rules and variance considerations
  */
 export const assessPrediction = (prediction: Prediction, actualOutcome: string): number => {
   // Base score starts at 2 (partially correct)
@@ -37,87 +74,220 @@ export const assessPrediction = (prediction: Prediction, actualOutcome: string):
   const predictionLower = prediction.predictedOutcome.toLowerCase();
   const actualLower = actualOutcome.toLowerCase();
   
-  // Check if prediction was completely wrong
+  // Completely wrong prediction detection (generic across categories)
   if (
     (actualLower.includes("did not happen") || 
      actualLower.includes("completely incorrect") ||
-     actualLower.includes("entirely wrong")) &&
+     actualLower.includes("entirely wrong") ||
+     actualLower.includes("opposite occurred")) &&
     !actualLower.includes("partially")
   ) {
     return 1; // Completely wrong
   }
   
-  // Check if prediction was completely right
+  // Completely right prediction detection (generic across categories)
   if (
     (actualLower.includes("exactly as predicted") || 
      actualLower.includes("completely accurate") ||
-     actualLower.includes("fully correct")) &&
+     actualLower.includes("fully correct") ||
+     actualLower.includes("precisely as forecasted")) &&
     !actualLower.includes("partially")
   ) {
     return 3; // Completely right
   }
   
-  // Category-specific scoring
+  // Category-specific scoring with enhanced variance consideration
   switch(prediction.category) {
     case 'economy':
-      // Economic predictions are judged more strictly due to available data
+      // Economic predictions consider numerical precision and actual variance
       if (actualLower.includes("off by more than 10%") || 
           actualLower.includes("significantly overestimated") ||
-          actualLower.includes("significantly underestimated")) {
+          actualLower.includes("significantly underestimated") ||
+          actualLower.includes("direction was wrong") ||
+          actualLower.includes("missed by double digits")) {
         score = 1;
-      } else if (actualLower.includes("within 5%") || 
-                actualLower.includes("very accurate") ||
-                actualLower.includes("closely predicted")) {
+      } else if (
+          // More precise threshold checks for economic predictions
+          (actualLower.includes("within 5%") || 
+           actualLower.includes("very accurate") ||
+           actualLower.includes("closely predicted") ||
+           actualLower.includes("margin of error") ||
+           actualLower.includes("nearly exact")) &&
+          !actualLower.includes("but timing was off")
+      ) {
         score = 3;
+      } else if (
+          // Partial accuracy cases
+          actualLower.includes("correct direction") ||
+          actualLower.includes("partially accurate") ||
+          actualLower.includes("somewhat correct") ||
+          (actualLower.includes("right") && actualLower.includes("magnitude was off"))
+      ) {
+        score = 2;
       }
       break;
       
     case 'politics':
-      // Political predictions focus on outcomes and timing
+      // Political predictions focus on outcomes, timing, and magnitudes
       if (actualLower.includes("wrong outcome") || 
           actualLower.includes("incorrect winner") ||
-          actualLower.includes("opposite happened")) {
+          actualLower.includes("opposite happened") ||
+          actualLower.includes("misread political trends") ||
+          actualLower.includes("failed to anticipate")) {
         score = 1;
-      } else if (actualLower.includes("correct outcome") && 
-                actualLower.includes("timing was accurate")) {
+      } else if (
+          // More nuanced checks for highly accurate political predictions
+          (actualLower.includes("correct outcome") && 
+           (actualLower.includes("timing was accurate") ||
+            actualLower.includes("accurately predicted") ||
+            actualLower.includes("correctly forecasted"))) ||
+          (actualLower.includes("winner") && actualLower.includes("margin") && 
+           actualLower.includes("accurately"))
+      ) {
         score = 3;
+      } else if (
+          // Partial accuracy cases for politics
+          actualLower.includes("correct party") ||
+          actualLower.includes("right direction") ||
+          (actualLower.includes("outcome") && actualLower.includes("timing was off")) ||
+          actualLower.includes("partially correct")
+      ) {
+        score = 2;
       }
       break;
       
     case 'technology':
-      // Technology predictions allow more leeway on timing but focus on direction
+      // Technology predictions with more nuanced assessment considering adoption curves
       if (actualLower.includes("wrong direction") || 
           actualLower.includes("technology failed") ||
-          actualLower.includes("never materialized")) {
+          actualLower.includes("never materialized") ||
+          actualLower.includes("abandoned") ||
+          actualLower.includes("opposite trend emerged")) {
         score = 1;
-      } else if (actualLower.includes("correct direction") && 
-                !actualLower.includes("timing was off")) {
+      } else if (
+          // High accuracy for technology predictions considers both direction and adoption
+          (actualLower.includes("correct direction") && 
+           !actualLower.includes("timing was off") &&
+           (actualLower.includes("adoption rate") || 
+            actualLower.includes("market penetration") ||
+            actualLower.includes("technological advancement")))
+      ) {
         score = 3;
+      } else if (
+          // Partial accuracy for technology
+          actualLower.includes("right technology") ||
+          actualLower.includes("emerged as predicted") ||
+          (actualLower.includes("correct") && actualLower.includes("timeline was off")) ||
+          actualLower.includes("partially adopted")
+      ) {
+        score = 2;
       }
       break;
       
     case 'foreign-policy':
-      // Foreign policy predictions focus on outcomes and key players
+      // Foreign policy with enhanced consideration of actors and contexts
       if (actualLower.includes("completely misread") || 
           actualLower.includes("wrong actors") ||
-          actualLower.includes("opposite response")) {
+          actualLower.includes("opposite response") ||
+          actualLower.includes("fundamentally misunderstood") ||
+          actualLower.includes("diplomatic failure")) {
         score = 1;
-      } else if (actualLower.includes("correctly identified") && 
-                actualLower.includes("accurate assessment")) {
+      } else if (
+          // High accuracy for foreign policy considers multiple factors
+          (actualLower.includes("correctly identified") && 
+           actualLower.includes("accurate assessment")) ||
+          (actualLower.includes("diplomatic") && 
+           actualLower.includes("precisely") &&
+           actualLower.includes("predicted"))
+      ) {
         score = 3;
+      } else if (
+          // Partial accuracy for foreign policy
+          actualLower.includes("general approach") ||
+          actualLower.includes("correct countries") ||
+          (actualLower.includes("right") && actualLower.includes("response")) ||
+          actualLower.includes("partially accurate")
+      ) {
+        score = 2;
       }
       break;
       
     case 'social-trends':
-      // Social trends allow more leeway as they're harder to predict precisely
+      // Social trends with better distinction between direction and magnitude
       if (actualLower.includes("trend moved opposite") || 
-          actualLower.includes("completely misread public sentiment")) {
+          actualLower.includes("completely misread public sentiment") ||
+          actualLower.includes("social movement collapsed") ||
+          actualLower.includes("wrong demographic") ||
+          actualLower.includes("cultural shift reversed")) {
         score = 1;
-      } else if (actualLower.includes("trend developed as predicted") && 
-                !actualLower.includes("overestimated")) {
+      } else if (
+          // High accuracy for social trends focuses on both direction and magnitude
+          (actualLower.includes("trend developed as predicted") && 
+           !actualLower.includes("overestimated") &&
+           !actualLower.includes("underestimated")) ||
+          (actualLower.includes("social change") && 
+           actualLower.includes("precisely") &&
+           actualLower.includes("forecasted"))
+      ) {
         score = 3;
+      } else if (
+          // Partial accuracy for social trends
+          actualLower.includes("right direction") ||
+          actualLower.includes("emerged but") ||
+          (actualLower.includes("trend") && actualLower.includes("magnitude was different")) ||
+          actualLower.includes("partially manifested")
+      ) {
+        score = 2;
       }
       break;
+  }
+  
+  // Apply variance adjustment if specific variance information is present
+  if (actualLower.includes("variance") || actualLower.includes("deviated by")) {
+    // Extract variance percentage if present
+    const varianceMatch = actualLower.match(/(?:variance|deviated by|off by) (\d+(?:\.\d+)?)%/);
+    if (varianceMatch && varianceMatch[1]) {
+      const variance = parseFloat(varianceMatch[1]) / 100;
+      const categoryVariance = CATEGORY_VARIANCE[prediction.category];
+      
+      // Adjust score based on where the variance falls relative to category thresholds
+      if (variance <= categoryVariance.low) {
+        // If variance is within the low threshold, increase score (max 3)
+        score = Math.min(score + 0.5, 3);
+      } else if (variance >= categoryVariance.high) {
+        // If variance exceeds high threshold, decrease score (min 1)
+        score = Math.max(score - 0.5, 1);
+      }
+    }
+  }
+  
+  // If prediction contains specific metrics or percentages
+  const predictionContainsMetrics = predictionLower.match(/\b\d+(?:\.\d+)?%|\b\d+\s+percent\b/);
+  const actualContainsMetrics = actualLower.match(/\b\d+(?:\.\d+)?%|\b\d+\s+percent\b/);
+  
+  // If both contain metrics, we can do a more precise comparison
+  if (predictionContainsMetrics && actualContainsMetrics) {
+    // Extract the predicted and actual percentages
+    const predictedPercentMatch = predictionLower.match(/(\d+(?:\.\d+)?)%|(\d+)\s+percent/);
+    const actualPercentMatch = actualLower.match(/(\d+(?:\.\d+)?)%|(\d+)\s+percent/);
+    
+    if (predictedPercentMatch && actualPercentMatch) {
+      const predictedPercent = parseFloat(predictedPercentMatch[1] || predictedPercentMatch[2]);
+      const actualPercent = parseFloat(actualPercentMatch[1] || actualPercentMatch[2]);
+      
+      // Calculate the absolute difference as a percentage of the actual
+      const percentDiff = Math.abs(predictedPercent - actualPercent);
+      const relativeDiff = actualPercent ? percentDiff / actualPercent : 1;
+      
+      // Adjust score based on relative difference
+      if (relativeDiff <= CATEGORY_VARIANCE[prediction.category].low) {
+        score = 3; // Very accurate
+      } else if (relativeDiff >= CATEGORY_VARIANCE[prediction.category].high) {
+        score = 1; // Very inaccurate
+      } else {
+        score = 2; // Moderately accurate
+      }
+    }
   }
   
   return score;
