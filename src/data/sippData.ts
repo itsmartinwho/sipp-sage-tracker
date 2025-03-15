@@ -34,6 +34,11 @@ export interface Prediction {
 
 // Helper functions for formatting and color logic
 export const formatNumber = (num: number): string => {
+  // Ensure num is a number and not undefined
+  if (typeof num !== 'number' || isNaN(num)) {
+    console.warn('formatNumber received a non-number value:', num);
+    return '2.0'; // Default fallback
+  }
   return num.toFixed(1);
 };
 
@@ -387,7 +392,8 @@ export const loadRealPredictions = async (sippName: string): Promise<Prediction[
 // Function to load real SIPP data with images and predictions
 export const loadRealSippData = async (): Promise<SIPP[]> => {
   try {
-    const sippList = [...SIPP_DATA]; // Start with the template data
+    // Start with a deep copy of the template data to ensure we don't modify the original
+    const sippList = JSON.parse(JSON.stringify(SIPP_DATA));
     
     for (let i = 0; i < sippList.length; i++) {
       const sipp = sippList[i];
@@ -403,19 +409,12 @@ export const loadRealSippData = async (): Promise<SIPP[]> => {
         }
       }
       
-      // Get initial accuracy values from SIPP_DATA
-      const initialSipp = SIPP_DATA.find(s => s.id === sipp.id);
-      if (initialSipp) {
-        sipp.averageAccuracy = initialSipp.averageAccuracy;
-        sipp.categoryAccuracy = { ...initialSipp.categoryAccuracy };
-      }
-      
-      // Fetch real predictions for this SIPP
+      // Fetch real predictions for this SIPP 
       const predictions = await loadRealPredictions(sipp.name);
       if (predictions && predictions.length > 0) {
         sipp.predictions = predictions;
         
-        // Recalculate accuracy scores based on predictions
+        // Only update accuracy scores if we have verified predictions
         const verifiedPredictions = predictions.filter(p => p.verificationStatus === "verified" && p.accuracyRating);
         
         if (verifiedPredictions.length > 0) {
@@ -437,6 +436,9 @@ export const loadRealSippData = async (): Promise<SIPP[]> => {
         }
       }
     }
+    
+    // Debug: log the first SIPP's accuracy to verify it's not 2.0
+    console.log(`First SIPP (${sippList[0].name}) accuracy: ${sippList[0].averageAccuracy}`);
     
     return sippList;
   } catch (error) {

@@ -44,26 +44,27 @@ const Dashboard: React.FC = () => {
               // Make sure all SIPPs have the correct images
               const updatedData = jsonData.map(sipp => {
                 // Use our reliable image paths for each SIPP
-                const reliableImagePath = {
-                  "Tucker Carlson": "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png",
-                  "Rachel Maddow": "/lovable-uploads/c844125c-dc7e-4e4d-878c-8c237999c9b5.png",
-                  "Elon Musk": "/lovable-uploads/0d2c9e34-5b94-48a2-a7ff-e928ed7818ac.png",
-                  "Nate Silver": "/lovable-uploads/e9915d12-f691-4ce5-912c-330023f9a16b.png",
-                  "Sean Hannity": "/lovable-uploads/e08e1c1f-75ae-4e63-8e39-1031441d6435.png",
-                  "Anderson Cooper": "/lovable-uploads/a1a3d886-769a-4116-84b0-27a1cbbeb947.png",
-                  "Ben Shapiro": "/lovable-uploads/142a495e-df1d-48b0-b7b3-85d6a049d420.png",
-                  "Ezra Klein": "/lovable-uploads/928cfe89-be28-4b21-b62d-84037e1c20f9.png",
-                  "Joe Rogan": "/lovable-uploads/aad243bb-10d6-4507-ba12-3c3feb720071.png",
-                  "Krystal Ball": "/lovable-uploads/29d1d72f-3504-4b6c-9e6b-aecc18ce59b0.png"
-                }[sipp.name];
+                const reliableImagePath = RELIABLE_SIPP_IMAGES[sipp.name];
                 
                 if (reliableImagePath) {
                   return {
                     ...sipp,
-                    photoUrl: reliableImagePath
+                    photoUrl: reliableImagePath,
+                    // Ensure we're preserving the accuracy values from the original data
+                    averageAccuracy: sipp.averageAccuracy || SIPP_DATA.find(s => s.id === sipp.id)?.averageAccuracy || 2.0,
+                    categoryAccuracy: { 
+                      ...SIPP_DATA.find(s => s.id === sipp.id)?.categoryAccuracy || {},
+                      ...sipp.categoryAccuracy 
+                    }
                   };
                 }
                 return sipp;
+              });
+              
+              // Log JSON data accuracies for debugging
+              console.log("JSON data accuracies:");
+              updatedData.forEach(sipp => {
+                console.log(`${sipp.name}: ${sipp.averageAccuracy}`);
               });
               
               setSipps(updatedData);
@@ -88,26 +89,24 @@ const Dashboard: React.FC = () => {
         console.log("Generating data dynamically...");
         const realData = await loadRealSippData();
         
-        // Ensure all SIPPs have the correct images
+        // Log accuracy data for debugging
+        console.log("Real data accuracies:");
+        realData.forEach(sipp => {
+          console.log(`${sipp.name}: ${sipp.averageAccuracy}`);
+        });
+        
+        // Ensure all SIPPs have the correct images but preserve accuracy values
         const updatedRealData = realData.map(sipp => {
           // Use our reliable image paths for each SIPP
-          const reliableImagePath = {
-            "Tucker Carlson": "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png",
-            "Rachel Maddow": "/lovable-uploads/c844125c-dc7e-4e4d-878c-8c237999c9b5.png",
-            "Elon Musk": "/lovable-uploads/0d2c9e34-5b94-48a2-a7ff-e928ed7818ac.png",
-            "Nate Silver": "/lovable-uploads/e9915d12-f691-4ce5-912c-330023f9a16b.png",
-            "Sean Hannity": "/lovable-uploads/e08e1c1f-75ae-4e63-8e39-1031441d6435.png",
-            "Anderson Cooper": "/lovable-uploads/a1a3d886-769a-4116-84b0-27a1cbbeb947.png",
-            "Ben Shapiro": "/lovable-uploads/142a495e-df1d-48b0-b7b3-85d6a049d420.png",
-            "Ezra Klein": "/lovable-uploads/928cfe89-be28-4b21-b62d-84037e1c20f9.png",
-            "Joe Rogan": "/lovable-uploads/aad243bb-10d6-4507-ba12-3c3feb720071.png",
-            "Krystal Ball": "/lovable-uploads/29d1d72f-3504-4b6c-9e6b-aecc18ce59b0.png"
-          }[sipp.name];
+          const reliableImagePath = RELIABLE_SIPP_IMAGES[sipp.name];
           
           if (reliableImagePath) {
             return {
               ...sipp,
-              photoUrl: reliableImagePath
+              photoUrl: reliableImagePath,
+              // Ensure we're preserving the accuracy values from the original data
+              averageAccuracy: sipp.averageAccuracy,
+              categoryAccuracy: { ...sipp.categoryAccuracy }
             };
           }
           return sipp;
@@ -141,29 +140,26 @@ const Dashboard: React.FC = () => {
         // Update all SIPPs' images in the fallback data
         const updatedFallbackData = SIPP_DATA.map(sipp => {
           // Use our reliable image paths for each SIPP
-          const reliableImagePath = {
-            "Tucker Carlson": "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png",
-            "Rachel Maddow": "/lovable-uploads/c844125c-dc7e-4e4d-878c-8c237999c9b5.png",
-            "Elon Musk": "/lovable-uploads/0d2c9e34-5b94-48a2-a7ff-e928ed7818ac.png",
-            "Nate Silver": "/lovable-uploads/e9915d12-f691-4ce5-912c-330023f9a16b.png",
-            "Sean Hannity": "/lovable-uploads/e08e1c1f-75ae-4e63-8e39-1031441d6435.png",
-            "Anderson Cooper": "/lovable-uploads/a1a3d886-769a-4116-84b0-27a1cbbeb947.png",
-            "Ben Shapiro": "/lovable-uploads/142a495e-df1d-48b0-b7b3-85d6a049d420.png",
-            "Ezra Klein": "/lovable-uploads/928cfe89-be28-4b21-b62d-84037e1c20f9.png",
-            "Joe Rogan": "/lovable-uploads/aad243bb-10d6-4507-ba12-3c3feb720071.png",
-            "Krystal Ball": "/lovable-uploads/29d1d72f-3504-4b6c-9e6b-aecc18ce59b0.png"
-          }[sipp.name];
+          const reliableImagePath = RELIABLE_SIPP_IMAGES[sipp.name];
           
           if (reliableImagePath) {
             return {
               ...sipp,
-              photoUrl: reliableImagePath
+              photoUrl: reliableImagePath,
+              // Ensure we're preserving the accuracy values from the original data
+              averageAccuracy: sipp.averageAccuracy,
+              categoryAccuracy: { ...sipp.categoryAccuracy }
             };
           }
           return sipp;
         });
         
-        // Ensure we have at least the template data with updated images
+        // Log fallback data accuracies for debugging
+        console.log("Fallback data accuracies:");
+        updatedFallbackData.forEach(sipp => {
+          console.log(`${sipp.name}: ${sipp.averageAccuracy}`);
+        });
+        
         setSipps(updatedFallbackData);
       } finally {
         setLoading(false);
