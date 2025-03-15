@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Search, Filter, SortDesc, SortAsc, Loader2 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/components/ui/use-toast';
-import { preloadImages, getFallbackImageUrl } from '@/lib/utils';
+import { preloadImages, getFallbackImageUrl, RELIABLE_SIPP_IMAGES } from '@/lib/utils';
 
 const Dashboard: React.FC = () => {
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
@@ -41,18 +41,26 @@ const Dashboard: React.FC = () => {
                 jsonData[0].photoUrl && 
                 jsonData[0].predictions) {
               
-              // Make sure specific SIPPs have the correct images
+              // Make sure all SIPPs have the correct images
               const updatedData = jsonData.map(sipp => {
-                if (sipp.name === "Tucker Carlson") {
+                // Use our reliable image paths for each SIPP
+                const reliableImagePath = {
+                  "Tucker Carlson": "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png",
+                  "Rachel Maddow": "/lovable-uploads/c844125c-dc7e-4e4d-878c-8c237999c9b5.png",
+                  "Elon Musk": "/lovable-uploads/0d2c9e34-5b94-48a2-a7ff-e928ed7818ac.png",
+                  "Nate Silver": "/lovable-uploads/e9915d12-f691-4ce5-912c-330023f9a16b.png",
+                  "Sean Hannity": "/lovable-uploads/e08e1c1f-75ae-4e63-8e39-1031441d6435.png",
+                  "Anderson Cooper": "/lovable-uploads/a1a3d886-769a-4116-84b0-27a1cbbeb947.png",
+                  "Ben Shapiro": "/lovable-uploads/142a495e-df1d-48b0-b7b3-85d6a049d420.png",
+                  "Ezra Klein": "/lovable-uploads/928cfe89-be28-4b21-b62d-84037e1c20f9.png",
+                  "Joe Rogan": "/lovable-uploads/aad243bb-10d6-4507-ba12-3c3feb720071.png",
+                  "Krystal Ball": "/lovable-uploads/29d1d72f-3504-4b6c-9e6b-aecc18ce59b0.png"
+                }[sipp.name];
+                
+                if (reliableImagePath) {
                   return {
                     ...sipp,
-                    photoUrl: "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png"
-                  };
-                }
-                if (sipp.name === "Ezra Klein") {
-                  return {
-                    ...sipp,
-                    photoUrl: "/lovable-uploads/928cfe89-be28-4b21-b62d-84037e1c20f9.png"
+                    photoUrl: reliableImagePath
                   };
                 }
                 return sipp;
@@ -80,18 +88,26 @@ const Dashboard: React.FC = () => {
         console.log("Generating data dynamically...");
         const realData = await loadRealSippData();
         
-        // Ensure specific SIPPs have the correct images
+        // Ensure all SIPPs have the correct images
         const updatedRealData = realData.map(sipp => {
-          if (sipp.name === "Tucker Carlson") {
+          // Use our reliable image paths for each SIPP
+          const reliableImagePath = {
+            "Tucker Carlson": "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png",
+            "Rachel Maddow": "/lovable-uploads/c844125c-dc7e-4e4d-878c-8c237999c9b5.png",
+            "Elon Musk": "/lovable-uploads/0d2c9e34-5b94-48a2-a7ff-e928ed7818ac.png",
+            "Nate Silver": "/lovable-uploads/e9915d12-f691-4ce5-912c-330023f9a16b.png",
+            "Sean Hannity": "/lovable-uploads/e08e1c1f-75ae-4e63-8e39-1031441d6435.png",
+            "Anderson Cooper": "/lovable-uploads/a1a3d886-769a-4116-84b0-27a1cbbeb947.png",
+            "Ben Shapiro": "/lovable-uploads/142a495e-df1d-48b0-b7b3-85d6a049d420.png",
+            "Ezra Klein": "/lovable-uploads/928cfe89-be28-4b21-b62d-84037e1c20f9.png",
+            "Joe Rogan": "/lovable-uploads/aad243bb-10d6-4507-ba12-3c3feb720071.png",
+            "Krystal Ball": "/lovable-uploads/29d1d72f-3504-4b6c-9e6b-aecc18ce59b0.png"
+          }[sipp.name];
+          
+          if (reliableImagePath) {
             return {
               ...sipp,
-              photoUrl: "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png"
-            };
-          }
-          if (sipp.name === "Ezra Klein") {
-            return {
-              ...sipp,
-              photoUrl: "/lovable-uploads/928cfe89-be28-4b21-b62d-84037e1c20f9.png"
+              photoUrl: reliableImagePath
             };
           }
           return sipp;
@@ -122,24 +138,32 @@ const Dashboard: React.FC = () => {
           variant: "destructive",
         });
         
-        // Update specific SIPPs' images in the fallback data
+        // Update all SIPPs' images in the fallback data
         const updatedFallbackData = SIPP_DATA.map(sipp => {
-          if (sipp.name === "Tucker Carlson") {
+          // Use our reliable image paths for each SIPP
+          const reliableImagePath = {
+            "Tucker Carlson": "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png",
+            "Rachel Maddow": "/lovable-uploads/c844125c-dc7e-4e4d-878c-8c237999c9b5.png",
+            "Elon Musk": "/lovable-uploads/0d2c9e34-5b94-48a2-a7ff-e928ed7818ac.png",
+            "Nate Silver": "/lovable-uploads/e9915d12-f691-4ce5-912c-330023f9a16b.png",
+            "Sean Hannity": "/lovable-uploads/e08e1c1f-75ae-4e63-8e39-1031441d6435.png",
+            "Anderson Cooper": "/lovable-uploads/a1a3d886-769a-4116-84b0-27a1cbbeb947.png",
+            "Ben Shapiro": "/lovable-uploads/142a495e-df1d-48b0-b7b3-85d6a049d420.png",
+            "Ezra Klein": "/lovable-uploads/928cfe89-be28-4b21-b62d-84037e1c20f9.png",
+            "Joe Rogan": "/lovable-uploads/aad243bb-10d6-4507-ba12-3c3feb720071.png",
+            "Krystal Ball": "/lovable-uploads/29d1d72f-3504-4b6c-9e6b-aecc18ce59b0.png"
+          }[sipp.name];
+          
+          if (reliableImagePath) {
             return {
               ...sipp,
-              photoUrl: "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png"
-            };
-          }
-          if (sipp.name === "Ezra Klein") {
-            return {
-              ...sipp,
-              photoUrl: "/lovable-uploads/928cfe89-be28-4b21-b62d-84037e1c20f9.png"
+              photoUrl: reliableImagePath
             };
           }
           return sipp;
         });
         
-        // Ensure we have at least the template data with updated image
+        // Ensure we have at least the template data with updated images
         setSipps(updatedFallbackData);
       } finally {
         setLoading(false);

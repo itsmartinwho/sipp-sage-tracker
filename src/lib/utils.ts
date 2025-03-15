@@ -1,3 +1,4 @@
+
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 import OpenAI from "openai"
@@ -23,16 +24,16 @@ export const formatDate = (input: Date | string) => {
 
 // Map of SIPP names to reliable image URLs
 const RELIABLE_SIPP_IMAGES: Record<string, string> = {
-  "Tucker Carlson": "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png", // Updated Tucker Carlson image
-  "Rachel Maddow": "https://i.imgur.com/wQ0p9E8.jpg",
-  "Elon Musk": "https://i.imgur.com/6Df9vJz.jpg",
-  "Nate Silver": "https://i.imgur.com/vbtMQAe.jpg",
-  "Sean Hannity": "https://i.imgur.com/4Jqi1Sl.jpg",
-  "Anderson Cooper": "https://i.imgur.com/8syvBG2.jpg",
-  "Ben Shapiro": "https://i.imgur.com/z90ufnP.jpg",
-  "Ezra Klein": "/lovable-uploads/928cfe89-be28-4b21-b62d-84037e1c20f9.png", // Updated Ezra Klein image
-  "Joe Rogan": "https://i.imgur.com/UREG0Vp.jpg",
-  "Krystal Ball": "https://i.imgur.com/nxbvUzV.jpg"
+  "Tucker Carlson": "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png",
+  "Rachel Maddow": "/lovable-uploads/c844125c-dc7e-4e4d-878c-8c237999c9b5.png",
+  "Elon Musk": "/lovable-uploads/0d2c9e34-5b94-48a2-a7ff-e928ed7818ac.png",
+  "Nate Silver": "/lovable-uploads/e9915d12-f691-4ce5-912c-330023f9a16b.png",
+  "Sean Hannity": "/lovable-uploads/e08e1c1f-75ae-4e63-8e39-1031441d6435.png",
+  "Anderson Cooper": "/lovable-uploads/a1a3d886-769a-4116-84b0-27a1cbbeb947.png",
+  "Ben Shapiro": "/lovable-uploads/142a495e-df1d-48b0-b7b3-85d6a049d420.png",
+  "Ezra Klein": "/lovable-uploads/928cfe89-be28-4b21-b62d-84037e1c20f9.png",
+  "Joe Rogan": "/lovable-uploads/aad243bb-10d6-4507-ba12-3c3feb720071.png",
+  "Krystal Ball": "/lovable-uploads/29d1d72f-3504-4b6c-9e6b-aecc18ce59b0.png"
 };
 
 // Function to generate a consistent fallback image URL for a SIPP
