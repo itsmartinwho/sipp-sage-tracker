@@ -2,8 +2,6 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 import OpenAI from "openai"
-import { supabase, PredictionRecord } from "./supabase"
-import { PredictionCategory } from "@/data/sippData"
 
 // Initialize OpenAI client
 const openai = new OpenAI({
@@ -53,22 +51,10 @@ export function preloadImages(imageUrls: string[]): void {
   });
 }
 
-// Function to retrieve images for SIPPs - now checks Supabase first
+// Function to retrieve images for SIPPs
 export async function fetchSippImages(sippName: string): Promise<string> {
   try {
-    // First check if the SIPP exists in Supabase
-    const { data: sippData } = await supabase
-      .from('sipps')
-      .select('photo_url')
-      .eq('name', sippName)
-      .single();
-    
-    if (sippData?.photo_url) {
-      console.log(`Using Supabase image for ${sippName}`);
-      return sippData.photo_url;
-    }
-    
-    // Then try to get from our reliable map
+    // First try to get from our reliable map
     if (RELIABLE_SIPP_IMAGES[sippName]) {
       console.log(`Using cached image for ${sippName}`);
       return RELIABLE_SIPP_IMAGES[sippName];
@@ -84,158 +70,10 @@ export async function fetchSippImages(sippName: string): Promise<string> {
   }
 }
 
-// Calculate accuracy score for a prediction
-export function calculateAccuracyScore(
-  prediction: PredictionRecord,
-  actualOutcome: string
-): number {
-  // Base score starts at 2 (partially correct)
-  let score = 2;
-  
-  // Extract key information from the prediction and actual outcome
-  const predictionLower = prediction.predicted_outcome.toLowerCase();
-  const actualLower = actualOutcome.toLowerCase();
-  
-  // Check if prediction was completely wrong
-  if (
-    (actualLower.includes("did not happen") || 
-     actualLower.includes("completely incorrect") ||
-     actualLower.includes("entirely wrong")) &&
-    !actualLower.includes("partially")
-  ) {
-    return 1; // Completely wrong
-  }
-  
-  // Check if prediction was completely right
-  if (
-    (actualLower.includes("exactly as predicted") || 
-     actualLower.includes("completely accurate") ||
-     actualLower.includes("fully correct")) &&
-    !actualLower.includes("partially")
-  ) {
-    return 3; // Completely right
-  }
-  
-  // Category-specific scoring adjustments
-  switch(prediction.category as PredictionCategory) {
-    case 'economy':
-      // Economic predictions are judged more strictly due to available data
-      if (actualLower.includes("off by more than 10%") || 
-          actualLower.includes("significantly overestimated") ||
-          actualLower.includes("significantly underestimated")) {
-        score = 1;
-      } else if (actualLower.includes("within 5%") || 
-                actualLower.includes("very accurate") ||
-                actualLower.includes("closely predicted")) {
-        score = 3;
-      }
-      break;
-      
-    case 'politics':
-      // Political predictions focus on outcomes and timing
-      if (actualLower.includes("wrong outcome") || 
-          actualLower.includes("incorrect winner") ||
-          actualLower.includes("opposite happened")) {
-        score = 1;
-      } else if (actualLower.includes("correct outcome") && 
-                actualLower.includes("timing was accurate")) {
-        score = 3;
-      }
-      break;
-      
-    case 'technology':
-      // Technology predictions allow more leeway on timing but focus on direction
-      if (actualLower.includes("wrong direction") || 
-          actualLower.includes("technology failed") ||
-          actualLower.includes("never materialized")) {
-        score = 1;
-      } else if (actualLower.includes("correct direction") && 
-                !actualLower.includes("timing was off")) {
-        score = 3;
-      }
-      break;
-      
-    case 'foreign-policy':
-      // Foreign policy predictions focus on outcomes and key players
-      if (actualLower.includes("completely misread") || 
-          actualLower.includes("wrong actors") ||
-          actualLower.includes("opposite response")) {
-        score = 1;
-      } else if (actualLower.includes("correctly identified") && 
-                actualLower.includes("accurate assessment")) {
-        score = 3;
-      }
-      break;
-      
-    case 'social-trends':
-      // Social trends allow more leeway as they're harder to predict precisely
-      if (actualLower.includes("trend moved opposite") || 
-          actualLower.includes("completely misread public sentiment")) {
-        score = 1;
-      } else if (actualLower.includes("trend developed as predicted") && 
-                !actualLower.includes("overestimated")) {
-        score = 3;
-      }
-      break;
-  }
-  
-  return score;
-}
-
-// Function to normalize scores based on prediction category
-export function normalizeScore(score: number, category: PredictionCategory): number {
-  // Different categories have different difficulty levels for prediction
-  const categoryDifficulty: Record<PredictionCategory, number> = {
-    'economy': 0.9, // Economic predictions are harder (more precise data available)
-    'politics': 0.8,
-    'technology': 0.7, // Technology predictions are more difficult
-    'foreign-policy': 0.75,
-    'social-trends': 0.6 // Social trends are the most difficult to predict precisely
-  };
-  
-  // Normalize the score based on category difficulty
-  return score * categoryDifficulty[category];
-}
-
-// Function to retrieve past predictions for SIPPs from Supabase
+// Function to retrieve past predictions for SIPPs
 export async function fetchSippPredictions(sippName: string): Promise<any[]> {
   try {
-    // First try to fetch from Supabase
-    const { data: sipp } = await supabase
-      .from('sipps')
-      .select('id')
-      .eq('name', sippName)
-      .single();
-    
-    if (sipp?.id) {
-      const { data: predictions, error } = await supabase
-        .from('predictions')
-        .select('*')
-        .eq('sipp_id', sipp.id)
-        .order('date_stated', { ascending: false });
-      
-      if (predictions && predictions.length > 0) {
-        console.log(`Found ${predictions.length} predictions in Supabase for ${sippName}`);
-        return predictions.map(p => ({
-          id: p.id,
-          dateStated: p.date_stated,
-          predictedOutcome: p.predicted_outcome,
-          category: p.category,
-          timeframe: p.timeframe,
-          verificationStatus: p.verification_status,
-          actualOutcome: p.actual_outcome,
-          accuracyRating: p.accuracy_rating,
-          normalizedScore: p.normalized_score
-        }));
-      }
-      
-      if (error) {
-        console.error("Error fetching predictions from Supabase:", error);
-      }
-    }
-    
-    // If no data in Supabase, fall back to OpenAI
-    console.log(`Generating predictions with OpenAI for ${sippName}`);
+    // For now, we'll use the chat completions API since web search isn't available in the browser
     const response = await openai.chat.completions.create({
       model: "gpt-4o",
       messages: [
@@ -266,39 +104,7 @@ export async function fetchSippPredictions(sippName: string): Promise<any[]> {
     
     try {
       const jsonData = JSON.parse(content);
-      const predictions = jsonData.predictions || [];
-      
-      // If we have a SIPP id, store these in Supabase for future use
-      if (sipp?.id && predictions.length > 0) {
-        console.log(`Storing ${predictions.length} OpenAI predictions in Supabase for ${sippName}`);
-        
-        // Prepare the records for insertion
-        const supabasePredictions = predictions.map((p: any, index: number) => ({
-          id: `pred-${sipp.id}-${index}`,
-          sipp_id: sipp.id,
-          date_stated: p.dateStated || p.date || new Date().toISOString().split('T')[0],
-          predicted_outcome: p.prediction || p.predictedOutcome,
-          category: p.category,
-          timeframe: p.timeframe || "unknown",
-          verification_status: p.verificationStatus || "verified",
-          actual_outcome: p.actualOutcome || p.outcome || "Outcome not verified",
-          accuracy_rating: Number(p.accuracyRating) || 2.0,
-          normalized_score: Number(p.normalizedScore) || (Number(p.accuracyRating) * 0.3) || 0.6
-        }));
-        
-        // Insert in batches to avoid payload size limits
-        const batchSize = 10;
-        for (let i = 0; i < supabasePredictions.length; i += batchSize) {
-          const batch = supabasePredictions.slice(i, i + batchSize);
-          const { error } = await supabase.from('predictions').upsert(batch);
-          if (error) console.error("Error storing predictions batch in Supabase:", error);
-        }
-        
-        // Also update the analysis
-        await generateAndStorePatternAnalysis(sipp.id, sippName, predictions);
-      }
-      
-      return predictions;
+      return jsonData.predictions || [];
     } catch (parseError) {
       console.error("Error parsing prediction JSON:", parseError);
       return [];
@@ -306,114 +112,5 @@ export async function fetchSippPredictions(sippName: string): Promise<any[]> {
   } catch (error) {
     console.error("Error fetching predictions:", error);
     return [];
-  }
-}
-
-// Generate and store pattern analysis
-async function generateAndStorePatternAnalysis(sippId: string, sippName: string, predictions: any[]) {
-  try {
-    // Generate pattern analysis using OpenAI
-    const response = await openai.chat.completions.create({
-      model: "gpt-4o",
-      messages: [
-        {
-          role: "system",
-          content: "You are an AI assistant that analyzes prediction patterns for public figures."
-        },
-        {
-          role: "user", 
-          content: `Based on the following predictions made by ${sippName}, analyze their prediction patterns and biases. Here are their predictions: ${JSON.stringify(predictions.slice(0, 10))}.
-          
-          Please provide a concise analysis (max 150 words) of:
-          1. Their prediction strengths and weaknesses
-          2. Category-specific trends
-          3. Any biases in their prediction style
-          4. Overall accuracy patterns`
-        }
-      ],
-    });
-    
-    const patternAnalysis = response.choices[0].message.content || 
-      "Analysis shows mixed prediction accuracy with notable strengths in their areas of expertise.";
-    
-    // Store in Supabase
-    const { error } = await supabase
-      .from('sipps')
-      .update({ pattern_analysis: patternAnalysis })
-      .eq('id', sippId);
-      
-    if (error) {
-      console.error("Error storing pattern analysis in Supabase:", error);
-    }
-    
-    return patternAnalysis;
-  } catch (error) {
-    console.error("Error generating pattern analysis:", error);
-    return "Analysis shows mixed prediction accuracy with notable strengths in their areas of expertise.";
-  }
-}
-
-// Calculate category averages and store in Supabase
-export async function updateSippAccuracy(sippId: string) {
-  try {
-    // Get all verified predictions for this SIPP
-    const { data: predictions, error } = await supabase
-      .from('predictions')
-      .select('*')
-      .eq('sipp_id', sippId)
-      .eq('verification_status', 'verified');
-      
-    if (error) {
-      console.error("Error fetching predictions for accuracy calculation:", error);
-      return;
-    }
-    
-    if (!predictions || predictions.length === 0) {
-      console.log(`No verified predictions found for SIPP ${sippId}`);
-      return;
-    }
-    
-    // Calculate overall average
-    const overallSum = predictions.reduce((sum, p) => sum + (p.accuracy_rating || 0), 0);
-    const overallAvg = overallSum / predictions.length;
-    
-    // Update the SIPP record
-    const { error: updateError } = await supabase
-      .from('sipps')
-      .update({ average_accuracy: overallAvg })
-      .eq('id', sippId);
-      
-    if (updateError) {
-      console.error("Error updating SIPP average accuracy:", updateError);
-    }
-    
-    // Calculate and update category accuracies
-    const categories = ['economy', 'politics', 'technology', 'foreign-policy', 'social-trends'];
-    
-    for (const category of categories) {
-      const catPredictions = predictions.filter(p => p.category === category);
-      
-      if (catPredictions.length > 0) {
-        const catSum = catPredictions.reduce((sum, p) => sum + (p.accuracy_rating || 0), 0);
-        const catAvg = catSum / catPredictions.length;
-        
-        // Update category accuracy
-        const { error: catError } = await supabase
-          .from('category_accuracies')
-          .upsert({
-            sipp_id: sippId,
-            category: category.replace('-', '_'),
-            accuracy: catAvg
-          }, { onConflict: 'sipp_id, category' });
-          
-        if (catError) {
-          console.error(`Error updating ${category} accuracy for SIPP ${sippId}:`, catError);
-        }
-      }
-    }
-    
-    console.log(`Successfully updated accuracy metrics for SIPP ${sippId}`);
-  } catch (error) {
-    console.error("Error in updateSippAccuracy:", error);
   }
 }

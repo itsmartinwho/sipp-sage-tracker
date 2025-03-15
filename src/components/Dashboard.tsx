@@ -1,21 +1,20 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { PredictionCategory, SIPP } from '@/data/sippData';
+import { SIPP_DATA, PredictionCategory, loadRealSippData, SIPP } from '@/data/sippData';
 import SippCard from './SippCard';
 import { Button } from '@/components/ui/button';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Search, Filter, SortDesc, SortAsc, Loader2 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/components/ui/use-toast';
-import { getFallbackImageUrl } from '@/lib/utils';
-import { getAllSipps } from '@/lib/sippApi';
+import { preloadImages, getFallbackImageUrl, RELIABLE_SIPP_IMAGES } from '@/lib/utils';
 
 const Dashboard: React.FC = () => {
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
   const [selectedCategory, setSelectedCategory] = useState<PredictionCategory | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [sipps, setSipps] = useState<SIPP[]>([]);
+  const [sipps, setSipps] = useState<SIPP[]>(SIPP_DATA);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
 
@@ -25,30 +24,147 @@ const Dashboard: React.FC = () => {
       try {
         setLoading(true);
         
-        // Fetch SIPPs from Supabase
-        const sippsData = await getAllSipps();
+        // Get the base URL depending on environment
+        const baseUrl = window.location.href.includes('lovable.dev') 
+          ? '/sipp-sage-tracker'
+          : '';
         
-        if (sippsData.length > 0) {
-          setSipps(sippsData);
-          console.log("Successfully loaded SIPP data from Supabase");
-          toast({
-            title: "Data loaded successfully",
-            description: "SIPP data has been loaded from the database.",
-          });
-        } else {
-          toast({
-            title: "No data found",
-            description: "No SIPP data was found in the database. Please run the migration script first.",
-            variant: "destructive",
-          });
+        // Try to load from pregenerated JSON file
+        try {
+          const response = await fetch(`${baseUrl}/data/sippData.json`);
+          if (response.ok) {
+            const jsonData = await response.json();
+            
+            // Validate that the data has the expected structure
+            if (Array.isArray(jsonData) && 
+                jsonData.length > 0 && 
+                jsonData[0].photoUrl && 
+                jsonData[0].predictions) {
+              
+              // Make sure all SIPPs have the correct images
+              const updatedData = jsonData.map(sipp => {
+                // Use our reliable image paths for each SIPP
+                const reliableImagePath = {
+                  "Tucker Carlson": "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png",
+                  "Rachel Maddow": "/lovable-uploads/c844125c-dc7e-4e4d-878c-8c237999c9b5.png",
+                  "Elon Musk": "/lovable-uploads/0d2c9e34-5b94-48a2-a7ff-e928ed7818ac.png",
+                  "Nate Silver": "/lovable-uploads/e9915d12-f691-4ce5-912c-330023f9a16b.png",
+                  "Sean Hannity": "/lovable-uploads/e08e1c1f-75ae-4e63-8e39-1031441d6435.png",
+                  "Anderson Cooper": "/lovable-uploads/a1a3d886-769a-4116-84b0-27a1cbbeb947.png",
+                  "Ben Shapiro": "/lovable-uploads/142a495e-df1d-48b0-b7b3-85d6a049d420.png",
+                  "Ezra Klein": "/lovable-uploads/928cfe89-be28-4b21-b62d-84037e1c20f9.png",
+                  "Joe Rogan": "/lovable-uploads/aad243bb-10d6-4507-ba12-3c3feb720071.png",
+                  "Krystal Ball": "/lovable-uploads/29d1d72f-3504-4b6c-9e6b-aecc18ce59b0.png"
+                }[sipp.name];
+                
+                if (reliableImagePath) {
+                  return {
+                    ...sipp,
+                    photoUrl: reliableImagePath
+                  };
+                }
+                return sipp;
+              });
+              
+              setSipps(updatedData);
+              console.log("Successfully loaded SIPP data from JSON file");
+              toast({
+                title: "Data loaded successfully",
+                description: "SIPP data has been loaded with actual photos and predictions.",
+              });
+              setLoading(false);
+              return;
+            } else {
+              console.error("JSON data is not in the expected format:", jsonData);
+            }
+          } else {
+            console.error("Error fetching sippData.json:", response.status, response.statusText);
+          }
+        } catch (fetchError) {
+          console.error("Error fetching pregenerated data:", fetchError);
         }
+        
+        // If we get here, try to generate data dynamically
+        console.log("Generating data dynamically...");
+        const realData = await loadRealSippData();
+        
+        // Ensure all SIPPs have the correct images
+        const updatedRealData = realData.map(sipp => {
+          // Use our reliable image paths for each SIPP
+          const reliableImagePath = {
+            "Tucker Carlson": "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png",
+            "Rachel Maddow": "/lovable-uploads/c844125c-dc7e-4e4d-878c-8c237999c9b5.png",
+            "Elon Musk": "/lovable-uploads/0d2c9e34-5b94-48a2-a7ff-e928ed7818ac.png",
+            "Nate Silver": "/lovable-uploads/e9915d12-f691-4ce5-912c-330023f9a16b.png",
+            "Sean Hannity": "/lovable-uploads/e08e1c1f-75ae-4e63-8e39-1031441d6435.png",
+            "Anderson Cooper": "/lovable-uploads/a1a3d886-769a-4116-84b0-27a1cbbeb947.png",
+            "Ben Shapiro": "/lovable-uploads/142a495e-df1d-48b0-b7b3-85d6a049d420.png",
+            "Ezra Klein": "/lovable-uploads/928cfe89-be28-4b21-b62d-84037e1c20f9.png",
+            "Joe Rogan": "/lovable-uploads/aad243bb-10d6-4507-ba12-3c3feb720071.png",
+            "Krystal Ball": "/lovable-uploads/29d1d72f-3504-4b6c-9e6b-aecc18ce59b0.png"
+          }[sipp.name];
+          
+          if (reliableImagePath) {
+            return {
+              ...sipp,
+              photoUrl: reliableImagePath
+            };
+          }
+          return sipp;
+        });
+        
+        // Validate and ensure each SIPP has a working image URL
+        for (const sipp of updatedRealData) {
+          // Make sure each SIPP has a valid photoUrl
+          if (!sipp.photoUrl || sipp.photoUrl.trim() === '') {
+            console.warn(`Missing photo URL for ${sipp.name}, using fallback`);
+            sipp.photoUrl = getFallbackImageUrl(sipp.name);
+          }
+        }
+        
+        // Preload images in the background
+        preloadImages(updatedRealData.map(sipp => sipp.photoUrl));
+        
+        setSipps(updatedRealData);
+        toast({
+          title: "Data generated successfully",
+          description: "SIPP data has been dynamically generated with photos and predictions.",
+        });
       } catch (error) {
         console.error("Error loading SIPP data:", error);
         toast({
           title: "Error loading data",
-          description: "There was a problem loading the SIPP data from the database.",
+          description: "There was a problem loading the real SIPP data. Using fallback data instead.",
           variant: "destructive",
         });
+        
+        // Update all SIPPs' images in the fallback data
+        const updatedFallbackData = SIPP_DATA.map(sipp => {
+          // Use our reliable image paths for each SIPP
+          const reliableImagePath = {
+            "Tucker Carlson": "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png",
+            "Rachel Maddow": "/lovable-uploads/c844125c-dc7e-4e4d-878c-8c237999c9b5.png",
+            "Elon Musk": "/lovable-uploads/0d2c9e34-5b94-48a2-a7ff-e928ed7818ac.png",
+            "Nate Silver": "/lovable-uploads/e9915d12-f691-4ce5-912c-330023f9a16b.png",
+            "Sean Hannity": "/lovable-uploads/e08e1c1f-75ae-4e63-8e39-1031441d6435.png",
+            "Anderson Cooper": "/lovable-uploads/a1a3d886-769a-4116-84b0-27a1cbbeb947.png",
+            "Ben Shapiro": "/lovable-uploads/142a495e-df1d-48b0-b7b3-85d6a049d420.png",
+            "Ezra Klein": "/lovable-uploads/928cfe89-be28-4b21-b62d-84037e1c20f9.png",
+            "Joe Rogan": "/lovable-uploads/aad243bb-10d6-4507-ba12-3c3feb720071.png",
+            "Krystal Ball": "/lovable-uploads/29d1d72f-3504-4b6c-9e6b-aecc18ce59b0.png"
+          }[sipp.name];
+          
+          if (reliableImagePath) {
+            return {
+              ...sipp,
+              photoUrl: reliableImagePath
+            };
+          }
+          return sipp;
+        });
+        
+        // Ensure we have at least the template data with updated images
+        setSipps(updatedFallbackData);
       } finally {
         setLoading(false);
       }
@@ -103,7 +219,7 @@ const Dashboard: React.FC = () => {
       <div className="flex flex-col items-center justify-center py-24">
         <Loader2 className="h-12 w-12 animate-spin text-primary mb-4" />
         <h3 className="text-lg font-medium">Loading SIPP data...</h3>
-        <p className="text-muted-foreground mt-1">Fetching data from the database</p>
+        <p className="text-muted-foreground mt-1">Fetching images and predictions</p>
       </div>
     );
   }
