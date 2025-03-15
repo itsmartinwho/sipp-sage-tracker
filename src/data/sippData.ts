@@ -172,16 +172,16 @@ export const normalizeScore = (score: number, category: PredictionCategory): num
 
 // Map of SIPP names to reliable image URLs
 const RELIABLE_SIPP_IMAGES: Record<string, string> = {
-  "Tucker Carlson": "https://upload.wikimedia.org/wikipedia/commons/6/62/Tucker_Carlson_2020.jpg",
-  "Rachel Maddow": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Rachel_Maddow_in_2008.jpg",
-  "Elon Musk": "https://upload.wikimedia.org/wikipedia/commons/3/34/Elon_Musk_Royal_Society_%28crop2%29.jpg",
-  "Nate Silver": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Nate_Silver_2009.png",
-  "Sean Hannity": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Sean_Hannity.jpg",
-  "Anderson Cooper": "https://upload.wikimedia.org/wikipedia/commons/5/51/Anderson_Cooper_at_the_Edinburgh_TV_fest.jpg",
-  "Ben Shapiro": "https://upload.wikimedia.org/wikipedia/commons/6/62/Ben_Shapiro_2018.jpg",
-  "Ezra Klein": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Ezra_Klein_2012_Shankbone.JPG",
-  "Joe Rogan": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Joe_Rogan_-_2023_%28cropped%29.jpg",
-  "Krystal Ball": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Krystal_Ball_by_Gage_Skidmore.jpg"
+  "Tucker Carlson": "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png", // Updated Tucker Carlson image
+  "Rachel Maddow": "https://i.imgur.com/wQ0p9E8.jpg",
+  "Elon Musk": "https://i.imgur.com/6Df9vJz.jpg",
+  "Nate Silver": "https://i.imgur.com/vbtMQAe.jpg",
+  "Sean Hannity": "https://i.imgur.com/4Jqi1Sl.jpg",
+  "Anderson Cooper": "https://i.imgur.com/8syvBG2.jpg",
+  "Ben Shapiro": "https://i.imgur.com/z90ufnP.jpg",
+  "Ezra Klein": "https://i.imgur.com/UTaJZRd.jpg",
+  "Joe Rogan": "https://i.imgur.com/UREG0Vp.jpg",
+  "Krystal Ball": "https://i.imgur.com/nxbvUzV.jpg"
 };
 
 // Sample predictions for each SIPP
@@ -455,7 +455,7 @@ export const SIPP_DATA: SIPP[] = [
   {
     id: "tucker-carlson",
     name: "Tucker Carlson",
-    photoUrl: RELIABLE_SIPP_IMAGES["Tucker Carlson"],
+    photoUrl: "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png", // Updated Tucker Carlson image
     shortBio: "Conservative political commentator, former Fox News host",
     averageAccuracy: 1.8,
     categoryAccuracy: {

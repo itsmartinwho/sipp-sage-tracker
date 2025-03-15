@@ -40,7 +40,19 @@ const Dashboard: React.FC = () => {
                 jsonData.length > 0 && 
                 jsonData[0].photoUrl && 
                 jsonData[0].predictions) {
-              setSipps(jsonData);
+              
+              // Make sure Tucker Carlson's image is updated
+              const updatedData = jsonData.map(sipp => {
+                if (sipp.name === "Tucker Carlson") {
+                  return {
+                    ...sipp,
+                    photoUrl: "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png"
+                  };
+                }
+                return sipp;
+              });
+              
+              setSipps(updatedData);
               console.log("Successfully loaded SIPP data from JSON file");
               toast({
                 title: "Data loaded successfully",
@@ -62,8 +74,19 @@ const Dashboard: React.FC = () => {
         console.log("Generating data dynamically...");
         const realData = await loadRealSippData();
         
+        // Ensure Tucker Carlson has the correct image
+        const updatedRealData = realData.map(sipp => {
+          if (sipp.name === "Tucker Carlson") {
+            return {
+              ...sipp,
+              photoUrl: "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png"
+            };
+          }
+          return sipp;
+        });
+        
         // Validate and ensure each SIPP has a working image URL
-        for (const sipp of realData) {
+        for (const sipp of updatedRealData) {
           // Make sure each SIPP has a valid photoUrl
           if (!sipp.photoUrl || sipp.photoUrl.trim() === '') {
             console.warn(`Missing photo URL for ${sipp.name}, using fallback`);
@@ -72,9 +95,9 @@ const Dashboard: React.FC = () => {
         }
         
         // Preload images in the background
-        preloadImages(realData.map(sipp => sipp.photoUrl));
+        preloadImages(updatedRealData.map(sipp => sipp.photoUrl));
         
-        setSipps(realData);
+        setSipps(updatedRealData);
         toast({
           title: "Data generated successfully",
           description: "SIPP data has been dynamically generated with photos and predictions.",
@@ -86,8 +109,20 @@ const Dashboard: React.FC = () => {
           description: "There was a problem loading the real SIPP data. Using fallback data instead.",
           variant: "destructive",
         });
-        // Ensure we have at least the template data
-        setSipps(SIPP_DATA);
+        
+        // Update Tucker Carlson's image in the fallback data
+        const updatedFallbackData = SIPP_DATA.map(sipp => {
+          if (sipp.name === "Tucker Carlson") {
+            return {
+              ...sipp,
+              photoUrl: "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png"
+            };
+          }
+          return sipp;
+        });
+        
+        // Ensure we have at least the template data with updated image
+        setSipps(updatedFallbackData);
       } finally {
         setLoading(false);
       }

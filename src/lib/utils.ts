@@ -24,16 +24,16 @@ export const formatDate = (input: Date | string) => {
 
 // Map of SIPP names to reliable image URLs
 const RELIABLE_SIPP_IMAGES: Record<string, string> = {
-  "Tucker Carlson": "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png", // New Tucker Carlson image
-  "Rachel Maddow": "https://i.imgur.com/wQ0p9E8.jpg", // Rachel Maddow
-  "Elon Musk": "https://i.imgur.com/6Df9vJz.jpg", // Elon Musk
-  "Nate Silver": "https://i.imgur.com/vbtMQAe.jpg", // Nate Silver
-  "Sean Hannity": "https://i.imgur.com/4Jqi1Sl.jpg", // Sean Hannity
-  "Anderson Cooper": "https://i.imgur.com/8syvBG2.jpg", // Anderson Cooper
-  "Ben Shapiro": "https://i.imgur.com/z90ufnP.jpg", // Ben Shapiro
-  "Ezra Klein": "https://i.imgur.com/UTaJZRd.jpg", // Ezra Klein
-  "Joe Rogan": "https://i.imgur.com/UREG0Vp.jpg", // Joe Rogan
-  "Krystal Ball": "https://i.imgur.com/nxbvUzV.jpg" // Krystal Ball
+  "Tucker Carlson": "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png", // Updated Tucker Carlson image
+  "Rachel Maddow": "https://i.imgur.com/wQ0p9E8.jpg",
+  "Elon Musk": "https://i.imgur.com/6Df9vJz.jpg",
+  "Nate Silver": "https://i.imgur.com/vbtMQAe.jpg",
+  "Sean Hannity": "https://i.imgur.com/4Jqi1Sl.jpg",
+  "Anderson Cooper": "https://i.imgur.com/8syvBG2.jpg",
+  "Ben Shapiro": "https://i.imgur.com/z90ufnP.jpg",
+  "Ezra Klein": "https://i.imgur.com/UTaJZRd.jpg",
+  "Joe Rogan": "https://i.imgur.com/UREG0Vp.jpg",
+  "Krystal Ball": "https://i.imgur.com/nxbvUzV.jpg"
 };
 
 // Function to generate a consistent fallback image URL for a SIPP
