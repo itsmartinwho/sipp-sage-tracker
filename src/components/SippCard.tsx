@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { SIPP, formatNumber, getAccuracyColor, getCategoryColor, PredictionCategory } from '@/data/sippData';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 interface SippCardProps {
   sipp: SIPP;
@@ -21,14 +20,6 @@ const SippCard: React.FC<SippCardProps> = ({ sipp, index }) => {
       name: category.replace('_', '-') as PredictionCategory,
       accuracy
     }));
-
-  // Get initials for avatar fallback
-  const getInitials = (name: string) => {
-    return name
-      .split(' ')
-      .map(part => part[0])
-      .join('');
-  };
 
   return (
     <motion.div
