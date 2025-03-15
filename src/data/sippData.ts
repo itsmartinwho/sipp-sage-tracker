@@ -1,3 +1,4 @@
+
 import { formatDate } from "@/lib/utils";
 import { fetchSippImages, fetchSippPredictions } from "@/lib/utils";
 
@@ -179,7 +180,7 @@ const RELIABLE_SIPP_IMAGES: Record<string, string> = {
   "Sean Hannity": "https://i.imgur.com/4Jqi1Sl.jpg",
   "Anderson Cooper": "https://i.imgur.com/8syvBG2.jpg",
   "Ben Shapiro": "https://i.imgur.com/z90ufnP.jpg",
-  "Ezra Klein": "https://i.imgur.com/UTaJZRd.jpg",
+  "Ezra Klein": "/lovable-uploads/928cfe89-be28-4b21-b62d-84037e1c20f9.png", // Updated Ezra Klein image
   "Joe Rogan": "https://i.imgur.com/UREG0Vp.jpg",
   "Krystal Ball": "https://i.imgur.com/nxbvUzV.jpg"
 };
@@ -567,7 +568,7 @@ export const SIPP_DATA: SIPP[] = [
   {
     id: "ezra-klein",
     name: "Ezra Klein",
-    photoUrl: RELIABLE_SIPP_IMAGES["Ezra Klein"],
+    photoUrl: "/lovable-uploads/928cfe89-be28-4b21-b62d-84037e1c20f9.png", // Updated Ezra Klein image
     shortBio: "Liberal political analyst, co-founder of Vox",
     averageAccuracy: 2.4,
     categoryAccuracy: {
@@ -613,3 +614,4 @@ export const SIPP_DATA: SIPP[] = [
     predictions: createPredictions()
   }
 ];
+
