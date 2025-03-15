@@ -63,16 +63,16 @@ const sippList = [
 
 // Map of SIPP names to reliable image URLs
 const RELIABLE_SIPP_IMAGES = {
-  "Tucker Carlson": "https://upload.wikimedia.org/wikipedia/commons/6/62/Tucker_Carlson_2020.jpg",
-  "Rachel Maddow": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Rachel_Maddow_in_2008.jpg",
-  "Elon Musk": "https://upload.wikimedia.org/wikipedia/commons/3/34/Elon_Musk_Royal_Society_%28crop2%29.jpg",
-  "Nate Silver": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Nate_Silver_2009.png",
-  "Sean Hannity": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Sean_Hannity.jpg",
-  "Anderson Cooper": "https://upload.wikimedia.org/wikipedia/commons/5/51/Anderson_Cooper_at_the_Edinburgh_TV_fest.jpg",
-  "Ben Shapiro": "https://upload.wikimedia.org/wikipedia/commons/6/62/Ben_Shapiro_2018.jpg",
-  "Ezra Klein": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Ezra_Klein_2012_Shankbone.JPG",
-  "Joe Rogan": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Joe_Rogan_-_2023_%28cropped%29.jpg",
-  "Krystal Ball": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Krystal_Ball_by_Gage_Skidmore.jpg"
+  "Tucker Carlson": "https://i.imgur.com/vQLRInY.jpg",
+  "Rachel Maddow": "https://i.imgur.com/wQ0p9E8.jpg",
+  "Elon Musk": "https://i.imgur.com/6Df9vJz.jpg",
+  "Nate Silver": "https://i.imgur.com/vbtMQAe.jpg",
+  "Sean Hannity": "https://i.imgur.com/4Jqi1Sl.jpg",
+  "Anderson Cooper": "https://i.imgur.com/8syvBG2.jpg",
+  "Ben Shapiro": "https://i.imgur.com/z90ufnP.jpg",
+  "Ezra Klein": "https://i.imgur.com/UTaJZRd.jpg",
+  "Joe Rogan": "https://i.imgur.com/UREG0Vp.jpg",
+  "Krystal Ball": "https://i.imgur.com/nxbvUzV.jpg"
 };
 
 // Function to fetch an image for a SIPP
@@ -80,25 +80,19 @@ async function fetchSippImage(sippName) {
   try {
     console.log(`Getting image for ${sippName}...`);
     
-    // First check if we have a reliable image URL
+    // Always use the reliable images from our map
     if (RELIABLE_SIPP_IMAGES[sippName]) {
       console.log(`Using reliable image for ${sippName}`);
       return RELIABLE_SIPP_IMAGES[sippName];
     }
     
-    // Fall back to DALL-E if we don't have a reliable image
-    console.log(`No reliable image for ${sippName}, generating with DALL-E...`);
-    const response = await openai.images.generate({
-      model: "dall-e-3",
-      prompt: `Professional headshot photo of a person representing ${sippName}, realistic, news commentator style, neutral background, high quality, detailed facial features`,
-      n: 1,
-      size: "1024x1024",
-    });
-    return response.data[0].url;
+    // If for some reason there's no image in our map, use a fallback
+    console.log(`No reliable image for ${sippName}, using generated avatar`);
+    return `https://ui-avatars.com/api/?name=${encodeURIComponent(sippName)}&background=random&size=200&color=fff&bold=true`;
   } catch (error) {
     console.error(`Error fetching image for ${sippName}:`, error);
     // Return a generic placeholder based on name initials
-    return `https://ui-avatars.com/api/?name=${encodeURIComponent(sippName)}&background=random&size=200`;
+    return `https://ui-avatars.com/api/?name=${encodeURIComponent(sippName)}&background=random&size=200&color=fff&bold=true`;
   }
 }
 
