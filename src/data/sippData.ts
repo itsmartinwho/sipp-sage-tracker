@@ -403,34 +403,38 @@ export const loadRealSippData = async (): Promise<SIPP[]> => {
         }
       }
       
+      // Get initial accuracy values from SIPP_DATA
+      const initialSipp = SIPP_DATA.find(s => s.id === sipp.id);
+      if (initialSipp) {
+        sipp.averageAccuracy = initialSipp.averageAccuracy;
+        sipp.categoryAccuracy = { ...initialSipp.categoryAccuracy };
+      }
+      
       // Fetch real predictions for this SIPP
       const predictions = await loadRealPredictions(sipp.name);
       if (predictions && predictions.length > 0) {
         sipp.predictions = predictions;
-      }
-      
-      // Recalculate accuracy scores based on predictions
-      const verifiedPredictions = sipp.predictions.filter(p => p.verificationStatus === "verified" && p.accuracyRating);
-      
-      if (verifiedPredictions.length > 0) {
-        // Calculate overall average accuracy from verified predictions only
-        sipp.averageAccuracy = parseFloat((verifiedPredictions.reduce((acc, p) => acc + (p.accuracyRating || 0), 0) / verifiedPredictions.length).toFixed(2));
         
-        // Calculate category-specific accuracy scores from verified predictions
-        const categories = ['economy', 'politics', 'technology', 'foreign_policy', 'social_trends'];
+        // Recalculate accuracy scores based on predictions
+        const verifiedPredictions = predictions.filter(p => p.verificationStatus === "verified" && p.accuracyRating);
         
-        categories.forEach(category => {
-          const categoryPredictions = verifiedPredictions.filter(p => p.category === category.replace('_', '-') as PredictionCategory);
-          const catKey = category as keyof typeof sipp.categoryAccuracy;
+        if (verifiedPredictions.length > 0) {
+          // Calculate overall average accuracy from verified predictions only
+          sipp.averageAccuracy = parseFloat((verifiedPredictions.reduce((acc, p) => acc + (p.accuracyRating || 0), 0) / verifiedPredictions.length).toFixed(2));
           
-          if (categoryPredictions.length > 0) {
-            // Calculate average for this category from its verified predictions
-            sipp.categoryAccuracy[catKey] = parseFloat((categoryPredictions.reduce((acc, p) => acc + (p.accuracyRating || 0), 0) / categoryPredictions.length).toFixed(2));
-          } else {
-            // If no verified predictions in this category, use the overall average
-            sipp.categoryAccuracy[catKey] = sipp.averageAccuracy;
-          }
-        });
+          // Calculate category-specific accuracy scores from verified predictions
+          const categories = ['economy', 'politics', 'technology', 'foreign_policy', 'social_trends'];
+          
+          categories.forEach(category => {
+            const categoryPredictions = verifiedPredictions.filter(p => p.category === category.replace('_', '-') as PredictionCategory);
+            const catKey = category as keyof typeof sipp.categoryAccuracy;
+            
+            if (categoryPredictions.length > 0) {
+              // Calculate average for this category from its verified predictions
+              sipp.categoryAccuracy[catKey] = parseFloat((categoryPredictions.reduce((acc, p) => acc + (p.accuracyRating || 0), 0) / categoryPredictions.length).toFixed(2));
+            }
+          });
+        }
       }
     }
     
