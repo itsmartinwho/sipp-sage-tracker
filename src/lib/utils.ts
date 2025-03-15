@@ -21,9 +21,31 @@ export const formatDate = (input: Date | string) => {
   }).format(date)
 }
 
+// Map of SIPP names to reliable image URLs
+const RELIABLE_SIPP_IMAGES: Record<string, string> = {
+  "Tucker Carlson": "https://upload.wikimedia.org/wikipedia/commons/6/62/Tucker_Carlson_2020.jpg",
+  "Rachel Maddow": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Rachel_Maddow_in_2008.jpg",
+  "Elon Musk": "https://upload.wikimedia.org/wikipedia/commons/3/34/Elon_Musk_Royal_Society_%28crop2%29.jpg",
+  "Nate Silver": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Nate_Silver_2009.png",
+  "Sean Hannity": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Sean_Hannity.jpg",
+  "Anderson Cooper": "https://upload.wikimedia.org/wikipedia/commons/5/51/Anderson_Cooper_at_the_Edinburgh_TV_fest.jpg",
+  "Ben Shapiro": "https://upload.wikimedia.org/wikipedia/commons/6/62/Ben_Shapiro_2018.jpg",
+  "Ezra Klein": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Ezra_Klein_2012_Shankbone.JPG",
+  "Joe Rogan": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Joe_Rogan_-_2023_%28cropped%29.jpg",
+  "Krystal Ball": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Krystal_Ball_by_Gage_Skidmore.jpg"
+};
+
 // Function to retrieve images for SIPPs
 export async function fetchSippImages(sippName: string): Promise<string> {
   try {
+    // First try to get from our reliable map
+    if (RELIABLE_SIPP_IMAGES[sippName]) {
+      console.log(`Using cached image for ${sippName}`);
+      return RELIABLE_SIPP_IMAGES[sippName];
+    }
+
+    // Fallback to OpenAI if we don't have a cached image
+    console.log(`No cached image for ${sippName}, generating with OpenAI`);
     const response = await openai.images.generate({
       model: "dall-e-3",
       prompt: `Professional headshot photo of a person representing ${sippName}, realistic, news commentator style, neutral background, high quality, detailed facial features`,
@@ -33,7 +55,9 @@ export async function fetchSippImages(sippName: string): Promise<string> {
     return response.data[0].url;
   } catch (error) {
     console.error("Error fetching image:", error);
-    return ""; // Return an empty string or a placeholder image URL
+    // Return a generic placeholder based on name initials
+    const initials = sippName.split(' ').map(n => n[0]).join('');
+    return `https://ui-avatars.com/api/?name=${encodeURIComponent(sippName)}&background=random&size=200`;
   }
 }
 
