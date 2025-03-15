@@ -130,7 +130,7 @@ const SippDetail: React.FC = () => {
           </div>
           <h1 className="text-4xl font-bold mb-2">{sipp.name}</h1>
           <p className="text-muted-foreground mb-4">{sipp.shortBio}</p>
-          <Badge className={getAccuracyColor(sipp.averageAccuracy)}>
+          <Badge style={{ backgroundColor: `hsl(var(--${getAccuracyColor(sipp.averageAccuracy)}))` }}>
             Overall Accuracy: {formatNumber(sipp.averageAccuracy)}
           </Badge>
         </div>

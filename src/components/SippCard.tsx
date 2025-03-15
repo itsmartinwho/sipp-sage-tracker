@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -36,6 +35,11 @@ const SippCard: React.FC<SippCardProps> = ({ sipp, index }) => {
                 alt={sipp.name} 
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                 loading="lazy"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.onerror = null; // Prevent infinite loops
+                  target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(sipp.name)}&size=200&background=random`;
+                }}
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                 <h3 className="text-white text-lg font-medium">{sipp.name}</h3>
@@ -47,7 +51,7 @@ const SippCard: React.FC<SippCardProps> = ({ sipp, index }) => {
                 <div className="flex items-center gap-2">
                   <span className="text-sm text-muted-foreground">Accuracy</span>
                   <Badge 
-                    className={`bg-${getAccuracyColor(sipp.averageAccuracy)}`}
+                    style={{ backgroundColor: `hsl(var(--${getAccuracyColor(sipp.averageAccuracy)}))` }}
                     variant="secondary"
                   >
                     {formatNumber(sipp.averageAccuracy)}
@@ -64,7 +68,7 @@ const SippCard: React.FC<SippCardProps> = ({ sipp, index }) => {
                   {topCategories.map(category => (
                     <Badge 
                       key={category.name}
-                      className={`bg-${getCategoryColor(category.name)}`}
+                      style={{ backgroundColor: `hsl(var(--${getCategoryColor(category.name)}))` }}
                       variant="outline"
                     >
                       {category.name.replace('-', ' ')} ({formatNumber(category.accuracy)})

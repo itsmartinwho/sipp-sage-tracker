@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Prediction, formatNumber, getAccuracyColor, getCategoryColor, formatDate } from '@/data/sippData';
@@ -23,7 +22,9 @@ const PredictionItem: React.FC<PredictionItemProps> = ({ prediction, index }) =>
           <div className="flex flex-col space-y-3">
             <div className="flex justify-between items-start">
               <div>
-                <Badge variant="outline" className={`bg-${getCategoryColor(prediction.category)}/10 text-${getCategoryColor(prediction.category)}`}>
+                <Badge variant="outline" 
+                       style={{ backgroundColor: `hsl(var(--${getCategoryColor(prediction.category)}))/0.1`, 
+                                color: `hsl(var(--${getCategoryColor(prediction.category)}))` }}>
                   {prediction.category.replace('-', ' ')}
                 </Badge>
                 <span className="text-xs text-muted-foreground ml-2">
@@ -32,9 +33,16 @@ const PredictionItem: React.FC<PredictionItemProps> = ({ prediction, index }) =>
               </div>
               
               {prediction.accuracyRating ? (
-                <Badge className={`bg-${getAccuracyColor(prediction.accuracyRating)}`}>
-                  {formatNumber(prediction.accuracyRating)}/3
-                </Badge>
+                <div className="flex flex-col items-end">
+                  <Badge style={{ backgroundColor: `hsl(var(--${getAccuracyColor(prediction.accuracyRating)}))` }}>
+                    {formatNumber(prediction.accuracyRating)}/3
+                  </Badge>
+                  {prediction.normalizedScore && (
+                    <span className="text-xs text-muted-foreground mt-1">
+                      Normalized: {formatNumber(prediction.normalizedScore)}
+                    </span>
+                  )}
+                </div>
               ) : (
                 <Badge variant="outline" className="bg-muted/50">
                   {prediction.verificationStatus}
