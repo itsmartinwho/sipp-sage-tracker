@@ -777,16 +777,55 @@ async function processSipps() {
         patternAnalysis = await analyzePredictionPatterns(sipp.name, predictions);
       }
       
-      // Process verified predictions to calculate averages
-      const verifiedPredictions = predictions.filter(p => p.verificationStatus === 'verified');
+      // After getting predictions, calculate accurate averages
+      const verifiedPredictions = predictions.filter(p => p.verificationStatus === 'verified' && p.accuracyRating !== undefined);
+      
+      // Calculate the overall average accuracy from all verified predictions
+      let totalAccuracy = 0;
+      let categoryAccuracy = {
+        economy: { sum: 0, count: 0 },
+        politics: { sum: 0, count: 0 },
+        technology: { sum: 0, count: 0 },
+        foreign_policy: { sum: 0, count: 0 },
+        social_trends: { sum: 0, count: 0 }
+      };
+      
+      // Sum up all accuracy scores and count by category
+      for (const prediction of verifiedPredictions) {
+        if (prediction.accuracyRating) {
+          totalAccuracy += prediction.accuracyRating;
+          
+          // Update category accuracy
+          const category = prediction.category.replace('-', '_');
+          if (categoryAccuracy[category]) {
+            categoryAccuracy[category].sum += prediction.accuracyRating;
+            categoryAccuracy[category].count++;
+          }
+        }
+      }
+      
+      // Calculate the averages properly
+      const averageAccuracy = verifiedPredictions.length > 0 
+        ? (totalAccuracy / verifiedPredictions.length).toFixed(2) 
+        : 0;
+      
+      // Calculate category averages
+      const categoryAverages = {};
+      for (const [category, data] of Object.entries(categoryAccuracy)) {
+        categoryAverages[category] = data.count > 0 
+          ? parseFloat((data.sum / data.count).toFixed(2)) 
+          : 0;
+      }
+      
       console.log(`${sipp.name} has ${verifiedPredictions.length} verified predictions`);
-      
-      // Calculate overall and category accuracy
-      const averageAccuracy = calculateAverageAccuracy(predictions);
-      const categoryAccuracy = calculateCategoryAccuracy(predictions);
-      
       console.log(`${sipp.name} average accuracy: ${averageAccuracy}`);
-      console.log('Category accuracy:', categoryAccuracy);
+      console.log(`Category accuracy:`, categoryAverages);
+      
+      // Update the sipp object with accurate averages
+      sipp.patternAnalysis = patternAnalysis;
+      sipp.verifiedPredictionCount = verifiedPredictions.length;
+      sipp.averageAccuracy = parseFloat(averageAccuracy);
+      sipp.categoryAccuracy = categoryAverages;
       
       // Add the processed SIPP to our array
       processedSipps.push({
@@ -794,9 +833,9 @@ async function processSipps() {
         name: sipp.name,
         photoUrl: photoUrl,
         shortBio: sipp.shortBio,
-        averageAccuracy: averageAccuracy,
-        categoryAccuracy: categoryAccuracy,
-        patternAnalysis: patternAnalysis,
+        averageAccuracy: sipp.averageAccuracy,
+        categoryAccuracy: sipp.categoryAccuracy,
+        patternAnalysis: sipp.patternAnalysis,
         predictions: predictions
       });
     }
