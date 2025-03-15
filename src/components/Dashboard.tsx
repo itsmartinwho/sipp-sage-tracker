@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Search, Filter, SortDesc, SortAsc, Loader2 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/components/ui/use-toast';
+import { preloadImages, getFallbackImageUrl } from '@/lib/utils';
 
 const Dashboard: React.FC = () => {
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
@@ -60,6 +61,19 @@ const Dashboard: React.FC = () => {
         // If we get here, try to generate data dynamically
         console.log("Generating data dynamically...");
         const realData = await loadRealSippData();
+        
+        // Validate and ensure each SIPP has a working image URL
+        for (const sipp of realData) {
+          // Make sure each SIPP has a valid photoUrl
+          if (!sipp.photoUrl || sipp.photoUrl.trim() === '') {
+            console.warn(`Missing photo URL for ${sipp.name}, using fallback`);
+            sipp.photoUrl = getFallbackImageUrl(sipp.name);
+          }
+        }
+        
+        // Preload images in the background
+        preloadImages(realData.map(sipp => sipp.photoUrl));
+        
         setSipps(realData);
         toast({
           title: "Data generated successfully",

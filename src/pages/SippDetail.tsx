@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -10,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import PredictionItem from '@/components/PredictionItem';
 import { Loader2 } from 'lucide-react';
+import { preloadImages, getFallbackImageUrl } from '@/lib/utils';
 
 const SippDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -38,6 +38,12 @@ const SippDetail: React.FC = () => {
             
             if (matchingSipp) {
               setSipp(matchingSipp);
+              
+              // Preload the image for this SIPP
+              if (matchingSipp.photoUrl) {
+                preloadImages([matchingSipp.photoUrl]);
+              }
+              
               setLoading(false);
               return;
             }
@@ -125,7 +131,8 @@ const SippDetail: React.FC = () => {
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.onerror = null; // Prevent infinite loops
-                target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(sipp.name)}&size=128&background=random`;
+                console.log(`Image load error for ${sipp.name} in detail view, using fallback`);
+                target.src = getFallbackImageUrl(sipp.name, 128);
               }} 
             />
           </div>

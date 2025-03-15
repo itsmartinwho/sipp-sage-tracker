@@ -1,10 +1,10 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { SIPP, formatNumber, getAccuracyColor, getCategoryColor, PredictionCategory } from '@/data/sippData';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { getFallbackImageUrl } from '@/lib/utils';
 
 interface SippCardProps {
   sipp: SIPP;
@@ -39,7 +39,9 @@ const SippCard: React.FC<SippCardProps> = ({ sipp, index }) => {
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.onerror = null; // Prevent infinite loops
-                  target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(sipp.name)}&size=200&background=random`;
+                  console.log(`Image load error for ${sipp.name}, using fallback`);
+                  // Use a colored background with initials as fallback
+                  target.src = getFallbackImageUrl(sipp.name, 200);
                 }}
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">

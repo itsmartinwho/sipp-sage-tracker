@@ -1,4 +1,3 @@
-
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 import OpenAI from "openai"
@@ -24,17 +23,32 @@ export const formatDate = (input: Date | string) => {
 
 // Map of SIPP names to reliable image URLs
 const RELIABLE_SIPP_IMAGES: Record<string, string> = {
-  "Tucker Carlson": "https://upload.wikimedia.org/wikipedia/commons/6/62/Tucker_Carlson_2020.jpg",
-  "Rachel Maddow": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Rachel_Maddow_in_2008.jpg",
-  "Elon Musk": "https://upload.wikimedia.org/wikipedia/commons/3/34/Elon_Musk_Royal_Society_%28crop2%29.jpg",
-  "Nate Silver": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Nate_Silver_2009.png",
-  "Sean Hannity": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Sean_Hannity.jpg",
-  "Anderson Cooper": "https://upload.wikimedia.org/wikipedia/commons/5/51/Anderson_Cooper_at_the_Edinburgh_TV_fest.jpg",
-  "Ben Shapiro": "https://upload.wikimedia.org/wikipedia/commons/6/62/Ben_Shapiro_2018.jpg",
-  "Ezra Klein": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Ezra_Klein_2012_Shankbone.JPG",
-  "Joe Rogan": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Joe_Rogan_-_2023_%28cropped%29.jpg",
-  "Krystal Ball": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Krystal_Ball_by_Gage_Skidmore.jpg"
+  "Tucker Carlson": "https://i.imgur.com/vQLRInY.jpg", // Tucker Carlson
+  "Rachel Maddow": "https://i.imgur.com/wQ0p9E8.jpg", // Rachel Maddow
+  "Elon Musk": "https://i.imgur.com/6Df9vJz.jpg", // Elon Musk
+  "Nate Silver": "https://i.imgur.com/vbtMQAe.jpg", // Nate Silver
+  "Sean Hannity": "https://i.imgur.com/4Jqi1Sl.jpg", // Sean Hannity
+  "Anderson Cooper": "https://i.imgur.com/8syvBG2.jpg", // Anderson Cooper
+  "Ben Shapiro": "https://i.imgur.com/z90ufnP.jpg", // Ben Shapiro
+  "Ezra Klein": "https://i.imgur.com/UTaJZRd.jpg", // Ezra Klein
+  "Joe Rogan": "https://i.imgur.com/UREG0Vp.jpg", // Joe Rogan
+  "Krystal Ball": "https://i.imgur.com/nxbvUzV.jpg" // Krystal Ball
 };
+
+// Function to generate a consistent fallback image URL for a SIPP
+export function getFallbackImageUrl(name: string, size: number = 200): string {
+  return `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&size=${size}&background=random&color=fff&bold=true`;
+}
+
+// Function to preload images for better performance
+export function preloadImages(imageUrls: string[]): void {
+  imageUrls.forEach(url => {
+    if (url && url.trim() !== '') {
+      const img = new Image();
+      img.src = url;
+    }
+  });
+}
 
 // Function to retrieve images for SIPPs
 export async function fetchSippImages(sippName: string): Promise<string> {
@@ -45,22 +59,12 @@ export async function fetchSippImages(sippName: string): Promise<string> {
       return RELIABLE_SIPP_IMAGES[sippName];
     }
 
-    // Fallback to OpenAI if we don't have a cached image
-    console.log(`No cached image for ${sippName}, generating with OpenAI`);
-    const response = await openai.images.generate({
-      model: "dall-e-3",
-      prompt: `Professional headshot photo of a person representing ${sippName}, realistic, news commentator style, neutral background, high quality, detailed facial features`,
-      n: 1,
-      size: "1024x1024",
-    });
-    return response.data[0].url;
+    // Fallback to a generic placeholder based on name initials
+    console.log(`No image found for ${sippName}, using generated avatar`);
+    return `https://ui-avatars.com/api/?name=${encodeURIComponent(sippName)}&background=random&size=200`;
   } catch (error) {
     console.error("Error fetching image:", error);
-    // Return a reliable image from our map if available
-    if (RELIABLE_SIPP_IMAGES[sippName]) {
-      return RELIABLE_SIPP_IMAGES[sippName];
-    }
-    // Fallback to a generic placeholder based on name initials
+    // Return a generic placeholder based on name initials
     return `https://ui-avatars.com/api/?name=${encodeURIComponent(sippName)}&background=random&size=200`;
   }
 }
