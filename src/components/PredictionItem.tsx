@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Prediction, formatNumber, getAccuracyColor, getCategoryColor, formatDate } from '@/data/sippData';
@@ -52,18 +51,19 @@ const PredictionItem: React.FC<PredictionItemProps> = ({ prediction, index }) =>
               )}
             </div>
             
-            <div>
-              <h4 className="font-medium">Prediction:</h4>
-              <p className="text-sm">{prediction.predictedOutcome}</p>
-              <div className="text-xs text-muted-foreground mt-1">
-                Timeframe: {prediction.timeframe}
-              </div>
-            </div>
+            <p className="font-medium my-2">{prediction.predictedOutcome}</p>
             
             {prediction.actualOutcome && (
-              <div className="pt-2 border-t border-border">
-                <h4 className="font-medium text-sm">Actual outcome:</h4>
-                <p className="text-sm">{prediction.actualOutcome}</p>
+              <div className="mt-3 text-sm">
+                <span className="font-medium">Actual outcome: </span>
+                <span className="text-muted-foreground">{prediction.actualOutcome}</span>
+              </div>
+            )}
+            
+            {prediction.analysisExplanation && (
+              <div className="mt-2 text-sm border-t pt-2">
+                <span className="font-medium text-xs text-orange-600">Analysis: </span>
+                <span className="text-muted-foreground">{prediction.analysisExplanation}</span>
               </div>
             )}
           </div>

@@ -1,5 +1,13 @@
 import { formatDate } from "@/lib/utils";
 import { fetchSippImages, fetchSippPredictions } from "@/lib/utils";
+import { 
+  parsePrediction, 
+  assessPrediction, 
+  normalizePredictionScore, 
+  explainPredictionError,
+  generateSippAnalysis,
+  calculateSippAccuracy
+} from "./predictionAnalysis";
 
 export type PredictionCategory = 'economy' | 'politics' | 'technology' | 'foreign-policy' | 'social-trends';
 
@@ -30,6 +38,7 @@ export interface Prediction {
   actualOutcome?: string;
   accuracyRating?: number;
   normalizedScore?: number;
+  analysisExplanation?: string;
 }
 
 // Helper functions for formatting and color logic
@@ -346,42 +355,36 @@ const createPredictions = (): Prediction[] => {
 export const loadRealPredictions = async (sippName: string): Promise<Prediction[]> => {
   try {
     // Fetch actual predictions for this SIPP using OpenAI
-    const predictions = await fetchSippPredictions(sippName);
+    const rawPredictions = await fetchSippPredictions(sippName);
+    
+    if (!rawPredictions || !Array.isArray(rawPredictions) || rawPredictions.length === 0) {
+      console.warn(`No predictions found for ${sippName}, using fallback`);
+      return [];
+    }
     
     // Process and normalize the predictions data
-    return predictions.slice(0, 40).map((pred: any, index: number) => {
-      // For verified predictions, calculate accuracy using our new system
-      let accuracyRating = 2; // Default to partially correct
+    return rawPredictions.slice(0, 40).map((pred: any, index: number) => {
+      // 1. PARSE PREDICTION
+      const prediction = parsePrediction(pred, sippName, index);
       
-      if (pred.verificationStatus === 'verified' && pred.actualOutcome) {
-        // Use our new scoring system
-        accuracyRating = calculateAccuracyScore(
-          {
-            ...pred,
-            category: pred.category.replace('_', '-') as PredictionCategory
-          } as Prediction, 
-          pred.actualOutcome
+      // 2. ASSESS PREDICTION (if verified)
+      if (prediction.verificationStatus === 'verified' && prediction.actualOutcome) {
+        // Calculate accuracy using our assessment system
+        prediction.accuracyRating = pred.accuracyRating || assessPrediction(prediction, prediction.actualOutcome);
+        
+        // 3. NORMALIZE SCORE
+        prediction.normalizedScore = normalizePredictionScore(
+          prediction.accuracyRating, 
+          prediction.category
         );
-      } else if (pred.accuracyRating) {
-        // Use provided accuracy if available
-        accuracyRating = pred.accuracyRating;
+        
+        // 4. EXPLAIN ERRORS (for inaccurate predictions)
+        if (prediction.accuracyRating < 2.5) {
+          prediction.analysisExplanation = explainPredictionError(prediction);
+        }
       }
       
-      // Apply normalization based on category
-      const category = pred.category.replace('_', '-') as PredictionCategory;
-      const normalizedScore = normalizeScore(accuracyRating, category);
-      
-      return {
-        id: `pred-${sippName.toLowerCase().replace(/\s+/g, '-')}-${index}`,
-        dateStated: pred.dateStated || new Date().toISOString().split('T')[0],
-        predictedOutcome: pred.predictedOutcome || "No prediction text available",
-        category: category,
-        timeframe: pred.timeframe || "Not specified",
-        verificationStatus: pred.verificationStatus || "pending",
-        actualOutcome: pred.actualOutcome || undefined,
-        accuracyRating: accuracyRating,
-        normalizedScore: normalizedScore
-      };
+      return prediction;
     });
   } catch (error) {
     console.error(`Error loading predictions for ${sippName}:`, error);
@@ -392,58 +395,73 @@ export const loadRealPredictions = async (sippName: string): Promise<Prediction[
 // Function to load real SIPP data with images and predictions
 export const loadRealSippData = async (): Promise<SIPP[]> => {
   try {
-    // Start with a deep copy of the template data to ensure we don't modify the original
+    // Create a deep copy of the template data to preserve original values
     const sippList = JSON.parse(JSON.stringify(SIPP_DATA));
     
     for (let i = 0; i < sippList.length; i++) {
       const sipp = sippList[i];
       
-      // Use the reliable images for all SIPPs
+      // Save original accuracy values and analysis
+      const originalAverage = sipp.averageAccuracy;
+      const originalCategoryAccuracy = { ...sipp.categoryAccuracy };
+      const originalPatternAnalysis = sipp.patternAnalysis;
+      
+      // Use the reliable images
       if (RELIABLE_SIPP_IMAGES[sipp.name]) {
         sipp.photoUrl = RELIABLE_SIPP_IMAGES[sipp.name];
       } else {
-        // Fetch real photo for this SIPP if not in our map
         const photoUrl = await fetchSippImages(sipp.name);
         if (photoUrl) {
           sipp.photoUrl = photoUrl;
         }
       }
       
-      // Fetch real predictions for this SIPP 
+      // Fetch real predictions for this SIPP
       const predictions = await loadRealPredictions(sipp.name);
       if (predictions && predictions.length > 0) {
         sipp.predictions = predictions;
         
-        // Only update accuracy scores if we have verified predictions
-        const verifiedPredictions = predictions.filter(p => p.verificationStatus === "verified" && p.accuracyRating);
+        // Check if we have enough verified predictions to calculate new scores
+        const verifiedPredictions = predictions.filter(p => 
+          p.verificationStatus === "verified" && typeof p.accuracyRating === "number"
+        );
         
-        if (verifiedPredictions.length > 0) {
-          // Calculate overall average accuracy from verified predictions only
-          sipp.averageAccuracy = parseFloat((verifiedPredictions.reduce((acc, p) => acc + (p.accuracyRating || 0), 0) / verifiedPredictions.length).toFixed(2));
+        // Only override original scores if we have enough verified predictions (at least 5)
+        if (verifiedPredictions.length >= 5) {
+          // Generate a comprehensive analysis for this SIPP
+          const analysis = generateSippAnalysis(sipp);
+          sipp.patternAnalysis = analysis;
           
-          // Calculate category-specific accuracy scores from verified predictions
-          const categories = ['economy', 'politics', 'technology', 'foreign_policy', 'social_trends'];
+          // Calculate accuracy metrics from predictionAnalysis system
+          const { 
+            averageAccuracy, 
+            categoryAccuracy 
+          } = calculateSippAccuracy(sipp.predictions);
           
-          categories.forEach(category => {
-            const categoryPredictions = verifiedPredictions.filter(p => p.category === category.replace('_', '-') as PredictionCategory);
+          sipp.averageAccuracy = averageAccuracy;
+          
+          // Update category accuracies
+          Object.keys(categoryAccuracy).forEach(category => {
             const catKey = category as keyof typeof sipp.categoryAccuracy;
-            
-            if (categoryPredictions.length > 0) {
-              // Calculate average for this category from its verified predictions
-              sipp.categoryAccuracy[catKey] = parseFloat((categoryPredictions.reduce((acc, p) => acc + (p.accuracyRating || 0), 0) / categoryPredictions.length).toFixed(2));
-            }
+            sipp.categoryAccuracy[catKey] = categoryAccuracy[category];
           });
+        } else {
+          // Not enough verified predictions, use original scores and analysis
+          sipp.averageAccuracy = originalAverage;
+          sipp.categoryAccuracy = originalCategoryAccuracy;
+          sipp.patternAnalysis = originalPatternAnalysis;
         }
       }
     }
     
-    // Debug: log the first SIPP's accuracy to verify it's not 2.0
-    console.log(`First SIPP (${sippList[0].name}) accuracy: ${sippList[0].averageAccuracy}`);
+    console.log("SIPP data loaded with the following accuracy scores:");
+    sippList.forEach(sipp => {
+      console.log(`${sipp.name}: ${sipp.averageAccuracy}`);
+    });
     
     return sippList;
   } catch (error) {
     console.error("Error loading real SIPP data:", error);
-    // Fall back to template data if there's an error
     return SIPP_DATA;
   }
 };

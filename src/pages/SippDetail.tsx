@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -9,6 +8,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import PredictionItem from '@/components/PredictionItem';
+import PredictionAnalysisPanel from '@/components/PredictionAnalysisPanel';
 import { Loader2 } from 'lucide-react';
 import { preloadImages, getFallbackImageUrl } from '@/lib/utils';
 
@@ -176,6 +176,7 @@ const SippDetail: React.FC = () => {
             <TabsList>
               <TabsTrigger value="predictions">Predictions</TabsTrigger>
               <TabsTrigger value="analysis">Analysis</TabsTrigger>
+              <TabsTrigger value="detailed">Detailed Analysis</TabsTrigger>
             </TabsList>
             <TabsContent value="predictions">
               <div className="grid grid-cols-1 gap-4">
@@ -210,6 +211,9 @@ const SippDetail: React.FC = () => {
                   <p className="mt-4 whitespace-pre-line">{sipp.patternAnalysis}</p>
                 </CardContent>
               </Card>
+            </TabsContent>
+            <TabsContent value="detailed">
+              <PredictionAnalysisPanel sipp={sipp} />
             </TabsContent>
           </Tabs>
         )}
