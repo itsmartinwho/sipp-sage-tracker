@@ -38,9 +38,12 @@ const SippDetail: React.FC = () => {
             const matchingSipp = jsonData.find((s: SIPP) => s.id === id);
             
             if (matchingSipp) {
-              // Make sure the Tucker Carlson image is updated
+              // Make sure specific SIPPs have the correct images
               if (matchingSipp.name === "Tucker Carlson") {
                 matchingSipp.photoUrl = "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png";
+              }
+              if (matchingSipp.name === "Ezra Klein") {
+                matchingSipp.photoUrl = "/lovable-uploads/928cfe89-be28-4b21-b62d-84037e1c20f9.png";
               }
               
               setSipp(matchingSipp);
@@ -61,9 +64,14 @@ const SippDetail: React.FC = () => {
         // Fallback to template data
         const fallbackSipp = SIPP_DATA.find(s => s.id === id);
         
-        // Make sure the Tucker Carlson image is updated in the fallback data
-        if (fallbackSipp && fallbackSipp.name === "Tucker Carlson") {
-          fallbackSipp.photoUrl = "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png";
+        // Make sure specific SIPPs have the correct images
+        if (fallbackSipp) {
+          if (fallbackSipp.name === "Tucker Carlson") {
+            fallbackSipp.photoUrl = "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png";
+          }
+          if (fallbackSipp.name === "Ezra Klein") {
+            fallbackSipp.photoUrl = "/lovable-uploads/928cfe89-be28-4b21-b62d-84037e1c20f9.png";
+          }
         }
         
         setSipp(fallbackSipp || null);

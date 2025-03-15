@@ -1,4 +1,3 @@
-
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 import OpenAI from "openai"
@@ -114,4 +113,3 @@ export async function fetchSippPredictions(sippName: string): Promise<any[]> {
     return [];
   }
 }
-

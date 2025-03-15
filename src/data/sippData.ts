@@ -1,4 +1,3 @@
-
 import { formatDate } from "@/lib/utils";
 import { fetchSippImages, fetchSippPredictions } from "@/lib/utils";
 
@@ -393,10 +392,17 @@ export const loadRealSippData = async (): Promise<SIPP[]> => {
     for (let i = 0; i < sippList.length; i++) {
       const sipp = sippList[i];
       
-      // Fetch real photo for this SIPP
-      const photoUrl = await fetchSippImages(sipp.name);
-      if (photoUrl) {
-        sipp.photoUrl = photoUrl;
+      // Update specific SIPPs with reliable images directly
+      if (sipp.name === "Tucker Carlson") {
+        sipp.photoUrl = "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png";
+      } else if (sipp.name === "Ezra Klein") {
+        sipp.photoUrl = "/lovable-uploads/928cfe89-be28-4b21-b62d-84037e1c20f9.png";
+      } else {
+        // Fetch real photo for this SIPP
+        const photoUrl = await fetchSippImages(sipp.name);
+        if (photoUrl) {
+          sipp.photoUrl = photoUrl;
+        }
       }
       
       // Fetch real predictions for this SIPP
@@ -614,4 +620,3 @@ export const SIPP_DATA: SIPP[] = [
     predictions: createPredictions()
   }
 ];
-

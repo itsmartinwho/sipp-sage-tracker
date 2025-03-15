@@ -41,12 +41,18 @@ const Dashboard: React.FC = () => {
                 jsonData[0].photoUrl && 
                 jsonData[0].predictions) {
               
-              // Make sure Tucker Carlson's image is updated
+              // Make sure specific SIPPs have the correct images
               const updatedData = jsonData.map(sipp => {
                 if (sipp.name === "Tucker Carlson") {
                   return {
                     ...sipp,
                     photoUrl: "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png"
+                  };
+                }
+                if (sipp.name === "Ezra Klein") {
+                  return {
+                    ...sipp,
+                    photoUrl: "/lovable-uploads/928cfe89-be28-4b21-b62d-84037e1c20f9.png"
                   };
                 }
                 return sipp;
@@ -74,12 +80,18 @@ const Dashboard: React.FC = () => {
         console.log("Generating data dynamically...");
         const realData = await loadRealSippData();
         
-        // Ensure Tucker Carlson has the correct image
+        // Ensure specific SIPPs have the correct images
         const updatedRealData = realData.map(sipp => {
           if (sipp.name === "Tucker Carlson") {
             return {
               ...sipp,
               photoUrl: "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png"
+            };
+          }
+          if (sipp.name === "Ezra Klein") {
+            return {
+              ...sipp,
+              photoUrl: "/lovable-uploads/928cfe89-be28-4b21-b62d-84037e1c20f9.png"
             };
           }
           return sipp;
@@ -110,12 +122,18 @@ const Dashboard: React.FC = () => {
           variant: "destructive",
         });
         
-        // Update Tucker Carlson's image in the fallback data
+        // Update specific SIPPs' images in the fallback data
         const updatedFallbackData = SIPP_DATA.map(sipp => {
           if (sipp.name === "Tucker Carlson") {
             return {
               ...sipp,
               photoUrl: "/lovable-uploads/dc4415b9-f384-4c81-b95d-952a1c7c3849.png"
+            };
+          }
+          if (sipp.name === "Ezra Klein") {
+            return {
+              ...sipp,
+              photoUrl: "/lovable-uploads/928cfe89-be28-4b21-b62d-84037e1c20f9.png"
             };
           }
           return sipp;
