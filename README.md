@@ -4,6 +4,19 @@
 
 **URL**: https://lovable.dev/projects/75cea408-0701-46ff-a95a-5944ed13ada8
 
+## API Key Setup
+
+This project requires an OpenAI API key to function properly. Follow these steps to set it up:
+
+1. Create a `.env` file in the root directory (use the provided `.env.example` as reference)
+2. Add your OpenAI API key in the following format:
+   ```
+   VITE_OPENAI_API_KEY=your_openai_api_key_here
+   ```
+3. Restart the development server if it's already running
+
+**Note:** Never commit your actual API key to GitHub. The `.env` file is already added to `.gitignore` to prevent accidental commits.
+
 ## How can I edit this code?
 
 There are several ways of editing your application.

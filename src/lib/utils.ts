@@ -1,11 +1,10 @@
-
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 import OpenAI from "openai"
 
 // Initialize OpenAI client
 const openai = new OpenAI({
-  apiKey: "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",
+  apiKey: import.meta.env.VITE_OPENAI_API_KEY || "",
   dangerouslyAllowBrowser: true, // Allow browser usage
 });
 
